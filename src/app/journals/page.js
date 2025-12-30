@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 import {
 	processJournals,
 	getCategories,
@@ -14,6 +15,9 @@ import { Download, Loader2 } from "lucide-react"
 import CTASection from "@/components/shared/ctaSection"
 
 export default function JournalsPage() {
+	const router = useRouter()
+	const searchParams = useSearchParams()
+
 	const [allJournals, setAllJournals] = useState([])
 	const [displayedJournals, setDisplayedJournals] = useState([])
 	const [paginatedJournals, setPaginatedJournals] = useState([])
@@ -33,35 +37,70 @@ export default function JournalsPage() {
 		category: "all",
 		ppiSort: "high_to_low",
 	})
+
+	// Track if we came from another page with search param
+	const [hasInitializedFromURL, setHasInitializedFromURL] = useState(false)
+
 	// Load journals on mount
 	useEffect(() => {
 		const loadData = async () => {
 			setIsInitialLoading(true)
-			console.log("asd")
+
+			// Get search parameter from URL
+			const urlSearchParam = searchParams.get("search") || ""
+
 			const response = await fetch("/api/Journals")
 			const journals = await response.json()
-			console.log(journals.journals)
+
 			setAllJournals(journals.journals)
 			setCategories(getCategories(journals.journals))
 
-			// Apply initial sort
-			const sorted = processJournals(journals.journals, {
-				keyword: "",
-				category: "all",
-				ppiSort: "high_to_low",
-			})
+			// If URL has search parameter, use it as initial keyword
+			if (urlSearchParam) {
+				setCurrentKeyword(urlSearchParam)
+				setHasInitializedFromURL(true)
 
-			setDisplayedJournals(sorted)
+				// Apply search with URL parameter
+				const sorted = processJournals(journals.journals, {
+					keyword: urlSearchParam,
+					category: "all",
+					ppiSort: "high_to_low",
+				})
 
-			// Paginate
-			const { journals: paginated, totalPages: pages } = paginateJournals(
-				sorted,
-				1,
-				perPage
-			)
-			setPaginatedJournals(paginated)
-			setTotalPages(pages)
-			setCurrentPage(1)
+				setDisplayedJournals(sorted)
+
+				// Paginate
+				const { journals: paginated, totalPages: pages } = paginateJournals(
+					sorted,
+					1,
+					perPage
+				)
+				setPaginatedJournals(paginated)
+				setTotalPages(pages)
+				setCurrentPage(1)
+
+				// Remove search parameter from URL
+				router.replace("/journals", { scroll: false })
+			} else {
+				// Apply initial sort without search
+				const sorted = processJournals(journals.journals, {
+					keyword: "",
+					category: "all",
+					ppiSort: "high_to_low",
+				})
+
+				setDisplayedJournals(sorted)
+
+				// Paginate
+				const { journals: paginated, totalPages: pages } = paginateJournals(
+					sorted,
+					1,
+					perPage
+				)
+				setPaginatedJournals(paginated)
+				setTotalPages(pages)
+				setCurrentPage(1)
+			}
 
 			setIsInitialLoading(false)
 		}
@@ -132,6 +171,7 @@ export default function JournalsPage() {
 	// Handle reset
 	const handleReset = async () => {
 		setIsSearching(true)
+		setCurrentKeyword("")
 		setCurrentFilters({
 			category: "all",
 			ppiSort: "high_to_low",
@@ -141,7 +181,7 @@ export default function JournalsPage() {
 
 		// Reset to all journals with default sort
 		const sorted = processJournals(allJournals, {
-			keyword: currentKeyword,
+			keyword: "",
 			category: "all",
 			ppiSort: "high_to_low",
 		})
@@ -184,12 +224,13 @@ export default function JournalsPage() {
 		setPerPage(perPage)
 		window.scrollTo({ top: 0, behavior: "smooth" })
 	}
+
 	if (isInitialLoading) {
 		return (
 			<div className="px-10 md:px-16 lg:px-24 py-16 md:py-24">
-				<div className="max-w-7xl mx-auto  mt-12">
+				<div className="max-w-7xl mx-auto mt-12">
 					{/* Header */}
-					<div className="flex justify-between ">
+					<div className="flex justify-between">
 						<h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
 							Journal Directory
 						</h1>
@@ -217,9 +258,9 @@ export default function JournalsPage() {
 	return (
 		<div>
 			<div className="px-10 md:px-16 lg:px-24 py-16 md:py-24">
-				<div className="max-w-7xl mx-auto  mt-12">
+				<div className="max-w-7xl mx-auto mt-12">
 					{/* Header */}
-					<div className="flex justify-between ">
+					<div className="flex justify-between">
 						<h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
 							Journal Directory
 						</h1>
@@ -238,6 +279,7 @@ export default function JournalsPage() {
 							onReset={handleReset}
 							isSearching={isSearching}
 							isFiltering={isFiltering}
+							initialKeyword={currentKeyword}
 						/>
 
 						{/* Results Header */}

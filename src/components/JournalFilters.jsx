@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import {
@@ -19,10 +19,15 @@ export default function JournalFilters({
 	onReset,
 	isSearching,
 	isFiltering,
+	initialKeyword = "",
 }) {
 	const [keyword, setKeyword] = useState("")
 	const [selectedCategory, setSelectedCategory] = useState("all")
 	const [ppiSort, setPpiSort] = useState("high_to_low")
+
+	useEffect(() => {
+		setKeyword(initialKeyword)
+	}, [initialKeyword])
 
 	const handleSearch = () => {
 		onSearch(keyword)
