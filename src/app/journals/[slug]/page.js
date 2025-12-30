@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft, FileText, BarChart3, Globe, Building2 } from "lucide-react"
+import { Dot } from "lucide-react"
 
 export default async function JournalDetailPage({ params }) {
 	// Await params in Next.js 15
@@ -18,6 +19,16 @@ export default async function JournalDetailPage({ params }) {
 		notFound()
 	}
 
+	const getCategoryBadgeColor = category => {
+		const colors = {
+			Alpha: "bg-blue-100 text-blue-700 border-blue-300",
+			Beta: "bg-green-100 text-green-700 border-green-300",
+			Gamma: "bg-yellow-100 text-yellow-700 border-yellow-300",
+			Delta: "bg-purple-100 text-purple-700 border-purple-300",
+		}
+		return colors[category] || "bg-gray-100 text-gray-700 border-gray-300"
+	}
+
 	// const totalAuthors =
 	// 	journal.tier1Papers +
 	// 	journal.tier2Papers +
@@ -29,55 +40,55 @@ export default async function JournalDetailPage({ params }) {
 			{/* Header */}
 			<div className="bg-white border-b">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-					<Link href="/journals">
-						<Button variant="ghost" className="mb-4">
-							<ArrowLeft className="h-4 w-4 mr-2 " />
-							Back to Directory
-						</Button>
-					</Link>
-
 					<div className="flex items-start justify-between gap-6">
 						<div className="flex-1">
-							<h1 className="text-3xl font-bold text-gray-900 mb-2">
+							<h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2 max-w-2xl">
 								{journal.name}
-							</h1>
-							<div className="flex items-center gap-2 mb-3">
-								{journal.category && journal.category.trim() !== "" && (
-									<Badge variant="secondary" className="text-sm">
-										{journal.category}
-									</Badge>
-								)}
 								{journal.abbreviation && (
-									<span className="text-gray-600 text-sm">
+									<span className="text-gray-600 text-sm pl-2 font-normal">
 										({journal.abbreviation})
 									</span>
 								)}
-							</div>
-							<p className="text-gray-600">
-								Publisher:{" "}
-								<span className="font-medium">
-									{journal.publisher || "N/A"}
-								</span>
-							</p>
-							<div className="text-gray-600 text-sm mt-1">
-								{journal.issn && <span>ISSN: {journal.issn}</span>}
-								{journal.issn && journal.eissn && <span> | </span>}
-								{journal.eissn && <span>eISSN: {journal.eissn}</span>}
-								{!journal.issn && !journal.eissn && (
-									<span>No ISSN available</span>
-								)}
-							</div>
+							</h1>
+							<div className="flex items-center gap-2 mb-3">
+								<div className="flex text-gray-600 gap-6">
+									<div className="flex gap-1">
+										<span className="font-medium">Publisher: </span>
+										<span>{journal.publisher || "N/A"}</span>
+									</div>
+									<div className="flex gap-1">
+										<span className="font-medium">ISSN: </span>
+										<span>{journal.issn || "N/A"}</span>
+									</div>
+									<div className="flex gap-1">
+										<span className="font-medium">eISSN: </span>
+										<span>{journal.eissn || "N/A"}</span>
+									</div>
+								</div>
+							</div>{" "}
+							{journal.category && journal.category.trim() !== "" ? (
+								<Badge
+									variant="outline"
+									className={`text-xs px-3 rounded-sm ${getCategoryBadgeColor(
+										journal.category
+									)}`}
+								>
+									{journal.category}
+								</Badge>
+							) : (
+								<span className="text-sm text-gray-400">-</span>
+							)}
 						</div>
 
 						{/* PPI Score Card */}
-						<div className="flex-shrink-0 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-lg p-6 text-center min-w-[160px]">
-							<div className="text-sm font-medium opacity-90 mb-1">
+						<div className="bg-blue-50 border-2 border-blue-200 text-primary rounded-lg p-6 text-center min-w-[160px]">
+							<div className="text-gray-800 text-sm font-medium opacity-90 mb-1">
 								Peer Perception Index
 							</div>
-							<div className="text-4xl font-bold mb-1">
+							<div className="text-6xl font-semibold mb-1">
 								{journal.ppi.toFixed(1)}
 							</div>
-							<div className="text-sm opacity-90">out of 100</div>
+							<div className="text-gray-800 text-sm opacity-90">out of 100</div>
 						</div>
 					</div>
 				</div>
