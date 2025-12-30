@@ -1,5 +1,6 @@
 "use client"
 
+import { Suspense } from "react"
 import { useState, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import {
@@ -14,7 +15,38 @@ import { Button } from "@/components/ui/button"
 import { Download, Loader2 } from "lucide-react"
 import CTASection from "@/components/shared/ctaSection"
 
-export default function JournalsPage() {
+// Loading fallback component
+function JournalsLoading() {
+	return (
+		<div className="px-10 md:px-16 lg:px-24 py-16 md:py-24">
+			<div className="max-w-7xl mx-auto mt-12">
+				<div className="flex justify-between">
+					<h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
+						Journal Directory
+					</h1>
+					<p className="text-gray-600 max-w-2xl">
+						Search and filter over 12,000 academic journals by Peer Perception
+						Index score, category, discipline, and geographic distribution.
+					</p>
+				</div>
+			</div>
+			<div className="max-w-7xl mx-auto px-6 py-8">
+				<div className="bg-white rounded-lg border p-16 flex flex-col items-center justify-center">
+					<Loader2 className="h-16 w-16 animate-spin text-blue-600 mb-4" />
+					<p className="text-gray-600 text-lg font-medium">
+						Loading journals...
+					</p>
+					<p className="text-gray-500 text-sm mt-2">
+						Please wait while we fetch the data
+					</p>
+				</div>
+			</div>
+		</div>
+	)
+}
+
+// Main content component that uses useSearchParams
+function JournalsContent() {
 	const router = useRouter()
 	const searchParams = useSearchParams()
 
@@ -226,33 +258,7 @@ export default function JournalsPage() {
 	}
 
 	if (isInitialLoading) {
-		return (
-			<div className="px-10 md:px-16 lg:px-24 py-16 md:py-24">
-				<div className="max-w-7xl mx-auto mt-12">
-					{/* Header */}
-					<div className="flex justify-between">
-						<h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
-							Journal Directory
-						</h1>
-						<p className="text-gray-600 max-w-2xl">
-							Search and filter over 12,000 academic journals by Peer Perception
-							Index score, category, discipline, and geographic distribution.
-						</p>
-					</div>
-				</div>
-				<div className="max-w-7xl mx-auto px-6 py-8">
-					<div className="bg-white rounded-lg border p-16 flex flex-col items-center justify-center">
-						<Loader2 className="h-16 w-16 animate-spin text-blue-600 mb-4" />
-						<p className="text-gray-600 text-lg font-medium">
-							Loading journals...
-						</p>
-						<p className="text-gray-500 text-sm mt-2">
-							Please wait while we fetch the data
-						</p>
-					</div>
-				</div>
-			</div>
-		)
+		return <JournalsLoading />
 	}
 
 	return (
@@ -354,5 +360,14 @@ export default function JournalsPage() {
 			</div>
 			<CTASection />
 		</div>
+	)
+}
+
+// Main page component with Suspense wrapper
+export default function JournalsPage() {
+	return (
+		<Suspense fallback={<JournalsLoading />}>
+			<JournalsContent />
+		</Suspense>
 	)
 }
