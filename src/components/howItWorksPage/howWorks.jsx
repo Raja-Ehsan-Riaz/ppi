@@ -4,7 +4,7 @@ import React from "react"
 const HowWeWorks = () => {
 	return (
 		<section className="px-10 md:px-16 lg:px-24 py-16 md:py-24">
-			<div className="max-w-7xl mx-auto">
+			<div className="max-w-7xl mx-auto mt-12">
 				{/* Header */}
 				<div className="flex flex-col gap-8 items-center text-center justify-between  mb-12 ">
 					<h2 className="text-4xl md:text-5xl font-bold text-gray-900">
