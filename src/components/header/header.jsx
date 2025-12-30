@@ -20,12 +20,7 @@ const Header = () => {
 						href="/"
 						className="flex items-center space-x-2 h-full w-46 relative "
 					>
-						<Image
-							src="/logo-nav.png"
-							alt="logo"
-							fill
-							className="object-contain"
-						/>
+						<Image src="/logo.png" alt="logo" fill className="object-contain" />
 					</Link>
 
 					{/* Desktop Navigation */}
@@ -62,7 +57,7 @@ const Header = () => {
 						</Link>
 						<Link
 							href="/journals"
-							className="px-4 py-3 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors"
+							className="px-4 py-3 bg-primary text-white text-sm rounded-lg hover:bg-primary/80 transition-colors"
 						>
 							Explore Journals Directory
 						</Link>

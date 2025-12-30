@@ -29,13 +29,6 @@ export default function MissionVision() {
 							choose to publish, rather than relying on easily manipulated
 							metrics.
 						</p>
-						<Image
-							src={"/icons/Mission-bg.png"}
-							alt="vision"
-							width={200}
-							height={200}
-							className="absolute  bottom-0 right-0 opacity-50 "
-						/>
 					</CardContent>
 				</Card>
 				{/* Vision Card */}
@@ -57,13 +50,6 @@ export default function MissionVision() {
 							prestige and promoting a healthier, more rigorous academic
 							publishing ecosystem.
 						</p>
-						<Image
-							src={"/icons/Vision-bg.png"}
-							alt="vision"
-							width={200}
-							height={200}
-							className="absolute  bottom-0 right-0"
-						/>
 					</CardContent>
 				</Card>
 			</div>

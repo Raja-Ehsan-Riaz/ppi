@@ -9,7 +9,7 @@ const Footer = () => {
 					{/* Logo and Description */}
 					<div className="md:col-span-1">
 						<div className="flex items-center gap-2 mb-4">
-							<Image src="/logo-footer.png" alt="logo" width={150} height={150}/>
+							<Image src="/logo.png" alt="logo" width={150} height={150}/>
 						</div>
 						<p className="text-sm text-gray-600 leading-relaxed">
 							A research infrastructure for evaluating academic journals based
