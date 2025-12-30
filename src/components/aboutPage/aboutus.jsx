@@ -1,3 +1,4 @@
+import Image from "next/image"
 import React from "react"
 
 const AboutUs = () => {
@@ -14,7 +15,15 @@ const AboutUs = () => {
 						journal prestige.
 					</p>
 				</div>
-				<div className="relative w-full h-100 bg-gray-200 rounded-2xl "></div>
+				<div className="relative w-full h-100 bg-gray-200 rounded-2xl overflow-hidden  ">
+					<Image
+						src={"/about-us.png"}
+						alt="about us"
+						fill
+						className="object-cover"
+						style={{ objectPosition: "0% 100%" }}
+					/>
+				</div>
 				<div className="text-2xl text-gray-700 font-medium max-w-5xl text-center mx-auto mt-12 space-y-6">
 					<p>
 						<span className="text-primary">Peer Perception Index</span> emerged
@@ -24,7 +33,7 @@ const AboutUs = () => {
 						</span>{" "}
 						. Like many in the academic community, the team grew increasingly
 						concerned with the widespread misuse of traditional journal-ranking
-						metrics—particularly the Journal Impact Factor—which often fails to
+						metrics particularly the Journal Impact Factor which often fails to
 						reflect genuine scholarly prestige.
 					</p>
 				</div>

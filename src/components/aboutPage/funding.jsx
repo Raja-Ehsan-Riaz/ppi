@@ -31,7 +31,7 @@ const Funding = () => {
 					<h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12">
 						Funding & Support
 					</h1>
-					<p className="text-gray-600 text-lg mb-4 ">
+					<p className="text-gray-600 text-lg mb-2 ">
 						This project is supported by funding from the Pakistan Institute of
 						Development Economics (PIDE) under the Competitive Research Grants
 						for Policy Oriented Research (RASTA) program.

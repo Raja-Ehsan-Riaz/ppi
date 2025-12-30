@@ -32,8 +32,25 @@ export function processJournals(journals, filters = {}) {
 }
 
 // Find a journal by slug
-export function findJournalBySlug(slug, journals) {
-	return journals.find(j => j.slug === slug)
+export async function fetchJournalBySlug(slug) {
+	try {
+		const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+		const response = await fetch(`${baseUrl}/api/Journals/${slug}`, {
+			cache: "force-cache",
+			next: { revalidate: 3600 },
+		})
+
+		if (!response.ok) {
+			return null
+		}
+
+		const data = await response.json()
+		console.log(data)
+		return data.journal
+	} catch (error) {
+		console.error("Error fetching journal:", error)
+		return null
+	}
 }
 
 // Get unique categories (filter out empty strings)
@@ -43,7 +60,6 @@ export function getCategories(journals) {
 	)
 	return Array.from(categories).sort()
 }
-
 
 // Paginate results
 export function paginateJournals(journals, page = 1, perPage = 10) {

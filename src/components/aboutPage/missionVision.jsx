@@ -9,7 +9,7 @@ export default function MissionVision() {
 			<div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">
 				{" "}
 				{/* Mission Card */}
-				<Card className="bg-blue-50 border-none shadow-lg  transition-all duration-300 hover:-translate-y-1 overflow-hidden relative">
+				<Card className="bg-blue-50 border-none transition-all duration-300 hover:-translate-y-1 overflow-hidden relative">
 					<CardContent className=" space-y-4 p-8">
 						{/* Icon */}
 						<Image
@@ -39,7 +39,7 @@ export default function MissionVision() {
 					</CardContent>
 				</Card>
 				{/* Vision Card */}
-				<Card className="bg-blue-50 border-none shadow-lg  transition-all duration-300 hover:-translate-y-1 overflow-hidden relative">
+				<Card className="bg-blue-50 border-none transition-all duration-300 hover:-translate-y-1 overflow-hidden relative">
 					<CardContent className=" space-y-4 p-8">
 						{/* Icon */}
 						<Image

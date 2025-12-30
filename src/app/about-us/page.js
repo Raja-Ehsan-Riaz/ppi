@@ -11,7 +11,7 @@ export default function AboutPage() {
 		<div>
 			<AboutUs />
 			<MissionVision />
-			<StatsSection />
+			<StatsSection about />
 			<ResearchTeam />
 			<Backedby />
 			<Funding />

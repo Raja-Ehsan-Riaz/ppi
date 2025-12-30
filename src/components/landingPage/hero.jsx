@@ -100,10 +100,8 @@ const Hero = () => {
 					</div>
 
 					{/* Main Heading */}
-					<h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
-						Measure True
-						<br />
-						Academic Prestige
+					<h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 max-w-3xl mx-auto ">
+						Measure True Academic Prestige
 					</h1>
 
 					{/* Subheading */}

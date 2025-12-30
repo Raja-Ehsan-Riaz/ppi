@@ -100,7 +100,7 @@ const PPIMethodologyCarousel = () => {
 							return (
 								<CarouselItem
 									key={index}
-									className="pl-2 md:pl-4 md:basis-1/2 "
+									className="pl-2 md:pl-4 md:basis-1/2 mb-2 "
 								>
 									<Card className="border transition-all duration-300 h-full bg-gray-50/40 rounded-[40px]">
 										<CardContent className="flex flex-col justify-between items-start p-8 h-full">
@@ -152,14 +152,9 @@ const PPIMethodologyCarousel = () => {
 							)
 						})}
 					</CarouselContent>
-					<CarouselPrevious className="hidden md:flex" />
-					<CarouselNext className="hidden md:flex" />
+					<CarouselPrevious className="flex" />
+					<CarouselNext className="flex" />
 				</Carousel>
-
-				{/* Mobile Navigation Hint */}
-				<div className="text-center mt-8 md:hidden">
-					<p className="text-sm text-gray-500">Swipe to explore more steps</p>
-				</div>
 			</div>
 		</section>
 	)
