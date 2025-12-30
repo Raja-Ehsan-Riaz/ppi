@@ -13,7 +13,7 @@ export default function AboutPage() {
 			<MissionVision />
 			<StatsSection about />
 			<ResearchTeam />
-			<Backedby />
+			{/* <Backedby /> */}
 			<Funding />
 			<CTASection />
 		</div>
