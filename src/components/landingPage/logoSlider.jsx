@@ -1,7 +1,7 @@
 "use client"
 
 const LogoSlider = () => {
-	const partners = ["/1.png", "/2.png", "/3.png", "/4.png", "/5.png", "/6.png"]
+	const partners = ["/1.png", "/2.png", "/3.png", "/4.png"]
 	// const sizes = [
 	// 	"w-52 h-32",
 	// 	"w-40 h-16",
@@ -21,7 +21,7 @@ const LogoSlider = () => {
 						className={`shrink-0 mx-8 md:mx-12 flex items-center justify-center `} //${sizes[index]}
 					>
 						<img
-							src={`/logo-nav.png`}
+							src={`/logos/landing/${logo}`}
 							alt={`Partner ${index + 1}`}
 							className="max-w-full max-h-full object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
 						/>
@@ -34,7 +34,7 @@ const LogoSlider = () => {
 						className={`shrink-0 mx-8 md:mx-12 flex items-center justify-center `} //${sizes[index]}
 					>
 						<img
-							src={`/logo-nav.png`}
+							src={`/logos/landing/${logo}`}
 							alt={`Partner ${index + 1}`}
 							className="max-w-full max-h-full object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
 						/>
