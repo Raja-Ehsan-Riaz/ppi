@@ -14,18 +14,45 @@ function initializeDrive() {
 
 		// Check if it's a JSON string or file path
 		if (credsEnv.trim().startsWith("{")) {
-			// It's a JSON string - parse it
-			const credentials = JSON.parse(credsEnv)
-			auth = new google.auth.GoogleAuth({
-				credentials: credentials, // Use 'credentials', not 'keyFile'
-				scopes: ["https://www.googleapis.com/auth/drive.readonly"],
-			})
+			// It's a JSON string - clean and parse it
+			try {
+				// Remove any potential whitespace or newlines
+				const cleanedJson = credsEnv.trim()
+
+				// Find the first { and last }
+				const firstBrace = cleanedJson.indexOf("{")
+				const lastBrace = cleanedJson.lastIndexOf("}")
+
+				if (firstBrace === -1 || lastBrace === -1) {
+					throw new Error("Invalid JSON structure")
+				}
+
+				// Extract only the JSON object
+				const jsonOnly = cleanedJson.substring(firstBrace, lastBrace + 1)
+
+				const credentials = JSON.parse(jsonOnly)
+
+				auth = new google.auth.GoogleAuth({
+					credentials: credentials,
+					scopes: ["https://www.googleapis.com/auth/drive.readonly"],
+				})
+
+				console.log("✓ Successfully parsed JSON credentials")
+			} catch (parseError) {
+				console.error("JSON Parse Error:", parseError.message)
+				throw new Error(
+					"Failed to parse GOOGLE_APPLICATION_CREDENTIALS as JSON. " +
+						"Make sure it contains valid JSON with no extra characters."
+				)
+			}
 		} else {
 			// It's a file path
 			auth = new google.auth.GoogleAuth({
 				keyFile: credsEnv,
 				scopes: ["https://www.googleapis.com/auth/drive.readonly"],
 			})
+
+			console.log("✓ Using credentials from file:", credsEnv)
 		}
 
 		return google.drive({ version: "v3", auth })
