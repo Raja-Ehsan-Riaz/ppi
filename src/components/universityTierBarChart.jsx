@@ -110,7 +110,7 @@ export default function TopCountriesBarChart({ topCountries, totalPapers }) {
 								>
 									{showPercentageInside && actualWidth > 0 && (
 										<span
-											className="ml-auto pr-3 text-white text-sm font-semibold whitespace-nowrap transition-opacity duration-300 ease-in"
+											className="ml-auto pr-3 text-white text-xs font-semibold whitespace-nowrap transition-opacity duration-300 ease-in"
 											style={{
 												transitionDelay: "600ms",
 												opacity: actualWidth > 5 ? 1 : 0,
@@ -122,7 +122,7 @@ export default function TopCountriesBarChart({ topCountries, totalPapers }) {
 								</div>
 								{!showPercentageInside && item.percentage > 0 && (
 									<span
-										className="absolute left-3 top-1/2 -translate-y-1/2 text-white text-sm font-semibold whitespace-nowrap transition-opacity duration-300 ease-in"
+										className="absolute left-3 top-1/2 -translate-y-1/2 text-white text-xs font-semibold whitespace-nowrap transition-opacity duration-300 ease-in"
 										style={{
 											transitionDelay: "600ms",
 											opacity: isVisible ? 1 : 0,
