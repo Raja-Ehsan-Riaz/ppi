@@ -37,7 +37,6 @@ export async function fetchJournalBySlug(slug) {
 		const response = await fetch(
 			`${process.env.NEXT_PUBLIC_URL}/api/Journals/${slug}`,
 			{
-				// cache: "force-cache",
 				next: { revalidate: 3600 },
 			}
 		)

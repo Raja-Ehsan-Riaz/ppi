@@ -5,7 +5,13 @@ import path from "path"
 // Initialize Google Drive API
 function initializeDrive() {
 	try {
-		const keyFile = path.join(process.cwd(), "google-credentials.json")
+		const keyFile = process.env.GOOGLE_APPLICATION_CREDENTIALS
+		if (!keyFile) {
+			throw new Error(
+				"GOOGLE_APPLICATION_CREDENTIALS environment variable not set. " +
+					"Please set it to the path of your credentials file."
+			)
+		}
 
 		const auth = new google.auth.GoogleAuth({
 			keyFile: keyFile,
