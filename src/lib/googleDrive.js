@@ -2,29 +2,38 @@ import { google } from "googleapis"
 import * as XLSX from "xlsx"
 import path from "path"
 
-// Initialize Google Drive API
 function initializeDrive() {
 	try {
-		const keyFile = process.env.GOOGLE_APPLICATION_CREDENTIALS
-		if (!keyFile) {
-			throw new Error(
-				"GOOGLE_APPLICATION_CREDENTIALS environment variable not set. " +
-					"Please set it to the path of your credentials file."
-			)
+		let auth
+
+		const credsEnv = process.env.GOOGLE_APPLICATION_CREDENTIALS
+
+		if (!credsEnv) {
+			throw new Error("GOOGLE_APPLICATION_CREDENTIALS not set")
 		}
 
-		const auth = new google.auth.GoogleAuth({
-			keyFile: keyFile,
-			scopes: ["https://www.googleapis.com/auth/drive.readonly"],
-		})
+		// Check if it's a JSON string or file path
+		if (credsEnv.trim().startsWith("{")) {
+			// It's a JSON string - parse it
+			const credentials = JSON.parse(credsEnv)
+			auth = new google.auth.GoogleAuth({
+				credentials: credentials, // Use 'credentials', not 'keyFile'
+				scopes: ["https://www.googleapis.com/auth/drive.readonly"],
+			})
+		} else {
+			// It's a file path
+			auth = new google.auth.GoogleAuth({
+				keyFile: credsEnv,
+				scopes: ["https://www.googleapis.com/auth/drive.readonly"],
+			})
+		}
 
 		return google.drive({ version: "v3", auth })
 	} catch (error) {
-		console.error("Error initializing Google Drive:", error)
+		console.error("Error initializing Google Drive:", error.message)
 		throw error
 	}
 }
-
 /**
  * Search for a file in Google Drive by name
  * @param {string} fileName - The name of the file to search for
