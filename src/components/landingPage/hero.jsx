@@ -88,24 +88,29 @@ const Hero = () => {
 	}
 
 	return (
-		<div className="relative mt-12">
-			<main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24  ">
-				<div className="text-center ">
+		<div className="m-12 mt-24 my-0 ">
+			<main className="max-w-8xl mx-auto px-4 sm:px-4 lg:px-8 py-16 relative rounded-4xl overflow-hidden ">
+				<div
+					className="text-center "
+					data-aos="fade"
+					data-aos-duration="1500"
+					data-aos-easing="ease-out-cubic"
+				>
 					{/* Badge */}
-					<div className="inline-flex items-center bg-white/60 p-2 rounded-full font-medium border border-gray-200  space-x-2 mb-6">
-						<div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+					<div className="inline-flex items-center bg-white/80 p-2 rounded-full font-medium border border-gray-200  space-x-2 mb-2">
+						<div className="w-2 h-2 bg-gray-400 rounded-full"></div>
 						<span className="text-xs text-gray-600">
 							Academic Journal Intelligence
 						</span>
 					</div>
 
 					{/* Main Heading */}
-					<h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 max-w-3xl mx-auto ">
+					<h1 className="text-[56px] font-bold text-gray-900 mb-4  mx-auto leading-tight ">
 						Measure True Academic Prestige
 					</h1>
 
 					{/* Subheading */}
-					<p className="text-lg text-gray-600 max-w-4xl mx-auto mb-12">
+					<p className="text-lg text-gray-600 max-w-5xl mx-auto mb-8">
 						The Peer Perception Index analyzes where top researchers actually
 						publish, providing a transparent metric for journal quality beyond
 						traditional impact factors.
@@ -124,12 +129,12 @@ const Hero = () => {
 									value={searchQuery}
 									onChange={e => setSearchQuery(e.target.value)}
 									placeholder="Search by journal name, ISSN, or topic..."
-									className="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+									className="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 text-sm focus:outline-none bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent"
 								/>
 							</div>
 							<button
 								type="submit"
-								className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-medium whitespace-nowrap"
+								className="px-6 py-3 bg-blue-600/70 text-white rounded-lg hover:bg-blue-600/90 shadow-md cursor-pointer text-sm transition-colors font-medium whitespace-nowrap"
 							>
 								Search Journals
 							</button>
@@ -137,25 +142,30 @@ const Hero = () => {
 					</div>
 
 					{/* Example searches */}
-					<p className="text-sm text-gray-500">
+					<p className="text-xs text-gray-500">
 						Try searching: "Nature", "IEEE 0018-9375", or "computer science"
 					</p>
 				</div>
 
 				{/* Journals Preview Table Section */}
-				<div className="mt-20 relative">
-					<div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+				<div
+					className="mt-16 relative max-w-[1200px] mx-auto"
+					data-aos="fade-up"
+					data-aos-duration="500"
+					data-aos-easing="ease-out-cubic"
+				>
+					<div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden p-2">
 						{/* Table Header */}
-						<div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-							<h2 className="text-lg font-semibold text-gray-900">Journals</h2>
+						<div className="px-4 py-4 border-b border-gray-200 flex justify-between items-center">
+							<h2 className="text-xl font-bold text-gray-900">Journals</h2>
 							<div className="flex items-center space-x-3">
-								<button className="px-3 py-1.5 text-sm text-gray-600 border border-gray-300 rounded-lg flex items-center space-x-2 hover:bg-gray-50 transition-colors">
+								<button className="px-3 py-1.5 text-xs text-gray-600 border border-gray-300 rounded-lg flex items-center space-x-2 hover:bg-gray-50 transition-colors">
 									<Filter className="w-4 h-4" />
 									<span>Filters</span>
 								</button>
-								<button className="px-3 py-1.5 text-sm text-gray-600 border border-gray-300 rounded-lg flex items-center space-x-2 hover:bg-gray-50 transition-colors">
+								{/* <button className="px-3 py-1.5 text-xs text-gray-600 border border-gray-300 rounded-lg flex items-center space-x-2 hover:bg-gray-50 transition-colors">
 									<span>Export data</span>
-								</button>
+								</button> */}
 							</div>
 						</div>
 
@@ -164,29 +174,29 @@ const Hero = () => {
 							<table className="w-full">
 								<thead className="bg-gray-50 border-b border-gray-200">
 									<tr>
-										<th className="w-12 px-6 py-3"></th>
-										<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+										{/* <th className="w-12 px-4 py-"></th> */}
+										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 											Journal
 										</th>
-										<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 											Abbreviation
 										</th>
-										<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 											Publisher
 										</th>
-										<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 											ISSN
 										</th>
-										<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 											eISSN
 										</th>
-										<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 											PPI Score
 										</th>
-										<th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 											Category
 										</th>
-										<th className="w-12 px-6 py-3"></th>
+										<th className="w-12 px-4 py-4"></th>
 									</tr>
 								</thead>
 								<tbody className="bg-white divide-y divide-gray-200">
@@ -198,37 +208,37 @@ const Hero = () => {
 												opacity: 1 - index * 0.25,
 											}}
 										>
-											<td className="px-6 py-4">
+											{/* <td className="px-4 py-4">
 												<input
 													type="checkbox"
 													className="rounded border-gray-300 text-blue-600 focus:ring-blue-600"
 													disabled
 												/>
-											</td>
-											<td className="px-6 py-4 text-sm font-medium text-gray-900">
+											</td> */}
+											<td className="px-4 py-4 text-xs font-medium text-gray-900">
 												{journal.name}
 											</td>
-											<td className="px-6 py-4 text-sm text-gray-600">
+											<td className="px-4 py-4 text-xs text-gray-600">
 												{journal.abbreviation}
 											</td>
-											<td className="px-6 py-4 text-sm text-gray-600">
+											<td className="px-4 py-4 text-xs text-gray-600">
 												{journal.publisher}
 											</td>
-											<td className="px-6 py-4 text-sm text-gray-600">
+											<td className="px-4 py-4 text-xs text-gray-600">
 												{journal.issn || "-"}
 											</td>
-											<td className="px-6 py-4 text-sm text-gray-600">
+											<td className="px-4 py-4 text-xs text-gray-600">
 												{journal.eissn || "-"}
 											</td>
-											<td className="px-6 py-4 text-sm text-gray-900 font-medium">
+											<td className="px-4 py-4 text-xs text-blue-600 font-semibold">
 												{journal.ppi}
 											</td>
-											<td className="px-6 py-4">
-												<span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
+											<td className="px-4 py-4">
+												<span className="inline-flex items-center px-4.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
 													{journal.category}
 												</span>
 											</td>
-											<td className="px-6 py-4">
+											<td className="px-4 py-4">
 												<ExternalLink className="w-4 h-4 text-gray-400" />
 											</td>
 										</tr>
@@ -245,14 +255,14 @@ const Hero = () => {
 					<div className="flex justify-center mt-8 relative z-10">
 						<Link
 							href="/journals"
-							className="px-8 py-4 bg-black text-white rounded-xl font-semibold text-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform"
+							className="px-8 py-4 bg-black/80 hover:bg-black/90 text-white rounded-xl text-sm font-semibold transition-colors  shadow-lg hover:shadow-xl transform transition-transform"
 						>
 							Explore full directory
 						</Link>
 					</div>
 				</div>
+				<div className="absolute bottom-1/5 left-0 w-full h-4/5 -z-10  bg-linear-to-b from-blue-50/60 via-primary/60 via-60% to-white "></div>
 			</main>
-			<div className="absolute bottom-1/5 left-0 w-full h-4/5 -z-10  bg-linear-to-b from-white via-primary/30 via-70% to-white "></div>
 		</div>
 	)
 }

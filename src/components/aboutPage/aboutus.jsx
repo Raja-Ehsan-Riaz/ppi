@@ -1,34 +1,41 @@
-import Image from "next/image"
 import React from "react"
+import ResearchIllustration from "./illustrations/researchIllustration"
 
 const AboutUs = () => {
 	return (
-		<section className="px-10 md:px-16 lg:px-24 py-16 md:py-24 mt-12">
+		<section className="px-6 md:px-16 lg:px-24 py-16 md:py-24  md:pt-32">
 			<div className="max-w-7xl mx-auto">
-				{/* Header */}
-				<div className="flex flex-col justify-between text-center  mb-12 ">
-					<h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-						About us
-					</h2>
-					<p className="text-lg text-gray-600 max-w-2xl mx-auto mt-8">
-						Building transparent infrastructure for understanding academic
-						journal prestige.
-					</p>
-				</div>
-				<div className="relative w-full h-100 bg-gray-200 rounded-2xl overflow-hidden  "></div>
-				<div className="text-xl text-gray-700 font-medium max-w-4xl text-center mx-auto mt-12 space-y-6">
-					<p>
-						<span className="text-primary">Peer Perception Index</span> emerged
-						from repeated discussions among researchers at the{" "}
-						<span className="text-primary">
-							NUST School of Electrical Engineering and Computer Science
-							(SEECS)/
-						</span>{" "}
-						Like many in the academic community, the team grew increasingly
-						concerned with the widespread misuse of traditional journal-ranking
-						metrics particularly the Journal Impact Factor which often fails to
-						reflect genuine scholarly prestige.
-					</p>
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+					{/* Left Content */}
+					<div
+						className="space-y-6"
+						data-aos="fade-right"
+						data-aos-duration="500"
+						data-aos-easing="ease-out-cubic"
+					>
+						<h2 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-gray-900 leading-tight">
+							Peer Perception
+							<br />
+							Index
+						</h2>
+						<p className="text-gray-600 text-base md:text-lg leading-relaxed">
+							Peer Perception Index emerged from repeated discussions among
+							researchers at the NUST School of Electrical Engineering and
+							Computer Science (SEECS). Like many in the academic community, the
+							team grew increasingly concerned with the widespread misuse of
+							traditional journal-ranking metrics particularly the Journal
+							Impact Factor which often fails to reflect genuine scholarly
+							prestige.
+						</p>
+					</div>
+
+					{/* Right Illustration */}
+					<div className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center" 
+					data-aos="fade-left"
+					data-aos-duration="500"
+					data-aos-easing="ease-out-cubic">
+						<ResearchIllustration />
+					</div>
 				</div>
 			</div>
 		</section>

@@ -12,8 +12,8 @@ const Header = () => {
 	const isActive = path => pathname === path
 
 	return (
-		<header className="fixed top-0 bg-white border-b border-gray-200 w-full z-50 font-semibold">
-			<div className="max-w-7xl mx-auto py-1">
+		<header className={`fixed top-0 bg-white border-b border-gray-100 w-full z-50 font-semibold`}>
+			<div className="max-w-7xl mx-auto py-2">
 				<div className="flex justify-between items-center h-16">
 					{/* Logo */}
 					<Link
@@ -29,7 +29,7 @@ const Header = () => {
 							href="/how-it-works"
 							className={`text-sm transition-colors pb-1 ${
 								isActive("/how-it-works")
-									? "text-primary border-primary underline-offset-4 underline"
+									? "text-primary border-primary border-b-2"
 									: "text-gray-600 hover:text-primary border-transparent"
 							}`}
 						>
@@ -39,7 +39,7 @@ const Header = () => {
 							href="/about-us"
 							className={`text-sm transition-colors pb-1 ${
 								isActive("/about-us")
-									? "text-primary border-primary underline-offset-4 underline"
+									? "text-primary border-primary border-b-2"
 									: "text-gray-600 hover:text-primary border-transparent"
 							}`}
 						>
@@ -49,7 +49,7 @@ const Header = () => {
 							href="/contact-us"
 							className={`text-sm transition-colors pb-1 ${
 								isActive("/contact-us")
-									? "text-primary border-primary underline-offset-4 underline"
+									? "text-primary border-primary border-b-2"
 									: "text-gray-600 hover:text-primary border-transparent"
 							}`}
 						>
@@ -128,7 +128,7 @@ const Header = () => {
 						</Link>
 						<Link
 							href="/journals"
-							className="block px-4 py-2 bg-blue-600 text-white text-center rounded-lg hover:bg-blue-700 transition-colors"
+							className="block px-4 py-2 bg-blue-600 text-white  text-center rounded-lg hover:bg-blue-700 transition-colors"
 							onClick={() => setMobileMenuOpen(false)}
 						>
 							Explore Journals Directory

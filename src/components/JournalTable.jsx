@@ -36,12 +36,12 @@ export default function JournalTable({ journals }) {
 	}
 
 	return (
-		<div className="bg-white rounded-lg border">
+		<div className="rounded-lg border overflow-hidden">
 			<div className="overflow-x-auto">
 				<table className="w-full">
 					<thead className="bg-gray-50 border-b">
 						<tr>
-							<th className="w-12 px-4 py-3">
+							{/* <th className="w-12 px-4 py-3">
 								<Checkbox
 									checked={
 										selectedJournals.length === journals.length &&
@@ -49,26 +49,26 @@ export default function JournalTable({ journals }) {
 									}
 									onCheckedChange={handleSelectAll}
 								/>
-							</th>
-							<th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+							</th> */}
+							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
 								Journal
 							</th>
-							<th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
 								Abbreviation
 							</th>
-							<th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
 								Publisher
 							</th>
-							<th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
 								ISSN
 							</th>
-							<th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
 								eISSN
 							</th>
-							<th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
 								PPI Score
 							</th>
-							<th className="px-4 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
 								Category
 							</th>
 							<th className="w-12 px-4 py-3"></th>
@@ -80,36 +80,36 @@ export default function JournalTable({ journals }) {
 								key={journal.id}
 								className="hover:bg-gray-50 transition-colors"
 							>
-								<td className="px-4 py-4">
+								{/* <td className="px-4 py-4">
 									<Checkbox
 										checked={selectedJournals.includes(journal.id)}
 										onCheckedChange={checked =>
 											handleSelectJournal(journal.id, checked)
 										}
 									/>
-								</td>
+								</td> */}
 								<td className="px-4 py-4">
 									<Link
 										href={`/journals/${journal.slug}`}
-										className="text-sm font-medium text-gray-900 hover:text-blue-600"
+										className="text-xs font-semibold text-gray-900 hover:text-blue-600"
 									>
 										{journal.name}
 									</Link>
 								</td>
-								<td className="px-4 py-4 text-sm text-gray-700">
+								<td className="px-4 py-4 text-xs text-gray-700">
 									{journal.abbreviation || "-"}
 								</td>
-								<td className="px-4 py-4 text-sm text-gray-700">
+								<td className="px-4 py-4 text-xs text-gray-700">
 									{journal.publisher || "-"}
 								</td>
-								<td className="px-4 py-4 text-sm text-gray-600">
+								<td className="px-4 py-4 text-xs text-gray-600">
 									{journal.issn || "-"}
 								</td>
-								<td className="px-4 py-4 text-sm text-gray-600">
+								<td className="px-4 py-4 text-xs text-gray-600">
 									{journal.eissn || "-"}
 								</td>
 								<td className="px-4 py-4">
-									<span className="text-sm font-semibold text-blue-600">
+									<span className="text-xs font-semibold text-blue-600">
 										{journal.ppi.toFixed(1)}
 									</span>
 								</td>
@@ -124,7 +124,7 @@ export default function JournalTable({ journals }) {
 											{journal.category}
 										</Badge>
 									) : (
-										<span className="text-sm text-gray-400">-</span>
+										<span className="text-xs text-gray-400">-</span>
 									)}
 								</td>
 								<td className="px-4 py-4">

@@ -66,13 +66,9 @@ const StatCard = ({
 	return (
 		<div ref={ref} className="flex flex-col items-center gap-4">
 			<div
-				className={`w-16 h-16 rounded-full border ${
-					about ? "border-gray-500" : "border-blue-500"
-				} flex items-center justify-center mb-4`}
+				className={`w-16 h-16 rounded-full border flex items-center justify-center mb-4 border-primary/70`}
 			>
-				<Icon
-					className={`w-7 h-7  ${about ? "text-gray-600" : "text-blue-500"} `}
-				/>
+				<Icon className={`w-7 h-7 text-primary`} />
 			</div>
 			<div className="text-4xl font-bold text-gray-800 mb-2">
 				{formatNumber(count)}
@@ -83,7 +79,7 @@ const StatCard = ({
 	)
 }
 
-export default function StatsSection({ about }) {
+export default function StatsSection() {
 	const stats = [
 		{
 			icon: BookOpen,
@@ -112,24 +108,31 @@ export default function StatsSection({ about }) {
 	]
 
 	return (
-		<div
-			className={`${
-				about ? "bg-white pb-16 md:pb-24" : "bg-blue-50 py-16 md:py-24"
-			}  flex items-center justify-center px-10 md:px-16 lg:px-24 `}
-		>
-			<div className="w-full max-w-7xl">
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-					{stats.map((stat, index) => (
-						<StatCard
-							key={index}
-							about
-							icon={stat.icon}
-							value={stat.value}
-							suffix={stat.suffix}
-							label={stat.label}
-							duration={2000}
-						/>
-					))}
+		<div className={`px-10 md:px-16 lg:px-24 py-16 md:py-24 `}>
+			<div className="max-w-7xl mx-auto ">
+				<div className="flex flex-col gap-8 items-center text-center justify-between  mb-12 ">
+					<h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+						Supported by numbers
+					</h2>
+					<p className="text-lg text-gray-600 max-w-2xl">
+						PPI analyzes where researchers from top-tier institutions choose to
+						publish, revealing true academic prestige beyond citation counts.
+					</p>
+				</div>
+				<div className="w-full bg-blue-50 p-16 lg:py-24 rounded-4xl">
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+						{stats.map((stat, index) => (
+							<StatCard
+								key={index}
+								about
+								icon={stat.icon}
+								value={stat.value}
+								suffix={stat.suffix}
+								label={stat.label}
+								duration={2000}
+							/>
+						))}
+					</div>
 				</div>
 			</div>
 		</div>

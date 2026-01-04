@@ -14,17 +14,18 @@ import Pagination from "@/components/Pagination"
 import { Button } from "@/components/ui/button"
 import { Download, Loader2 } from "lucide-react"
 import CTASection from "@/components/shared/ctaSection"
+import ProductCTA from "@/components/shared/productCTA"
 
 // Loading fallback component
 function JournalsLoading() {
 	return (
 		<div className="px-10 md:px-16 lg:px-24 py-16 md:py-24">
 			<div className="max-w-7xl mx-auto mt-12">
-				<div className="flex justify-between">
-					<h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
+				<div className="text-center">
+					<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8">
 						Journal Directory
 					</h1>
-					<p className="text-gray-600 max-w-2xl">
+					<p className="text-lg text-gray-600 max-w-2xl mx-auto">
 						Search and filter over 12,000 academic journals by Peer Perception
 						Index score, category, discipline, and geographic distribution.
 					</p>
@@ -263,14 +264,14 @@ function JournalsContent() {
 
 	return (
 		<div>
-			<div className="px-10 md:px-16 lg:px-24 py-16 md:py-24">
-				<div className="max-w-7xl mx-auto mt-12">
+			<div className="px-10 md:px-16 lg:px-24 pt-16 md:pt-24">
+				<div className=" max-w-7xl mx-auto mt-12">
 					{/* Header */}
-					<div className="flex justify-between">
-						<h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
+					<div className="text-center">
+						<h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-gray-900 mb-8">
 							Journal Directory
 						</h1>
-						<p className="text-gray-600 max-w-2xl">
+						<p className="text-lg text-gray-600 max-w-2xl mx-auto">
 							Search and filter over 12,000 academic journals by Peer Perception
 							Index score, category, discipline, and geographic distribution.
 						</p>
@@ -289,7 +290,7 @@ function JournalsContent() {
 						/>
 
 						{/* Results Header */}
-						<div className="mt-8 mb-4 flex items-center justify-between">
+						<div className="mt-10 mb-4 flex items-center justify-between">
 							<div>
 								<p className="text-sm text-gray-600">
 									Showing results:{" "}
@@ -358,7 +359,7 @@ function JournalsContent() {
 					</div>
 				</div>
 			</div>
-			<CTASection />
+			<ProductCTA />
 		</div>
 	)
 }

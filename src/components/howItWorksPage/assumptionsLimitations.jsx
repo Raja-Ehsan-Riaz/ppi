@@ -30,11 +30,11 @@ const AssumptionsLimitations = () => {
 	]
 
 	return (
-		<div className=" px-10 md:px-16 lg:px-24 py-16 md:py-24">
+		<div className=" px-10 md:px-16 lg:px-24 py-16 md:py-24 bg-gray-50">
 			<div className="max-w-7xl mx-auto">
 				{/* Header */}
-				<div className="text-center mb-12">
-					<h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+				<div className="text-center mb-16">
+					<h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
 						Key Assumptions & Limitations
 					</h1>
 					<p className="text-gray-600 text-lg max-w-3xl mx-auto">
@@ -50,14 +50,14 @@ const AssumptionsLimitations = () => {
 						return (
 							<div
 								key={index}
-								className="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300"
+								className="bg-white  rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300"
 							>
-								<div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mb-6">
-									<Icon className="w-6 h-6 text-gray-700" />
+								<div className="flex items-center gap-4 mb-6 ">
+									<Icon className="w-7 h-7 text-primary" />
+									<h3 className="text-xl font-semibold text-gray-900 ">
+										{item.title}
+									</h3>
 								</div>
-								<h3 className="text-xl font-semibold text-gray-900 mb-3">
-									{item.title}
-								</h3>
 								<p className="text-gray-600 leading-relaxed">
 									{item.description}
 								</p>

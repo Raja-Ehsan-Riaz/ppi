@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import fs from "fs"
 import path from "path"
+import { getJournalLocationData } from "@/lib/googleDrive"
 
 function generateSlug(name) {
 	if (!name) return "unknown"
@@ -75,6 +76,17 @@ export async function GET(request, { params }) {
 
 		if (!foundJournal) {
 			return NextResponse.json({ error: "Journal not found" }, { status: 404 })
+		}
+
+		// Fetch geographic data from Google Drive
+		try {
+			const locationData = await getJournalLocationData(foundJournal.name)
+			if (locationData) {
+				foundJournal.locationData = locationData
+			}
+		} catch (error) {
+			console.error("Error fetching location data:", error)
+			// Continue without location data if there's an error
 		}
 
 		return NextResponse.json({ journal: foundJournal })

@@ -55,11 +55,8 @@ export default function JournalFilters({
 	return (
 		<div>
 			{/* Search Bar - Separate Section */}
-			<div>
-				<h3 className="text-sm font-semibold text-gray-700 mb-3">
-					Search Journals
-				</h3>
-				<div className="flex gap-3 items-center">
+			<div className=" max-w-3xl mx-auto">
+				<div className="flex gap-3 items-center ">
 					<div className="relative flex-1">
 						<Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
 						<Input
@@ -93,7 +90,7 @@ export default function JournalFilters({
 			</div>
 
 			{/* Filter Section - Separate */}
-			<div className="mt-6">
+			<div className="mt-12">
 				<div className="flex gap-3 items-center flex-wrap">
 					{/* Category Filter */}
 					<Select
@@ -132,7 +129,7 @@ export default function JournalFilters({
 					{/* Apply Filters Button */}
 					<Button
 						onClick={handleApplyFilters}
-						className="h-9 min-w-[120px] bg-blue-600 hover:bg-blue-700"
+						className="h-9 min-w-[120px] bg-primary cursor-pointer"
 						disabled={isFiltering}
 					>
 						{isFiltering ? (

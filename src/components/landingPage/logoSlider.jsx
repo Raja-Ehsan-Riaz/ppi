@@ -19,7 +19,7 @@ const LogoSlider = () => {
 	]
 
 	return (
-		<div className=" relative w-full overflow-hidden max-w-7xl mx-auto">
+		<div className=" relative w-full overflow-hidden pt-2 pb-24">
 			<div className="flex animate-scroll items-center ">
 				{/* First set of logos */}
 				{partners.map((logo, index) => (

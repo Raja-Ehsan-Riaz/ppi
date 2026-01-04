@@ -2,21 +2,30 @@ import { Dot } from "lucide-react"
 import { CircleDot } from "lucide-react"
 import { Circle } from "lucide-react"
 
-const CategoryCard = ({ icon, label, range, description, color, index }) => {
+const CategoryCard = ({
+	icon,
+	label,
+	range,
+	description,
+	color,
+	iconColor,
+	index,
+}) => {
 	return (
 		<div
 			className={`bg-gray-50/50 rounded-lg p-8 border border-gray-200 transition-all duration-700 `}
 		>
 			<div className="flex items-start gap-8">
 				<div
-					className={`px-3  min-w-25 justify-start flex items-center rounded-md border  font-medium whitespace-nowrap ${color}`}
+					className={`px-3  py-1 min-w-25 justify-center gap-2 flex items-center rounded-md border  font-medium whitespace-nowrap ${color}`}
 				>
-					<Dot size={30} /> <span className="text-xs">{label}</span>
+					<div className={`w-2 h-2 rounded-full ${iconColor}`}></div>
+					<span className="text-xs">{label}</span>
 				</div>
 				<div className="text-xl flex-1 font-bold text-center text-gray-800 mb-2">
 					{range}
 				</div>
-				<p className="text-gray-600 flex-7 leading-relaxed">{description}</p>
+				<p className="text-gray-500 flex-7 leading-relaxed">{description}</p>
 			</div>
 		</div>
 	)
@@ -31,6 +40,7 @@ export default function PPICategoriesExplained() {
 			description:
 				"Elite journals where the vast majority of authors are from top-tier research institutions. Represents the highest prestige in academic publishing.",
 			color: "bg-blue-50 border-blue-300 text-blue-700",
+			iconColor: "bg-blue-700",
 		},
 		{
 			icon: "◆",
@@ -39,6 +49,7 @@ export default function PPICategoriesExplained() {
 			description:
 				"Elite journals where the vast majority of authors are from top-tier research institutions. Represents the highest prestige in academic publishing.",
 			color: "bg-green-50 border-green-300 text-green-700",
+			iconColor: "bg-green-700",
 		},
 		{
 			icon: "♦",
@@ -47,6 +58,7 @@ export default function PPICategoriesExplained() {
 			description:
 				"Elite journals where the vast majority of authors are from top-tier research institutions. Represents the highest prestige in academic publishing.",
 			color: "bg-orange-50 border-orange-300 text-orange-700",
+			iconColor: "bg-orange-700",
 		},
 		{
 			icon: "◆",
@@ -55,6 +67,7 @@ export default function PPICategoriesExplained() {
 			description:
 				"Elite journals where the vast majority of authors are from top-tier research institutions. Represents the highest prestige in academic publishing.",
 			color: "bg-purple-50 border-purple-300 text-purple-700",
+			iconColor: "bg-purple-700",
 		},
 		{
 			icon: "■",
@@ -63,6 +76,7 @@ export default function PPICategoriesExplained() {
 			description:
 				"Elite journals where the vast majority of authors are from top-tier research institutions. Represents the highest prestige in academic publishing.",
 			color: "bg-gray-50 border-gray-300 text-gray-700",
+			iconColor: "bg-gray-700",
 		},
 	]
 
@@ -88,6 +102,7 @@ export default function PPICategoriesExplained() {
 							range={category.range}
 							description={category.description}
 							color={category.color}
+							iconColor={category.iconColor}
 							index={index}
 						/>
 					))}

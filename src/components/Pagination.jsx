@@ -67,9 +67,9 @@ export default function Pagination({
 	}
 
 	return (
-		<div className="mt-6 flex items-center justify-between bg-gray-50 px-4 py-3 rounded-lg border">
+		<div className="mt-6 flex items-center justify-end bg-gray-50 px-4 py-3 rounded-lg border">
 			{/* Left side - Per page selector */}
-			<div className="flex items-center gap-2 text-sm text-gray-600">
+			{/* <div className="flex items-center gap-2 text-sm text-gray-600">
 				<span>Showing</span>
 				<Select value={perPage.toString()} onValueChange={handlePerPageChange}>
 					<SelectTrigger className="w-20 h-8">
@@ -81,12 +81,12 @@ export default function Pagination({
 						<SelectItem value="50">50</SelectItem>
 					</SelectContent>
 				</Select>
-			</div>
+			</div> */}
 
 			{/* Right side - Page navigation */}
 			<div className="flex items-center gap-4">
 				{/* Page buttons */}
-				<div className="flex items-center gap-1">
+				<div className="flex items-center gap-2">
 					{/* Previous button */}
 					<Button
 						variant="outline"
@@ -116,7 +116,7 @@ export default function Pagination({
 								onClick={() => onPageChange(page)}
 								className={`h-8 w-8 p-0 ${
 									currentPage === page
-										? "bg-blue-600 text-white hover:bg-blue-700"
+										? "bg-primary text-white hover:bg-primary/90"
 										: ""
 								}`}
 							>

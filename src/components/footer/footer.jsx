@@ -3,19 +3,20 @@ import React from "react"
 
 const Footer = () => {
 	return (
-		<footer className="bg-white border-t border-gray-200">
+		<footer className="bg-white border-t border-gray-200/70">
 			<div className="max-w-7xl mx-auto px-4 py-12">
-				<div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-					{/* Logo and Description */}
-					<div className="md:col-span-1">
-						<div className="flex items-center gap-2 mb-4">
-							<Image src="/logo.png" alt="logo" width={150} height={150}/>
-						</div>
-						<p className="text-sm text-gray-600 leading-relaxed">
-							A research infrastructure for evaluating academic journals based
-							on true scholarly prestige.
-						</p>
+				<div className="mb-8">
+					<div className="flex items-center gap-2 mb-4">
+						<Image src="/logo.png" alt="logo" width={200} height={200} />
 					</div>
+					<p className="text-sm text-gray-600 leading-relaxed max-w-md">
+						A research infrastructure for evaluating academic journals based on
+						true scholarly prestige.
+					</p>
+				</div>
+
+				<div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+					{/* Logo and Description */}
 
 					{/* Platform Links */}
 					<div>
