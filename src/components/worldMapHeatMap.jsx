@@ -173,7 +173,7 @@ export default function WorldMapHeatmap({ countries }) {
 
 					<ComposableMap
 						projectionConfig={{
-							scale: 240,
+							scale: 300,
 							center: [10, 20],
 						}}
 						className="w-full h-full cursor-grab active:cursor-grabbing rounded-4xl"
