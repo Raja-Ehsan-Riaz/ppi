@@ -35,10 +35,7 @@ export function processJournals(journals, filters = {}) {
 export async function fetchJournalBySlug(slug) {
 	try {
 		const response = await fetch(
-			`${process.env.NEXT_PUBLIC_URL}/api/Journals/${slug}`,
-			{
-				next: { revalidate: 3600 },
-			}
+			`${process.env.NEXT_PUBLIC_URL}/api/Journals/${slug}`
 		)
 
 		if (!response.ok) {
