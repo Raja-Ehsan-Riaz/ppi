@@ -23,7 +23,7 @@ export default function TopCountriesBarChart({ topCountries, totalPapers }) {
 	const otherPercentage = 100 - top4Percentage
 
 	// Calculate "Other" papers count
-	const otherTotal = otherCountries.reduce(
+	const otherTotal = top4Countries.reduce(
 		(sum, country) => sum + country.papers,
 		0
 	)
@@ -42,7 +42,7 @@ export default function TopCountriesBarChart({ topCountries, totalPapers }) {
 	if (otherCountries.length > 0) {
 		chartData.push({
 			label: "Other",
-			value: otherTotal,
+			value: totalPapers - otherTotal,
 			percentage: otherPercentage,
 			color: "#93C5FD", // blue-300
 		})
