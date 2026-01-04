@@ -16,6 +16,7 @@ import WorldMapHeatmap from "@/components/worldMapHeatMap"
 import UniversityTierBarChart from "@/components/universityTierBarChart"
 import Link from "next/link"
 import ProductCTA from "@/components/shared/productCTA"
+import TopCountriesBarChart from "@/components/universityTierBarChart"
 
 export default async function JournalDetailPage({ params }) {
 	const { slug } = await params
@@ -186,16 +187,16 @@ export default async function JournalDetailPage({ params }) {
 						>
 							<CardHeader className="flex flex-row items-center justify-between pb-2">
 								<CardTitle className="text-sm font-medium text-gray-600">
-									Contributing Authors
+									Total Citations
 								</CardTitle>
 								<TrendingUp className="h-5 w-5 text-primary" />
 							</CardHeader>
 							<CardContent>
 								<div className="text-3xl font-bold text-gray-900 mb-1">
-									{totalAuthors.toLocaleString()}
+									{journal.locationData?.totalCitations.toLocaleString()}
 								</div>
 								<p className="text-xs text-gray-500">
-									Unique authors from tracked institutions
+									Total citations across all papers
 								</p>
 							</CardContent>
 						</Card>
@@ -250,11 +251,8 @@ export default async function JournalDetailPage({ params }) {
 					{/* Two Column Layout */}
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
 						{/* Author Affiliations by University Tier */}
-						<UniversityTierBarChart
-							tier1Papers={journal.tier1Papers}
-							tier2Papers={journal.tier2Papers}
-							tier3Papers={journal.tier3Papers}
-							tier4Papers={journal.tier4Papers}
+						<TopCountriesBarChart
+							topCountries={journal.locationData?.topCountries}
 							totalPapers={journal.totalPapers}
 						/>
 

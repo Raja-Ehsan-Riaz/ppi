@@ -88,8 +88,8 @@ const Hero = () => {
 	}
 
 	return (
-		<div className="m-12 mt-24 my-0 ">
-			<main className="max-w-8xl mx-auto px-4 sm:px-4 lg:px-8 py-16 relative rounded-4xl overflow-hidden ">
+		<div>
+			<main className="max-w-8xl mx-auto px-4 sm:px-4 lg:px-8 py-16 pt-24 relative rounded-4xl overflow-hidden mt-12 ">
 				<div
 					className="text-center "
 					data-aos="fade"
@@ -261,7 +261,7 @@ const Hero = () => {
 						</Link>
 					</div>
 				</div>
-				<div className="absolute bottom-1/5 left-0 w-full h-4/5 -z-10  bg-linear-to-b from-blue-50/60 via-primary/60 via-60% to-white "></div>
+				<div className="absolute bottom-1/5 left-0 w-full h-4/5 -z-10  bg-linear-to-b from-white via-primary/50 via-60% to-white "></div>
 			</main>
 		</div>
 	)

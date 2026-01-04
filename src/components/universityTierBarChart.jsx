@@ -3,45 +3,40 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useEffect, useRef, useState } from "react"
 
-export default function UniversityTierBarChart({
-  tier1Papers,
-  tier2Papers,
-  tier3Papers,
-  tier4Papers,
-  totalPapers
-}) {
+export default function TopCountriesBarChart({ topCountries, totalPapers }) {
   const [isVisible, setIsVisible] = useState(false)
   const cardRef = useRef(null)
 
-  const totalRanked = tier1Papers + tier2Papers + tier3Papers + tier4Papers
-  const unrankedPapers = totalPapers - totalRanked
+  // Get top 4 countries
+  const top4Countries = topCountries.slice(0, 4)
   
+  // Calculate "Other" countries total
+  const otherCountries = topCountries.slice(4)
+  const otherTotal = otherCountries.reduce((sum, country) => sum + country.papers, 0)
+  const otherPercentage = otherCountries.reduce((sum, country) => sum + country.percentage, 0)
+
+  // Create chart data
   const chartData = [
-    { 
-      label: "Top 100", 
-      value: tier1Papers + tier2Papers,
-      percentage: ((tier1Papers + tier2Papers) / totalPapers) * 100,
+    ...top4Countries.map(country => ({
+      label: country.country,
+      value: country.papers,
+      percentage: country.percentage,
       color: "#2563EB" // blue-600
-    },
-    { 
-      label: "Top 500", 
-      value: tier3Papers,
-      percentage: (tier3Papers / totalPapers) * 100,
-      color: "#3B82F6" // blue-500
-    },
-    { 
-      label: "Other ranked", 
-      value: tier4Papers,
-      percentage: (tier4Papers / totalPapers) * 100,
-      color: "#60A5FA" // blue-400
-    },
-    { 
-      label: "Unranked", 
-      value: unrankedPapers,
-      percentage: (unrankedPapers / totalPapers) * 100,
-      color: "#93C5FD" // blue-300
-    }
+    }))
   ]
+
+  // Add "Other" if there are more than 4 countries
+  if (otherCountries.length > 0) {
+    chartData.push({
+      label: "Other",
+      value: otherTotal,
+      percentage: otherPercentage,
+      color: "#93C5FD" // blue-300
+    })
+  }
+
+  // Color gradient for top countries
+  const colors = ["#1E40AF", "#2563EB", "#3B82F6", "#60A5FA", "#93C5FD"]
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -67,13 +62,13 @@ export default function UniversityTierBarChart({
   }, [])
 
   return (
-    <Card ref={cardRef} >
+    <Card ref={cardRef}>
       <CardHeader>
         <CardTitle className="text-lg font-semibold">
-          Author Affiliations by University Tier
+          Top Contributing Countries
         </CardTitle>
         <p className="text-sm text-gray-600 mt-1">
-          Distribution of authors based on their institution's global ranking
+          Distribution of papers by author country affiliation
         </p>
       </CardHeader>
       <CardContent className="space-y-6">
@@ -97,7 +92,7 @@ export default function UniversityTierBarChart({
                   className="h-10 rounded-full transition-all duration-1000 ease-out flex items-center"
                   style={{
                     width: `${actualWidth}%`,
-                    backgroundColor: item.color,
+                    backgroundColor: colors[index] || colors[4],
                   }}
                 >
                   {showPercentageInside && actualWidth > 0 && (

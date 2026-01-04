@@ -181,6 +181,7 @@ export async function getJournalLocationData(journalName) {
 function processLocationData(rawData) {
 	const countryData = {}
 	let totalPapers = 0
+	let totalCitations = 0
 
 	rawData.forEach(row => {
 		// Try different possible column names for country
@@ -205,6 +206,7 @@ function processLocationData(rawData) {
 				row["Paper Count"] ||
 				0
 		)
+		const citations = parseInt(row["Times Cited"] || 0)
 
 		if (country && country !== "Unknown" && papers > 0) {
 			if (!countryData[country]) {
@@ -212,6 +214,7 @@ function processLocationData(rawData) {
 			}
 			countryData[country] += papers
 			totalPapers += papers
+			totalCitations += citations
 		}
 	})
 
@@ -228,6 +231,7 @@ function processLocationData(rawData) {
 		countries: sortedCountries,
 		totalPapers,
 		topCountries: sortedCountries.slice(0, 10),
+		totalCitations,
 	}
 }
 /**
