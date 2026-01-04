@@ -105,7 +105,7 @@ const Hero = () => {
 					</div>
 
 					{/* Main Heading */}
-					<h1 className="text-[56px] font-bold text-gray-900 mb-4  mx-auto leading-tight ">
+					<h1 className="text-[56px] font-bold text-gray-900 mb-4  mx-auto leading-tight max-w-xl ">
 						Measure True Academic Prestige
 					</h1>
 
