@@ -59,7 +59,7 @@ const Header = () => {
 							href="/journals"
 							className="px-4 py-3 bg-primary text-white text-sm rounded-lg hover:bg-primary/80 transition-colors"
 						>
-							Explore Journals Directory
+							Explore Journals
 						</Link>
 					</nav>
 
@@ -131,7 +131,7 @@ const Header = () => {
 							className="block px-4 py-2 bg-blue-600 text-white  text-center rounded-lg hover:bg-blue-700 transition-colors"
 							onClick={() => setMobileMenuOpen(false)}
 						>
-							Explore Journals Directory
+							Explore Journals 
 						</Link>
 					</nav>
 				</div>

@@ -53,7 +53,12 @@ export default async function JournalDetailPage({ params }) {
 				<div className="bg-white rounded-lg py-8">
 					<div className="max-w-7xl mx-auto ">
 						<div className="flex items-start justify-between gap-8">
-							<div className="flex-1">
+							<div
+								className="flex-1"
+								data-aos="fade"
+								data-aos-duration="500"
+								data-aos-easing="ease-out-cubic"
+							>
 								<h1 className="text-5xl font-bold text-gray-900 mb-2 max-w-xl leading-tight">
 									{journal.name}
 									{journal.abbreviation && (
@@ -105,7 +110,12 @@ export default async function JournalDetailPage({ params }) {
 							</div>
 
 							{/* PPI Score Card */}
-							<div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 text-center min-w-[200px]">
+							<div
+								className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 text-center min-w-[200px]"
+								data-aos="fade-left"
+								data-aos-duration="500"
+								data-aos-easing="ease-out-cubic"
+							>
 								<div className="text-gray-700 text-sm font-medium mb-1">
 									Peer Perception Index
 								</div>
@@ -144,7 +154,13 @@ export default async function JournalDetailPage({ params }) {
 				<div className="max-w-7xl mx-auto  py-8">
 					{/* Stats Grid */}
 					<div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-						<Card className={"bg-gray-50"}>
+						<Card
+							className={"bg-gray-50"}
+							data-aos="fade-up"
+							data-aos-delay="200"
+							data-aos-duration="500"
+							data-aos-easing="ease-out-cubic"
+						>
 							<CardHeader className="flex flex-row items-center justify-between pb-2">
 								<CardTitle className="text-sm font-medium text-gray-600">
 									Total Papers
@@ -161,7 +177,13 @@ export default async function JournalDetailPage({ params }) {
 							</CardContent>
 						</Card>
 
-						<Card className={"bg-gray-50"}>
+						<Card
+							className={"bg-gray-50"}
+							data-aos="fade-up"
+							data-aos-delay="300"
+							data-aos-duration="500"
+							data-aos-easing="ease-out-cubic"
+						>
 							<CardHeader className="flex flex-row items-center justify-between pb-2">
 								<CardTitle className="text-sm font-medium text-gray-600">
 									Contributing Authors
@@ -178,7 +200,13 @@ export default async function JournalDetailPage({ params }) {
 							</CardContent>
 						</Card>
 
-						<Card className={"bg-gray-50"}>
+						<Card
+							className={"bg-gray-50"}
+							data-aos="fade-up"
+							data-aos-delay="400"
+							data-aos-duration="500"
+							data-aos-easing="ease-out-cubic"
+						>
 							<CardHeader className="flex flex-row items-center justify-between pb-2">
 								<CardTitle className="text-sm font-medium text-gray-600">
 									Countries
@@ -195,7 +223,13 @@ export default async function JournalDetailPage({ params }) {
 							</CardContent>
 						</Card>
 
-						<Card className={"bg-gray-50"}>
+						<Card
+							className={"bg-gray-50"}
+							data-aos="fade-up"
+							data-aos-delay="500"
+							data-aos-duration="500"
+							data-aos-easing="ease-out-cubic"
+						>
 							<CardHeader className="flex flex-row items-center justify-between pb-2">
 								<CardTitle className="text-sm font-medium text-gray-600">
 									Institutions

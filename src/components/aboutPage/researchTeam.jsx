@@ -7,7 +7,7 @@ const teamMembers = [
 	{
 		name: "Dr Muhammad Latif Anjum",
 		role: "Team Lead",
-		image: "/team/syed-taha.png",
+		image: "/team/latif.jpg",
 		description:
 			"Assistant Professor of Electrical Engineering at SEECS-NUST, Head of AI & Autonomous Systems, and lead of the Robotics and Machine Intelligence (ROMI) Lab. His research focuses on robotics, computer vision, machine intelligence, and scientometrics.",
 		social: {
@@ -19,7 +19,7 @@ const teamMembers = [
 	{
 		name: "Dr Wajahat Hussain",
 		role: "Team Lead",
-		image: "/team/syed-taha.png",
+		image: "/team/wajahat.jpg",
 		description:
 			"Associate Professor at NUST, Pakistan. His research interests include data-driven scene understanding, robotics, and computer vision.",
 		social: {
@@ -31,7 +31,7 @@ const teamMembers = [
 	{
 		name: "Dr. Syed Taha Ali",
 		role: "Researcher",
-		image: "/team/syed-taha.png",
+		image: "/team/syed-taha.jpg",
 		description:
 			"Associate Professor of Electrical Engineering at SEECS-NUST. His research focuses on network security, distributed systems, and applied cryptography.",
 		social: {
@@ -63,7 +63,7 @@ export default function ResearchTeam() {
 								src={member.image}
 								alt={member.name}
 								fill
-								style={{ objectPosition: "0% 0%" }}
+								style={{ objectPosition: "50% 50%" }}
 								className="object-cover transition-transform duration-500 group-hover:scale-105"
 							/>
 

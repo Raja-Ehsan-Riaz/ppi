@@ -1,12 +1,24 @@
 import React from "react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import Image from "next/image"
 
 const CTASection = () => {
 	return (
-		<section className="px-10 md:px-16 lg:px-24 py-16 md:py-24">
-			<div className="max-w-7xl mx-auto bg-blue-50 rounded-4xl p-16 lg:py-24">
-				<div className="max-w-4xl mx-auto text-center">
+		<section className="px-10 md:px-16 lg:px-24 py-16 md:py-24 relative">
+			<div className="max-w-7xl mx-auto rounded-4xl p-16 lg:py-24 relative overflow-hidden shadow-lg">
+				{/* Background Image */}
+				<div className="absolute inset-0">
+					<Image
+						src="/cta/gradient.png"
+						alt="Background"
+						fill
+						className="object-cover"
+						priority
+					/>
+				</div>
+				{/* Content */}
+				<div className="max-w-4xl mx-auto text-center relative z-10">
 					<h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 max-w-2xl mx-auto">
 						Start Exploring the Journals
 					</h1>
@@ -20,7 +32,7 @@ const CTASection = () => {
 								size="lg"
 								className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-base rounded-lg shadow-md"
 							>
-								Explore Journals Directory
+								Explore Journals
 							</Button>
 						</Link>
 						<Link href={"/about-us"}>

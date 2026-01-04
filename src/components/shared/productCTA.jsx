@@ -1,19 +1,30 @@
 import React from "react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import Image from "next/image"
 
 const ProductCTA = () => {
 	return (
 		<section className="px-10 md:px-16 lg:px-24 py-16 md:py-24">
-			<div className="max-w-7xl mx-auto bg-blue-50 rounded-4xl p-16 lg:py-24">
+			<div className="max-w-7xl mx-auto  rounded-4xl p-16 lg:py-24 relative overflow-hidden shadow-lg">
+				<div className="absolute inset-0">
+					<Image
+						src="/cta/gradient.png"
+						alt="Background"
+						fill
+						className="object-cover -z-10"
+						priority
+					/>
+				</div>
 				<div className="max-w-4xl mx-auto text-center">
-					<h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 max-w-2xl mx-auto">
-						Apply the Methodology to Real-World Data
+					<h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 max-w-2xl mx-auto">
+						Where Prestige Is Chosen, Not Counted
 					</h1>
 					<p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
-						Peer Perception offers a transparent framework for evaluating
-						scholarly prestige. Explore the journal directory to see how the
-						methodolgy translates into measurable insights.
+						The Peer Perception Index identifies journal prestige by tracking
+						where researchers at leading institutions choose to publish. These
+						decisions reveal standing within the scholarly community beyond
+						citation totals.
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
 						<Link href={"/how-it-works"}>

@@ -52,28 +52,25 @@ const countryNameMap = {
 	IRELAND: "Ireland",
 	"NEW ZEALAND": "New Zealand",
 	"NETHERLANDS ANTILLES": "Netherlands",
-	"WALES": "United Kingdom",
+	WALES: "United Kingdom",
 	"NORTH IRELAND": "United Kingdom",
 	"PEOPLES R CHINA": "China",
 	"REP OF GEORGIA": "Georgia",
-	"KENYA": "Kenya",
+	KENYA: "Kenya",
 	"COSTA RICA": "Costa Rica",
-	"BOLIVIA": "Bolivia",
+	BOLIVIA: "Bolivia",
 	"SRI LANKA": "Sri Lanka",
 }
 
 // Blue color palette (10 shades from medium to dark - blue-500 to blue-900)
 const colorPalette = [
+	"#60A5FA", // blue-400 (lightest)
 	"#3B82F6", // blue-500
-	"#3776ED", // blue-525
-	"#326BE4", // blue-550
-	"#2D5FDB", // blue-575
 	"#2563EB", // blue-600
-	"#2356E0", // blue-650
-	"#2148D5", // blue-700
-	"#1F3BCA", // blue-750
+	"#1D4ED8", // blue-700
 	"#1E40AF", // blue-800
 	"#1E3A8A", // blue-900
+	"#2542a0", // medium-dark blue
 ]
 
 export default function WorldMapHeatmap({ countries }) {
@@ -84,7 +81,7 @@ export default function WorldMapHeatmap({ countries }) {
 	countries.forEach(country => {
 		const standardName = countryNameMap[country.country] || country.country
 		const existing = countryDataMap.get(standardName)
-		
+
 		if (existing) {
 			// Merge data for countries like UK (England + Scotland + UK)
 			existing.papers += country.papers
@@ -102,20 +99,17 @@ export default function WorldMapHeatmap({ countries }) {
 
 	// Create fixed ranges with 50-paper gaps
 	const ranges = [
-		0,      // 0-50
-		50,     // 50-100
-		100,    // 100-150
-		150,    // 150-200
-		200,    // 200-250
-		250,    // 250-300
-		300,    // 300-350
-		350,    // 350-400
-		400,    // 400-450
-		450,    // 450+
+		0, // 0-50
+		20, // 50-100
+		40, // 100-150
+		60, // 150-200
+		80, // 200-250
+		100, // 250-300
+		120, // 300-350
 	]
 
 	// Function to get color based on paper count
-	const getColorForPapers = (papers) => {
+	const getColorForPapers = papers => {
 		for (let i = ranges.length - 1; i >= 0; i--) {
 			if (papers >= ranges[i]) {
 				return colorPalette[i]
@@ -130,12 +124,12 @@ export default function WorldMapHeatmap({ countries }) {
 			if (index === ranges.length - 1) {
 				return {
 					color: colorPalette[index],
-					label: `${range}+`
+					label: `${range}+`,
 				}
 			}
 			return {
 				color: colorPalette[index],
-				label: `${range}-${ranges[index + 1] - 1}`
+				label: `${range}-${ranges[index + 1] - 1}`,
 			}
 		})
 	}
@@ -143,13 +137,14 @@ export default function WorldMapHeatmap({ countries }) {
 	const legendData = getLegendData()
 
 	return (
-		<Card >
+		<Card>
 			<CardHeader>
 				<CardTitle className="text-lg font-semibold">
 					Author Geographic Distribution
 				</CardTitle>
 				<p className="text-sm text-gray-600 mt-1">
-					Where contributing authors are based globally • Click and drag to explore • Scroll to zoom
+					Where contributing authors are based globally • Click and drag to
+					explore • Scroll to zoom
 				</p>
 			</CardHeader>
 			<CardContent>
@@ -158,14 +153,24 @@ export default function WorldMapHeatmap({ countries }) {
 					<div className="absolute inset-0 bg-gradient-to-b from-blue-500/0 via-transparent to-transparent pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
 						<div className="absolute top-2 right-2 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm border border-gray-200">
 							<p className="text-xs font-medium text-gray-700 flex items-center gap-1.5">
-								<svg className="w-3.5 h-3.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
+								<svg
+									className="w-3.5 h-3.5 text-blue-600"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										strokeWidth={2}
+										d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"
+									/>
 								</svg>
 								Drag to pan • Scroll to zoom
 							</p>
 						</div>
 					</div>
-					
+
 					<ComposableMap
 						projectionConfig={{
 							scale: 240,
@@ -242,10 +247,14 @@ export default function WorldMapHeatmap({ countries }) {
 				{/* Enhanced Legend with Paper Count Ranges */}
 				<div className="border-t pt-4">
 					<div className="flex items-center justify-between mb-3">
-						<span className="text-xs font-medium text-gray-700">Paper Distribution</span>
-						<span className="text-xs text-gray-500">(Number of papers per country)</span>
+						<span className="text-xs font-medium text-gray-700">
+							Paper Distribution
+						</span>
+						<span className="text-xs text-gray-500">
+							(Number of papers per country)
+						</span>
 					</div>
-					
+
 					<div className="flex items-center gap-1 mb-2">
 						{colorPalette.map((color, i) => (
 							<div
@@ -255,12 +264,12 @@ export default function WorldMapHeatmap({ countries }) {
 							/>
 						))}
 					</div>
-					
+
 					<div className="flex justify-between text-xs text-gray-600">
 						<span>Fewer papers</span>
 						<span>More papers</span>
 					</div>
-					
+
 					{/* Quantile ranges */}
 					{legendData.length > 0 && (
 						<div className="mt-4 grid grid-cols-5 gap-2">

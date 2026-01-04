@@ -34,10 +34,13 @@ export function processJournals(journals, filters = {}) {
 // Find a journal by slug
 export async function fetchJournalBySlug(slug) {
 	try {
-		const response = await fetch(`http://localhost:3000/api/Journals/${slug}`, {
-			// cache: "force-cache",
-			next: { revalidate: 3600 },
-		})
+		const response = await fetch(
+			`${process.env.NEXT_PUBLIC_URL}/api/Journals/${slug}`,
+			{
+				// cache: "force-cache",
+				next: { revalidate: 3600 },
+			}
+		)
 
 		if (!response.ok) {
 			return null
