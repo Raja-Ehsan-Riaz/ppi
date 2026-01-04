@@ -102,7 +102,7 @@ export default function TopCountriesBarChart({ topCountries, totalPapers }) {
 							</div>
 							<div className="w-full bg-gray-200 rounded-full h-10 relative overflow-hidden">
 								<div
-									className="h-10 rounded-full transition-all duration-1000 ease-out flex items-center"
+									className="h-6 rounded-full transition-all duration-1000 ease-out flex items-center"
 									style={{
 										width: `${actualWidth}%`,
 										backgroundColor: colors[index] || colors[4],
