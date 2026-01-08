@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef, useCallback } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import {
@@ -24,13 +24,48 @@ export default function JournalFilters({
 	const [keyword, setKeyword] = useState("")
 	const [selectedCategory, setSelectedCategory] = useState("all")
 	const [ppiSort, setPpiSort] = useState("high_to_low")
+	
+	// Ref to store the debounce timer
+	const debounceTimerRef = useRef(null)
 
 	useEffect(() => {
 		setKeyword(initialKeyword)
 	}, [initialKeyword])
 
+	// Debounced search function
+	const debouncedSearch = useCallback((searchTerm) => {
+		// Clear existing timer
+		if (debounceTimerRef.current) {
+			clearTimeout(debounceTimerRef.current)
+		}
+
+		// Set new timer
+		debounceTimerRef.current = setTimeout(() => {
+			onSearch(searchTerm)
+		}, 300) // 300ms delay - adjust as needed
+	}, [onSearch])
+
+	// Cleanup on unmount
+	useEffect(() => {
+		return () => {
+			if (debounceTimerRef.current) {
+				clearTimeout(debounceTimerRef.current)
+			}
+		}
+	}, [])
+
 	const handleSearch = () => {
+		// Clear debounce timer for immediate search
+		if (debounceTimerRef.current) {
+			clearTimeout(debounceTimerRef.current)
+		}
 		onSearch(keyword)
+	}
+
+	const handleInputChange = (e) => {
+		const value = e.target.value
+		setKeyword(value)
+		debouncedSearch(value)
 	}
 
 	const handleApplyFilters = () => {
@@ -41,8 +76,15 @@ export default function JournalFilters({
 	}
 
 	const handleReset = () => {
+		setKeyword("")
 		setSelectedCategory("all")
 		setPpiSort("high_to_low")
+		
+		// Clear any pending debounced search
+		if (debounceTimerRef.current) {
+			clearTimeout(debounceTimerRef.current)
+		}
+		
 		onReset()
 	}
 
@@ -51,6 +93,7 @@ export default function JournalFilters({
 			handleSearch()
 		}
 	}
+
 	const getCategorySymbol = category => {
 		const symbols = {
 			Alpha: "α",
@@ -64,19 +107,15 @@ export default function JournalFilters({
 	return (
 		<div>
 			{/* Search Bar - Separate Section */}
-			<div className=" max-w-3xl mx-auto">
-				<div className="flex gap-3 items-center ">
+			<div className="max-w-3xl mx-auto">
+				<div className="flex gap-3 items-center">
 					<div className="relative flex-1">
 						<Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
 						<Input
 							type="text"
 							placeholder="Search by journal name, ISSN, or topic..."
 							value={keyword}
-							onChange={e => {
-								const value = e.target.value
-								setKeyword(value)
-								handleSearch(value) // Trigger search on every keystroke
-							}}
+							onChange={handleInputChange}
 							onKeyPress={handleKeyPress}
 							className="pl-10 h-10"
 						/>
