@@ -14,7 +14,7 @@ const ContactUs = () => {
 						<h2 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-gray-900 leading-tight">
 							Get In Touch
 						</h2>
-						<p className="text-gray-600 text-base md:text-lg leading-relaxed">
+						<p className="text-gray-600 text-base md:text-lg max-w-md leading-relaxed">
 							We welcome questions, feedback, and collaboration inquiries from
 							the research community.
 						</p>

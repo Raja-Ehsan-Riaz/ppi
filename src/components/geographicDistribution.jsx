@@ -28,10 +28,10 @@ const GeographicDistribution = ({ locationData }) => {
 					<div>
 						<CardTitle className="flex items-center gap-2">
 							<Globe className="h-5 w-5 text-blue-600" />
-							Geographic Distribution of Authors
+							Geographic Distribution of First Authors
 						</CardTitle>
 						<p className="text-sm text-gray-500 mt-1">
-							Distribution of papers by author country/region (
+							Distribution of papers by first author country/region (
 							{totalPapers.toLocaleString()} total papers analyzed)
 						</p>
 					</div>

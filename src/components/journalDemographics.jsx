@@ -77,7 +77,7 @@ export default function JournalDemographics({ issn }) {
 				<Card>
 					<CardHeader className="flex flex-row items-center justify-between pb-2">
 						<CardTitle className="text-sm font-medium text-gray-600">
-							Contributing Authors
+							Contributing First Authors
 						</CardTitle>
 						<Users className="h-5 w-5 text-gray-400" />
 					</CardHeader>

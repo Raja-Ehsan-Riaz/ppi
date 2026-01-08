@@ -10,11 +10,12 @@ const CTASection = () => {
 				{/* Content */}
 				<div className="max-w-4xl mx-auto text-center relative z-10">
 					<h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 max-w-2xl mx-auto">
-						Start Exploring the Journals
+						Start Exploring the Journals/Conferences
 					</h1>
 					<p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
-						Access comprehensive data on thousands of journals. Filter by
-						discipline, PPI score, or geographic distribution.
+						Access comprehensive data on journals and conferences. Filter by
+						discipline, PPI or author affiliation geography to evaluate
+						prestige and quality.
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
 						<Link href={"/journals"}>

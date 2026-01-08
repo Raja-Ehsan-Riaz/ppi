@@ -84,10 +84,10 @@ export default function InstitutionalPrestigePieChart({
     <Card ref={cardRef} >
       <CardHeader>
         <CardTitle className="text-lg font-semibold">
-          Author Contribution by Institutional Prestige
+          First Author Contribution by Institutional Prestige
         </CardTitle>
         <p className="text-sm text-gray-600 mt-1">
-          Distribution of papers based on the global ranking tier of author affiliations
+          Distribution of papers based on the global ranking tier of first author affiliations
         </p>
       </CardHeader>
       <CardContent>
@@ -145,7 +145,7 @@ export default function InstitutionalPrestigePieChart({
         </div>
         
         <div 
-          className="mt-6 space-y-3 transition-opacity duration-1000 delay-300 ease-in"
+          className="grid grid-cols-2 mt-6 space-y-3 transition-opacity duration-1000 delay-300 ease-in"
           style={{ opacity: isVisible ? 1 : 0 }}
         >
           {chartData.map((item, index) => (
@@ -157,9 +157,7 @@ export default function InstitutionalPrestigePieChart({
                 />
                 <span className="text-sm text-gray-700">{item.name}</span>
               </div>
-              <span className="text-sm font-semibold text-gray-900">
-                {item.percentage}%
-              </span>
+              
             </div>
           ))}
         </div>

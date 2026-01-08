@@ -15,17 +15,17 @@ const CategoryCard = ({
 		<div
 			className={`bg-gray-50/50 rounded-lg p-8 border border-gray-200 transition-all duration-700 `}
 		>
-			<div className="flex items-start gap-8">
+			<div className="flex items-center gap-8">
 				<div
-					className={`px-3  py-1 min-w-25 justify-center gap-2 flex items-center rounded-md border  font-medium whitespace-nowrap ${color}`}
+					className={`px-3  py-1 min-w-25 justify-start gap-2 flex items-center rounded-md border  ${color}`}
 				>
-					<div className={`w-2 h-2 rounded-full ${iconColor}`}></div>
-					<span className="text-xs">{label}</span>
+					<div className={`${iconColor} text-lg mb-0.5`}>{icon}</div>
+					<span className="text-sm">{label}</span>
 				</div>
-				<div className="text-xl flex-1 font-bold text-center text-gray-800 mb-2">
+				<div className="text-lg flex-2 font-semibold  text-gray-600 mb-2">
 					{range}
 				</div>
-				<p className="text-gray-500 flex-7 leading-relaxed">{description}</p>
+				<p className="text-gray-500 flex-9 leading-relaxed">{description}</p>
 			</div>
 		</div>
 	)
@@ -34,49 +34,49 @@ const CategoryCard = ({
 export default function PPICategoriesExplained() {
 	const categories = [
 		{
-			icon: "",
+			icon: "α",
 			label: "Alpha",
-			range: "80-100",
+			range: "PPI ≥ 15",
 			description:
-				"Elite journals where the vast majority of authors are from top-tier research institutions. Represents the highest prestige in academic publishing.",
+				" Most prestigious journals where top universities and organizations frequently publish.",
 			color: "bg-blue-50 border-blue-300 text-blue-700",
-			iconColor: "bg-blue-700",
+			iconColor: "text-blue-700",
 		},
 		{
-			icon: "◆",
+			icon: "β",
 			label: "Beta",
-			range: "60-79",
+			range: "(15 > PPI ≥ 10)",
 			description:
-				"Elite journals where the vast majority of authors are from top-tier research institutions. Represents the highest prestige in academic publishing.",
+				" Well-regarded journals with strong participation from high-ranking institutions.",
 			color: "bg-green-50 border-green-300 text-green-700",
-			iconColor: "bg-green-700",
+			iconColor: "text-green-700",
 		},
 		{
-			icon: "♦",
+			icon: "γ",
 			label: "Gamma",
-			range: "40-59",
+			range: "(10 > PPI ≥ 5)",
 			description:
-				"Elite journals where the vast majority of authors are from top-tier research institutions. Represents the highest prestige in academic publishing.",
+				"Low-quality journals with moderate participation from recognized institutions.",
 			color: "bg-orange-50 border-orange-300 text-orange-700",
-			iconColor: "bg-orange-700",
+			iconColor: "text-orange-700",
 		},
 		{
-			icon: "◆",
+			icon: "δ",
 			label: "Delta",
-			range: "20-39",
+			range: "(5 > PPI ≥ 2)",
 			description:
-				"Elite journals where the vast majority of authors are from top-tier research institutions. Represents the highest prestige in academic publishing.",
+				"Borderline predatory journals with negative perception among academic peers.",
 			color: "bg-purple-50 border-purple-300 text-purple-700",
-			iconColor: "bg-purple-700",
+			iconColor: "text-purple-700",
 		},
 		{
 			icon: "■",
 			label: "None",
-			range: "0-19",
+			range: "(PPI < 2)",
 			description:
-				"Elite journals where the vast majority of authors are from top-tier research institutions. Represents the highest prestige in academic publishing.",
+				" Journals with extremely negative reputation, not assigned a quality category.",
 			color: "bg-gray-50 border-gray-300 text-gray-700",
-			iconColor: "bg-gray-700",
+			iconColor: "text-gray-700",
 		},
 	]
 
@@ -84,12 +84,13 @@ export default function PPICategoriesExplained() {
 		<div className="px-10 md:px-16 lg:px-24 py-16 md:py-24 ">
 			<div className="max-w-6xl mx-auto">
 				<div className="text-center mb-12">
-					<h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8">
-						PPI Categories Explained
+					<h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8 max-w-2xl mx-auto leading-tight">
+						Journal Categories by Peer Perception Index
 					</h1>
-					<p className="text-gray-600 text-lg">
-						Journals are classified into five tiers based on their Peer
-						Perception Index score
+					<p className="text-gray-600 text-lg max-w-5xl">
+						Journals and conferences are classified into five tiers based on
+						their PPI, reflecting prestige and quality among academic
+						peers.
 					</p>
 				</div>
 

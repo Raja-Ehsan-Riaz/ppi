@@ -17,16 +17,19 @@ export default function MissionVision() {
 							Perception Index?
 						</h2>
 						<p className="text-gray-600 text-base md:text-lg">
-							A comprehensive toolkit for researchers, academics, and
-							institutions to evaluate journal quality.
+							PPI helps researchers and institutions{" "}
+							<b>assess the quality and prestige of journals and conferences</b>{" "}
+							based on where top researchers publish.
 						</p>
 
 						{/* Backed By Section */}
 						<Card className="bg-white border-none shadow-sm mt-8">
 							<CardContent className="p-6 py-0">
-								<p className="font-semibold text-gray-600 mb-4">Backed by</p>
+								<p className="font-semibold text-gray-600 mb-4">
+									Collaborating Organizations and Funders
+								</p>
 								<div className="flex flex-col md:flex-row items-start justify-start gap-12">
-									<div className="w-20 h-20 relative">
+									<div className="w-32 h-32 relative">
 										<Image
 											src={"/logos/nust.png"}
 											alt=""
@@ -34,17 +37,17 @@ export default function MissionVision() {
 											className="absolute object-contain"
 										/>
 									</div>
-									<div className="w-20 h-20 relative">
+									<div className="w-32 h-32 relative">
 										<Image
-											src={"/logos/nstp.png"}
+											src={"/logos/rasta.png"}
 											alt=""
 											fill
 											className="absolute object-contain"
 										/>
 									</div>
-									<div className="w-20 h-20 relative">
+									<div className="w-32 h-32 relative">
 										<Image
-											src={"/logos/seecs.png"}
+											src={"/logos/pide.png"}
 											alt=""
 											fill
 											className="absolute object-contain"
@@ -56,7 +59,7 @@ export default function MissionVision() {
 					</div>
 
 					{/* Right Side - Mission & Vision Cards */}
-					<div className="space-y-12">
+					<div className="flex flex-col justify-between space-y-12">
 						{/* Mission Card */}
 						<Card className="bg-transparent shadow-none border-none p-0">
 							<CardContent className="space-y-4">

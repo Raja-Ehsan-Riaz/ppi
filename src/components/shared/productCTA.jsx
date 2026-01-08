@@ -9,7 +9,7 @@ const ProductCTA = () => {
 			<div className="max-w-7xl mx-auto  rounded-4xl p-16 lg:py-24 relative overflow-hidden shadow-lg  bg-linear-to-b from-blue-50/60 via-primary/50  to-primary/20">
 				<div className="max-w-4xl mx-auto text-center">
 					<h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 max-w-2xl mx-auto">
-						Where Prestige Is Chosen, Not Counted
+						Prestige Through Choice, Not Metrics
 					</h1>
 					<p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
 						The Peer Perception Index identifies journal prestige by tracking
@@ -23,7 +23,7 @@ const ProductCTA = () => {
 								size="lg"
 								className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-base rounded-lg shadow-md cursor-pointer"
 							>
-								How it works
+								See how it works
 							</Button>
 						</Link>
 					</div>

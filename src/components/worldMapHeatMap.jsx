@@ -64,13 +64,14 @@ const countryNameMap = {
 
 // Blue color palette (10 shades from medium to dark - blue-500 to blue-900)
 const colorPalette = [
-	"#60A5FA", // blue-400 (lightest)
+	"#93C5FD", // blue-300 (lighter highlight)
+	"#60A5FA", // blue-400
 	"#3B82F6", // blue-500
 	"#2563EB", // blue-600
 	"#1D4ED8", // blue-700
 	"#1E40AF", // blue-800
 	"#1E3A8A", // blue-900
-	"#2542a0", // medium-dark blue
+	"#172554", // blue-950 (deeper anchor)
 ]
 
 export default function WorldMapHeatmap({ countries }) {
@@ -100,12 +101,12 @@ export default function WorldMapHeatmap({ countries }) {
 	// Create fixed ranges with 50-paper gaps
 	const ranges = [
 		0, // 0-50
-		20, // 50-100
-		40, // 100-150
-		60, // 150-200
-		80, // 200-250
-		100, // 250-300
-		120, // 300-350
+		10, // 50-100
+		20, // 100-150
+		30, // 150-200
+		40, // 200-250
+		50, // 250-300
+		60, // 300-350
 	]
 
 	// Function to get color based on paper count
@@ -140,11 +141,11 @@ export default function WorldMapHeatmap({ countries }) {
 		<Card>
 			<CardHeader>
 				<CardTitle className="text-lg font-semibold">
-					Author Geographic Distribution
+					First Author Geographic Distribution
 				</CardTitle>
 				<p className="text-sm text-gray-600 mt-1">
-					Where contributing authors are based globally • Click and drag to
-					explore • Scroll to zoom
+					Where contributing first authors are based globally • Click and drag
+					to explore • Scroll to zoom
 				</p>
 			</CardHeader>
 			<CardContent>
@@ -234,7 +235,7 @@ export default function WorldMapHeatmap({ countries }) {
 
 				{/* Country List */}
 				<div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-3 text-sm mb-6">
-					{countries.slice(0, 12).map((country, index) => (
+					{countries.map((country, index) => (
 						<div key={index} className="flex justify-between items-center">
 							<span className="text-gray-700">{country.country}</span>
 							<span className="font-semibold text-gray-900">

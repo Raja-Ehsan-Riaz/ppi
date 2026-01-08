@@ -9,20 +9,14 @@ import { ExternalLink } from "lucide-react"
 export default function JournalTable({ journals }) {
 	const [selectedJournals, setSelectedJournals] = useState([])
 
-	const handleSelectAll = checked => {
-		if (checked) {
-			setSelectedJournals(journals.map(j => j.id))
-		} else {
-			setSelectedJournals([])
+	const getCategorySymbol = category => {
+		const symbols = {
+			Alpha: "α",
+			Beta: "β",
+			Gamma: "γ",
+			Delta: "δ",
 		}
-	}
-
-	const handleSelectJournal = (journalId, checked) => {
-		if (checked) {
-			setSelectedJournals([...selectedJournals, journalId])
-		} else {
-			setSelectedJournals(selectedJournals.filter(id => id !== journalId))
-		}
+		return symbols[category] || ""
 	}
 
 	const getCategoryBadgeColor = category => {
@@ -66,7 +60,7 @@ export default function JournalTable({ journals }) {
 								eISSN
 							</th>
 							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
-								PPI Score
+								PPI
 							</th>
 							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
 								Category
@@ -121,7 +115,10 @@ export default function JournalTable({ journals }) {
 												journal.category
 											)}`}
 										>
-											{journal.category}
+											<span className="flex items-center gap-1">
+												<span className="text-sm">{getCategorySymbol(journal.category)}</span>
+												<span>{journal.category}</span>
+											</span>
 										</Badge>
 									) : (
 										<span className="text-xs text-gray-400">-</span>

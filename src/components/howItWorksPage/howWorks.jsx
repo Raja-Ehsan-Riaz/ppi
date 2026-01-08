@@ -17,24 +17,25 @@ const HowWeWorks = () => {
 							How the Peer Perception Index Works
 						</h2>
 						<p className="text-gray-600 text-base md:text-lg leading-relaxed">
-							Traditional metrics like Impact Factor measure citation counts —
-							how often papers are cited. The Peer Perception Index takes a
-							different approach: it measures where top researchers publish.
-						</p>
-						<p className="text-gray-600 text-base md:text-lg leading-relaxed mt-6">
-							The premise is simple: researchers at elite institutions have the
-							most options for where to publish. When they consistently choose
-							certain journals, those journals demonstrate genuine prestige
-							within the research community. This "revealed preference" provides
-							a complementary signal to citation-based metrics.
+							The Peer Perception Index evaluates journal and conference
+							prestige by analyzing{" "}
+							<b>
+								where researchers from top-ranked universities choose to publish
+							</b>{" "}
+							, rather than relying on citation-based metrics such as the
+							Journal Impact Factor. By weighting first-author affiliations
+							using <b>Times Higher Education rankings</b>, PPI provides a
+							quality-centric view of academic reputation.
 						</p>
 					</div>
 
 					{/* Right Illustration */}
-					<div className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center" 
-					data-aos="fade-left"
-					data-aos-duration="500"
-					data-aos-easing="ease-out-cubic">
+					<div
+						className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center"
+						data-aos="fade-left"
+						data-aos-duration="500"
+						data-aos-easing="ease-out-cubic"
+					>
 						<HowWeWorkIllustration />
 					</div>
 				</div>

@@ -1,4 +1,5 @@
 // components/ResearchTeam.tsx
+import { Mail } from "lucide-react"
 import { Twitter, Instagram, Linkedin } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -11,8 +12,8 @@ const teamMembers = [
 		description:
 			"Assistant Professor of Electrical Engineering at SEECS-NUST, Head of AI & Autonomous Systems, and lead of the Robotics and Machine Intelligence (ROMI) Lab. His research focuses on robotics, computer vision, machine intelligence, and scientometrics.",
 		social: {
-			twitter: "#",
-			instagram: "#",
+			seecs: "https://seecs.nust.edu.pk/faculty/muhammad-latif-anjum/",
+			email: "latif.anjum@seecs.edu.pk",
 			linkedin: "#",
 		},
 	},
@@ -23,8 +24,8 @@ const teamMembers = [
 		description:
 			"Associate Professor at NUST, Pakistan. His research interests include data-driven scene understanding, robotics, and computer vision.",
 		social: {
-			twitter: "#",
-			instagram: "#",
+			seecs: "https://seecs.nust.edu.pk/faculty/muhammad-wajahat-hussain/",
+			email: "wajahat.hussain@seecs.edu.pk",
 			linkedin: "#",
 		},
 	},
@@ -35,9 +36,9 @@ const teamMembers = [
 		description:
 			"Associate Professor of Electrical Engineering at SEECS-NUST. His research focuses on network security, distributed systems, and applied cryptography.",
 		social: {
-			twitter: "#",
-			instagram: "#",
-			linkedin: "#",
+			seecs: "https://seecs.nust.edu.pk/faculty/syed-taha-ali/",
+			email: "taha.ali@seecs.edu.pk",
+			linkedin: "https://au.linkedin.com/in/syed-taha-ali-5a030a65",
 		},
 	},
 ]
@@ -47,14 +48,20 @@ export default function ResearchTeam() {
 		<section className="px-6 md:px-16 lg:px-24 py-16 md:py-24">
 			<div className="max-w-7xl mx-auto">
 				{/* Section Title */}
-				<h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-12">
+				<h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
 					Research Team
 				</h2>
+				<p className="text-gray-600 text-base md:text-lg mb-12">
+					Researchers at NUST SEECS focused on evaluating journal and conference
+					quality through the Peer Perception Index.
+				</p>
 
 				{/* Team Grid */}
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 					{teamMembers.map((member, index) => (
-						<div
+						<Link
+							href={member.social.seecs}
+							target="_blank"
 							key={index}
 							className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer"
 						>
@@ -78,23 +85,18 @@ export default function ResearchTeam() {
 								{/* Social Links */}
 								<div className="flex gap-3">
 									<Link
-										href={member.social.twitter}
-										className="hover:text-blue-400 transition-colors"
-										aria-label="Twitter"
-									>
-										<Twitter className="w-5 h-5" />
-									</Link>
-									<Link
-										href={member.social.instagram}
+										href={`mailto:${member.social.email}`}
 										className="hover:text-pink-400 transition-colors"
 										aria-label="Instagram"
+										target="_blank"
 									>
-										<Instagram className="w-5 h-5" />
+										<Mail className="w-5 h-5" />
 									</Link>
 									<Link
 										href={member.social.linkedin}
 										className="hover:text-blue-500 transition-colors"
 										aria-label="LinkedIn"
+										target="_blank"
 									>
 										<Linkedin className="w-5 h-5" />
 									</Link>
@@ -107,25 +109,20 @@ export default function ResearchTeam() {
 								<p className="text-sm text-gray-200 mb-3">{member.role}</p>
 
 								{/* Social Links on Hover */}
-								<div className="flex gap-3 mb-4">
+								<div className="flex gap-3">
 									<Link
-										href={member.social.twitter}
-										className="hover:text-blue-400 transition-colors"
-										aria-label="Twitter"
-									>
-										<Twitter className="w-5 h-5" />
-									</Link>
-									<Link
-										href={member.social.instagram}
+										href={`mailto:${member.social.email}`}
 										className="hover:text-pink-400 transition-colors"
 										aria-label="Instagram"
+										target="_blank"
 									>
-										<Instagram className="w-5 h-5" />
+										<Mail className="w-5 h-5" />
 									</Link>
 									<Link
 										href={member.social.linkedin}
 										className="hover:text-blue-500 transition-colors"
 										aria-label="LinkedIn"
+										target="_blank"
 									>
 										<Linkedin className="w-5 h-5" />
 									</Link>
@@ -136,7 +133,7 @@ export default function ResearchTeam() {
 									{member.description}
 								</p>
 							</div>
-						</div>
+						</Link>
 					))}
 				</div>
 			</div>

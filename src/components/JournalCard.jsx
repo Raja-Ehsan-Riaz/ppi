@@ -57,7 +57,7 @@ export default function JournalCard({ journal }) {
               <div className="text-2xl font-bold text-blue-600">
                 {journal.ppi.toFixed(1)}
               </div>
-              <div className="text-xs text-gray-600">PPI Score</div>
+              <div className="text-xs text-gray-600">PPI</div>
             </div>
             
             <div className="text-sm text-gray-600">

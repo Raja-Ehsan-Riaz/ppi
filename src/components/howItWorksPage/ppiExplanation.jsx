@@ -8,23 +8,30 @@ import {
 	CheckCircle,
 } from "lucide-react"
 
-const CategoryCard = ({ label, range, desc, color, isVisible }) => {
+const CategoryCard = ({
+	icon,
+	label,
+	range,
+	description,
+	color,
+	iconColor,
+	index,
+}) => {
 	return (
 		<div
-			className={` ${
-				isVisible ? `bg-white` : "bg-gray-50"
-			}  rounded-lg p-6 border border-gray-200`}
+			className={`bg-white rounded-lg p-4 border border-gray-200 transition-all duration-700 `}
 		>
-			<div className="flex items-start gap-6">
+			<div className="flex items-center gap-8">
 				<div
-					className={`px-3 py-1 rounded-md border font-medium whitespace-nowrap text-xs ${color}`}
+					className={`px-3  py-1 min-w-25 justify-start gap-2 flex items-center rounded-md border  ${color}`}
 				>
-					{label}
+					<div className={`${iconColor} text-lg mb-0.5`}>{icon}</div>
+					<span className="text-sm">{label}</span>
 				</div>
-				<div className="text-lg font-bold text-gray-800 min-w-[80px]">
+				<div className="flex-2 font-semibold text-gray-600 mb-2">
 					{range}
 				</div>
-				<p className="text-gray-600 text-sm leading-relaxed flex-1">{desc}</p>
+				<p className="text-gray-500 flex-10 leading-relaxed">{description}</p>
 			</div>
 		</div>
 	)
@@ -40,7 +47,7 @@ const StepCard = ({ step, index, isVisible }) => {
 				<div className="absolute left-[35px] top-[40px] w-[1.5px] h-full">
 					<div
 						className={`h-full ${
-							isVisible ? "bg-primary" : "bg-gray-300"
+							isVisible ? "bg-blue-600" : "bg-gray-300"
 						} transition-colors duration-700`}
 					></div>
 				</div>
@@ -51,7 +58,7 @@ const StepCard = ({ step, index, isVisible }) => {
 				<div className="flex-shrink-0">
 					<div
 						className={`w-18 h-18 rounded-full ${
-							isVisible ? "bg-primary" : "bg-gray-300"
+							isVisible ? "bg-blue-600" : "bg-gray-300"
 						} flex items-center justify-center text-white font-bold transition-colors duration-700 relative z-10`}
 					>
 						{String(index + 1).padStart(2, "0")}
@@ -76,8 +83,6 @@ const StepCard = ({ step, index, isVisible }) => {
 						<p className="text-gray-600">{step.description}</p>
 					</div>
 
-					{/* Icon */}
-
 					<p className="text-gray-600 mb-6">{step.details}</p>
 
 					{/* Points */}
@@ -85,27 +90,8 @@ const StepCard = ({ step, index, isVisible }) => {
 						<div className="space-y-3 mb-6">
 							{step.points.map((point, i) => (
 								<div key={i} className="flex items-start gap-3">
-									<CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-gray-400" />
-									<p className="text-gray-600 text-sm">{point}</p>
-								</div>
-							))}
-						</div>
-					)}
-
-					{/* Tiers */}
-					{step.tiers && (
-						<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-							{step.tiers.map((tier, i) => (
-								<div
-									key={i}
-									className={`border border-gray-200 rounded-lg p-4 ${
-										isVisible ? `bg-white` : "bg-gray-50"
-									} `}
-								>
-									<h4 className="font-semibold text-gray-900 mb-1">
-										{tier.name}
-									</h4>
-									<p className="text-xs text-gray-600">{tier.desc}</p>
+									<CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-gray-800" />
+									<p className="text-gray-600 ">{point}</p>
 								</div>
 							))}
 						</div>
@@ -118,19 +104,9 @@ const StepCard = ({ step, index, isVisible }) => {
 								isVisible ? `bg-white` : "bg-gray-50"
 							} max-w-2xl`}
 						>
-							<h4 className="font-semibold text-gray-900 mb-4">
+							<h4 className="font-semibold text-gray-900 ">
 								{step.formula.title}
 							</h4>
-							<div className="space-y-2">
-								{step.formula.weights.map((weight, i) => (
-									<div key={i} className="flex justify-between items-center">
-										<span className="text-sm text-gray-600">{weight.tier}</span>
-										<span className="font-mono font-semibold text-gray-900">
-											{weight.value}
-										</span>
-									</div>
-								))}
-							</div>
 						</div>
 					)}
 
@@ -160,16 +136,14 @@ export default function PPIExplanation() {
 	const steps = [
 		{
 			number: "01",
-			title: "Collect Author Data",
+			title: "Collect First Author Data",
 			description:
-				"Aggregate author affiliation data from published research papers",
+				"Identify first-author affiliations from research publications.",
 			details:
-				"We collect comprehensive metadata from academic papers published over the past 5 years, including:",
+				"We collect comprehensive metadata from academic papers published over the past 18 years (since 2008), including:",
 			points: [
-				"Author names and institutional affiliations at time of publication",
-				"Journal identifiers (ISSN, eISSN) and publication metadata",
-				"Geographic location of author institutions",
-				"Disciplinary classification of journals and papers",
+				"Analyze research publications published in journals and conferences",
+				"Identify first authors and their affiliated universities or organizations",
 			],
 			footer:
 				"Data sources: Crossref, PubMed, arXiv, institutional repositories",
@@ -179,88 +153,88 @@ export default function PPIExplanation() {
 			number: "02",
 			title: "Weight by Prestige",
 			description:
-				"Classify institutions into five tiers based on global university rankings",
+				"Classify institutions using Times Higher Education (THE) global university rankings",
 			details:
-				"Each author's institutional affiliation is mapped to a ranking tier using composite scores from major global university rankings:",
+				"Each first-author affiliation is classified using the Times Higher Education (THE) global university rankings. Institutions are grouped into four prestige brackets:",
 			points: [
-				"Author names and institutional affiliations at time of publication",
-				"Journal identifiers (ISSN, eISSN) and publication metadata",
-				"Geographic location of author institutions",
-				"Disciplinary classification of journals and papers",
-			],
-			tiers: [
-				{ name: "Tier 1", desc: "Top 50 universities globally" },
-				{ name: "Tier 2", desc: "Ranked 51-200" },
-				{ name: "Tier 3", desc: "Ranked 201-500" },
-				{ name: "Tier 4", desc: "Ranked 501-1000" },
-				{ name: "Tier 5", desc: "Ranked 1000+ or unranked" },
+				"λc₁ = No. of research publications in the journal/conference with first author affiliated to universities ranked 1ˢᵗ – 50ᵗʰ in THE global ranking.",
+				"λc₂ = No. of research publications in the journal/conference with first author affiliated to universities ranked 51ˢᵗ – 100ᵗʰ in THE global ranking.",
+				"λc₃ = No. of research publications in the journal/conference with first author affiliated to universities ranked 101ˢᵗ – 150ᵗʰ in THE global ranking.",
+				"λc₄ = No. of research publications in the journal/conference with first author affiliated to universities ranked 151ˢᵗ – 200ᵗʰ in THE global ranking.",
 			],
 			footer:
-				"Rankings synthesized from: QS World University Rankings, Times Higher Education, Academic Ranking of World Universities (ARWU)",
+				"These groups represent decreasing levels of institutional prestige, with higher-ranked universities given greater importance in the computation.",
 			icon: TrendingUp,
 		},
 		{
 			number: "03",
 			title: "Calculate Index",
-			description: "Calculate journal scores using tier-based weighting system",
+			description:
+				"Compute the Peer Perception Index (PPI) using weighted formula",
 			details:
-				"Each paper contributes to a journal's score based on the ranking tier of its authors' institutions. Papers from higher-tier universities receive greater weight:",
-			points: [
-				"Author names and institutional affiliations at time of publication",
-				"Journal identifiers (ISSN, eISSN) and publication metadata",
-				"Geographic location of author institutions",
-				"Disciplinary classification of journals and papers",
-			],
+				"The Peer Perception Index (PPI) is computed by assigning different weights to publications from each ranking bracket and normalizing them by the total number of publications. The weights reflect the relative importance of each prestige group.",
 			formula: {
-				title: "PPIraw = Σ (wtier × npapers)",
+				title:
+					"PPI = [0.5(λc₁/λ) + 0.25(λc₂/λ) + 0.15(λc₃/λ) + 0.1(λc₄/λ)] × 100",
 				weights: [
-					{ tier: "wtier1 (Top 50):", value: "5.0" },
-					{ tier: "wtier2 (51-200):", value: "3.0" },
-					{ tier: "wtier3 (201-500):", value: "1.5" },
-					{ tier: "wtier4 (501-1000):", value: "0.5" },
-					{ tier: "wtier5 (1000+):", value: "0.1" },
+					{ tier: "λc₁/λ (Ranked 1-50):", value: "50% weight" },
+					{ tier: "λc₂/λ (Ranked 51-100):", value: "25% weight" },
+					{ tier: "λ₃/λ (Ranked 101-150):", value: "15% weight" },
+					{ tier: "λ₄/λ (Ranked 151-200):", value: "10% weight" },
 				],
 			},
 			footer:
-				"Papers with multiple authors from different tiers contribute fractionally to each tier's count.",
+				"This formulation assigns 50% of the total weight to publications originating from universities ranked 1–50, with progressively lower weights for lower-ranked brackets.",
 			icon: Calculator,
 		},
 		{
 			number: "04",
-			title: "Calculate Final PPI",
-			description: "Normalize scores to 0-100 scale and assign category labels",
+			title: "Categorize Journals/Conferences",
+			description:
+				"Based on the final PPI, journals and conferences are categorized to reflect their standing among academic peers:",
 			details:
 				"Raw scores are normalized to a 0-100 scale using percentile ranking within disciplinary groups, then classified into five categories:",
 			categories: [
 				{
+					icon: "α",
 					label: "Alpha",
-					range: "80-100",
-					desc: "Elite journals where the vast majority of authors are from top-tier research institutions.",
-					color: "bg-blue-100 text-blue-700 border-blue-300",
+					range: "PPI ≥ 15",
+					description: "Most prestigious journals/conferences",
+					color: "bg-blue-50 border-blue-300 text-blue-700",
+					iconColor: "text-blue-700",
 				},
 				{
+					icon: "β",
 					label: "Beta",
-					range: "60-79",
-					desc: "High-quality journals with strong representation from globally ranked universities.",
-					color: "bg-green-100 text-green-700 border-green-300",
+					range: "(15 > PPI ≥ 10)",
+					description: "Well-respected journals/conferences",
+					color: "bg-green-50 border-green-300 text-green-700",
+					iconColor: "text-green-700",
 				},
 				{
+					icon: "γ",
 					label: "Gamma",
-					range: "40-59",
-					desc: "Established journals with moderate top-tier representation.",
-					color: "bg-yellow-100 text-yellow-700 border-yellow-300",
+					range: "(10 > PPI ≥ 5)",
+					description: "Low-quality journals/conferences",
+					color: "bg-orange-50 border-orange-300 text-orange-700",
+					iconColor: "text-orange-700",
 				},
 				{
+					icon: "δ",
 					label: "Delta",
-					range: "20-39",
-					desc: "Journals with lower institutional prestige metrics.",
-					color: "bg-orange-100 text-orange-700 border-orange-300",
+					range: "(5 > PPI ≥ 2)",
+					description: "Borderline predatory journals/conferences",
+					color: "bg-purple-50 border-purple-300 text-purple-700",
+					iconColor: "text-purple-700",
 				},
 				{
+					icon: "■",
 					label: "None",
-					range: "0-19",
-					desc: "Journals with minimal representation from ranked institutions.",
-					color: "bg-gray-100 text-gray-700 border-gray-300",
+					range: "(PPI < 2)",
+					description:
+						"Journals/conferences with extremely negative peer perception",
+					color: "bg-gray-50 border-gray-300 text-gray-700",
+					iconColor: "text-gray-700",
 				},
 			],
 			footer:

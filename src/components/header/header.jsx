@@ -12,7 +12,9 @@ const Header = () => {
 	const isActive = path => pathname === path
 
 	return (
-		<header className={`fixed top-0 bg-white border-b border-gray-100 w-full z-50 font-semibold`}>
+		<header
+			className={`fixed top-0 bg-white border-b border-gray-100 w-full z-50 font-semibold`}
+		>
 			<div className="max-w-7xl mx-auto py-2">
 				<div className="flex justify-between items-center h-16">
 					{/* Logo */}
@@ -55,12 +57,25 @@ const Header = () => {
 						>
 							Contact
 						</Link>
-						<Link
-							href="/journals"
-							className="px-4 py-3 bg-primary text-white text-sm rounded-lg hover:bg-primary/80 transition-colors"
-						>
-							Explore Journals
-						</Link>
+						<div className="flex items-center gap-3">
+							<Link
+								href="/journals"
+								className="px-4 py-3 bg-primary text-white text-sm rounded-lg hover:bg-primary/80 transition-colors"
+							>
+								Explore Journals
+							</Link>
+
+							<button
+								disabled
+								className="relative px-4 py-3 text-sm rounded-lg border border-gray-300 text-gray-400 cursor-not-allowed"
+								title="Sahib-e-Ijad is under construction"
+							>
+								Sahib-e-Ijad
+								<span className="absolute -top-2 -right-2 text-[10px] px-1.5 py-0.5 bg-yellow-100 text-yellow-700 rounded-full">
+									Soon
+								</span>
+							</button>
+						</div>
 					</nav>
 
 					{/* Mobile menu button */}
@@ -131,8 +146,18 @@ const Header = () => {
 							className="block px-4 py-2 bg-blue-600 text-white  text-center rounded-lg hover:bg-blue-700 transition-colors"
 							onClick={() => setMobileMenuOpen(false)}
 						>
-							Explore Journals 
+							Explore Journals
 						</Link>
+						<button
+							disabled
+							className="block w-full px-4 py-2 text-center rounded-lg border border-gray-300 text-gray-400 cursor-not-allowed relative"
+							title="Sahib-e-Ijad is under construction"
+						>
+							Sahib-e-Ijad
+							<span className="absolute top-1 right-3 text-[10px] px-1.5 py-0.5 bg-yellow-100 text-yellow-700 rounded-full">
+								Soon
+							</span>
+						</button>
 					</nav>
 				</div>
 			)}

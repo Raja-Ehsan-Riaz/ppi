@@ -97,16 +97,16 @@ const Hero = () => {
 					data-aos-easing="ease-out-cubic"
 				>
 					{/* Badge */}
-					<div className="inline-flex items-center bg-white/80 p-2 rounded-full font-medium border border-gray-200  space-x-2 mb-2">
+					{/* <div className="inline-flex items-center bg-white/80 p-2 rounded-full font-medium border border-gray-200  space-x-2 mb-2">
 						<div className="w-2 h-2 bg-gray-400 rounded-full"></div>
 						<span className="text-xs text-gray-600">
 							Academic Journal Intelligence
 						</span>
-					</div>
+					</div> */}
 
 					{/* Main Heading */}
 					<h1 className="text-[56px] font-bold text-gray-900 mb-4  mx-auto leading-tight max-w-xl ">
-						Measure True Academic Prestige
+						Know Quality Perception of Peers
 					</h1>
 
 					{/* Subheading */}
@@ -157,7 +157,7 @@ const Hero = () => {
 					<div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden p-2">
 						{/* Table Header */}
 						<div className="px-4 py-4 border-b border-gray-200 flex justify-between items-center">
-							<h2 className="text-xl font-bold text-gray-900">Journals</h2>
+							<h2 className="text-xl font-bold text-gray-900">Journals Directory</h2>
 							<div className="flex items-center space-x-3">
 								<button className="px-3 py-1.5 text-xs text-gray-600 border border-gray-300 rounded-lg flex items-center space-x-2 hover:bg-gray-50 transition-colors">
 									<Filter className="w-4 h-4" />
@@ -191,7 +191,7 @@ const Hero = () => {
 											eISSN
 										</th>
 										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-											PPI Score
+											PPI
 										</th>
 										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 											Category

@@ -22,12 +22,12 @@ function JournalsLoading() {
 		<div className="px-10 md:px-16 lg:px-24 py-16 md:py-24">
 			<div className="max-w-7xl mx-auto mt-12">
 				<div className="text-center">
-					<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8">
+					<h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-gray-900 mb-8">
 						Journal Directory
 					</h1>
 					<p className="text-lg text-gray-600 max-w-2xl mx-auto">
-						Search and filter over 12,000 academic journals by Peer Perception
-						Index score, category, discipline, and geographic distribution.
+						Search and filter over 1,000+ academic journals by Peer Perception
+						Index, category, discipline, and geographic distribution.
 					</p>
 				</div>
 			</div>
@@ -142,12 +142,9 @@ function JournalsContent() {
 	}, [])
 
 	// Handle search separately
-	const handleSearch = async keyword => {
+	const handleSearch = keyword => {
 		setIsSearching(true)
 		setCurrentKeyword(keyword)
-
-		// Small delay to show loading
-		await new Promise(resolve => setTimeout(resolve, 300))
 
 		// Apply search with current filters
 		const filtered = processJournals(allJournals, {
@@ -273,7 +270,7 @@ function JournalsContent() {
 						</h1>
 						<p className="text-lg text-gray-600 max-w-2xl mx-auto">
 							Search and filter over 12,000 academic journals by Peer Perception
-							Index score, category, discipline, and geographic distribution.
+							Index, category, discipline, and geographic distribution.
 						</p>
 					</div>
 

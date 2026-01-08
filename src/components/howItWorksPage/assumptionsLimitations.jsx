@@ -19,7 +19,7 @@ const AssumptionsLimitations = () => {
 			icon: Target,
 			title: "Disciplinary Differences",
 			description:
-				"Publishing norms vary significantly across disciplines. PPI scores are normalized within disciplinary groups, but cross-discipline comparisons should be made cautiously.",
+				"Publishing norms vary significantly across disciplines. PPI are normalized within disciplinary groups, but cross-discipline comparisons should be made cautiously.",
 		},
 		{
 			icon: TrendingUp,

@@ -8,21 +8,21 @@ const FeaturesSection = () => {
 			icon: <Database className="w-6 h-6 text-primary" />,
 			title: "Search Journals",
 			description:
-				"Access a comprehensive directory of 12,000+ journals with detailed PPI scores and metrics.",
+				"Access a comprehensive directory of 1,000+ journals with detailed PPI and metrics.",
 			iconBg: "bg-blue-100",
 		},
 		{
 			icon: <TrendingUp className="w-6 h-6 text-primary" />,
-			title: "Evaluate PPI Scores",
+			title: "Evaluate PPI",
 			description:
-				"Understand journal prestige through data-driven analysis of author affiliations and rankings.",
+				"Understand journal prestige through data-driven analysis of first author affiliations and rankings.",
 			iconBg: "bg-blue-100",
 		},
 		{
 			icon: <Globe className="w-6 h-6 text-primary" />,
 			title: "Analyze Geography",
 			description:
-				"Explore global distribution of authors and identify regional publication patterns.",
+				"Explore global distribution of first authors and identify regional publication patterns.",
 			iconBg: "bg-blue-100",
 		},
 		{
@@ -44,16 +44,13 @@ const FeaturesSection = () => {
 					data-aos-duration="1000"
 					data-aos-easing="ease-out-cubic"
 				>
-					<h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight ">
-						What can you do
-						<br />
-						with Peer
-						<br />
-						Perception Index?
+					<h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight max-w-md ">
+						What can you do with Peer Perception Index?
 					</h2>
 					<p className="text-base md:text-lg text-gray-600 max-w-md">
-						A comprehensive toolkit for researchers, academics, and institutions
-						to evaluate journal quality.
+						A quality-centric framework for researchers, academics, and
+						institutions to evaluate the <b> true prestige</b> of journals and
+						conferences beyond traditional metrics.
 					</p>
 				</div>
 

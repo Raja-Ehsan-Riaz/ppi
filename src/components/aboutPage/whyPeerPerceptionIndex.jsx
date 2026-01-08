@@ -6,22 +6,22 @@ export default function WhyPeerPerceptionIndex() {
 		{
 			title: "Unbiased Assessment",
 			description:
-				"We focus on institutional publishing behavior rather than citations, providing a more objective measure of prestige that isn't susceptible to citation rings or manipulation.",
+				"The Peer Perception Index (PPI) was developed to address the limitations of traditional journal-ranking metrics and to provide a quality-centric view of journal and conference prestige.",
 		},
 		{
-			title: "Global Data Network",
+			title: "Peer Perspective",
 			description:
-				"Our platform covers over 12,000 journals globally, incorporating metadata from millions of papers to ensure a truly comprehensive overview across all academic disciplines.",
+				"The index reflects collective peer perception by analyzing publication patterns of first authors affiliated with globally ranked universities and organizations.",
 		},
 		{
-			title: "Academic Integrity",
+			title: "Quality over Metrics",
 			description:
-				"Led by researchers from world-class institutions, PPI is maintained with a strict commitment to academic rigor and non-commercial independence.",
+				"By focusing on institutional affiliation and publication behavior, PPI helps distinguish prestigious venues from low-quality and borderline predatory journals, including so-called “pink horses.”",
 		},
 		{
-			title: "Strategic Insight",
+			title: "Meaningful Insight",
 			description:
-				"Beyond just a number, PPI offers qualitative insights into the geographic and institutional distribution of a journal's authorship base.",
+				"PPI provides clarity on journal and conference standing by categorizing venues into Alpha, Beta, Gamma, Delta, or None, clearly separating the good, the bad, and the ugly.",
 		},
 	]
 
@@ -35,8 +35,9 @@ export default function WhyPeerPerceptionIndex() {
 							Why Peer Perception Index?
 						</h1>
 						<p className="mt-8 text-lg text-gray-600">
-							A comprehensive toolkit for researchers, academics, and
-							institutions to evaluate journal quality.
+							The Peer Perception Index (PPI) was developed to address the
+							limitations of traditional journal-ranking metrics and to provide
+							a quality-centric view of journal and conference prestige.
 						</p>
 					</div>
 

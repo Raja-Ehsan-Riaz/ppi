@@ -81,7 +81,7 @@ export default function TopCountriesBarChart({ topCountries, totalPapers }) {
 					Top Contributing Countries
 				</CardTitle>
 				<p className="text-sm text-gray-600 mt-1">
-					Distribution of papers by author country affiliation
+					Distribution of papers by first author country affiliation
 				</p>
 			</CardHeader>
 			<CardContent className="space-y-6">

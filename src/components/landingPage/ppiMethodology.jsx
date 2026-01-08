@@ -13,14 +13,15 @@ const PPIMethodologySteps = () => {
 	const steps = [
 		{
 			number: "01",
-			title: "Collect Author Data",
+			title: "Collect First Author Data",
 			icon: Database,
 			description:
-				"We analyze millions of papers to identify author affiliations and institutional rankings.",
+				"Identify first author affiliations and their institutions.",
 			items: [
-				"Parse author metadata from academic publications",
-				"Extract institutional affiliations from paper records",
-				"Normalize institution names for consistency",
+				"Identify first author affiliations from research publications",
+				"Record associated universities and organizations",
+				"Track publications across journals and conferences",
+				"Normalize institution names for consistency"
 			],
 		},
 		{
@@ -28,12 +29,12 @@ const PPIMethodologySteps = () => {
 			title: "Weight by Prestige",
 			icon: TrendingUp,
 			description:
-				"Author affiliations are cross-referenced against major university ranking systems to categorize institutions into prestige tiers.",
+				"Give influence to top-ranked institutions based on their prestige.",
 			items: [
-				"Top 100 globally ranked universities",
-				"Top 500 globally ranked universities",
-				"Other ranked institutions",
-				"Unranked/regional institutions",
+				"Categorize institutions using THE global rankings",
+				"Assign c1 - c4 based on ranking brackets (1 - 50, 51 - 100, 101 - 150, 151 - 200)",
+				"Give higher weight to top-tier universities",
+				"Lower weight for lower-ranked or unranked institutions",
 			],
 		},
 		{
@@ -41,25 +42,25 @@ const PPIMethodologySteps = () => {
 			title: "Calculate Index",
 			icon: Calculator,
 			description:
-				"The final PPI score reflects where elite researchers choose to publish their work.",
+				"Combine weighted contributions to produce the PPI score.",
 			items: [
-				"Top 100: Weight factor of 1.0",
-				"Top 500: Weight factor of 0.6",
-				"Other Ranked: Weight factor of 0.3",
-				"Unranked: Weight factor of 0.1",
+				"Apply weights to publications based on first author affiliations",
+				"Reflect where elite researchers choose to publish",
+				"Aggregate contributions for overall journal score",
+				"Score emphasizes influence of top-ranked universities",
 			],
 		},
 		{
 			number: "04",
-			title: "Calculate Final PPI",
+			title: "Categorize Journals",
 			icon: ArrowUpDown,
 			description:
-				"The weighted scores are aggregated and normalized to produce the final Peer Perception Index score on a 0-100 scale.",
+				"Classify journals to distinguish high-quality from low-quality venues.",
 			items: [
-				"Aggregate weighted author contributions",
-				"Normalize against reference distributions",
-				"Apply temporal smoothing for stability",
-				"Assign categorical tier (Alpha through None)",
+				"Assign Alpha, Beta, Gamma, Delta, or None categories",
+				"High PPI indicates prestigious journals/conferences",
+				"Low PPI flags low-quality or “pink horse” journals",
+				"Supports informed decisions on publication venues",
 			],
 		},
 	]
@@ -127,7 +128,7 @@ const PPIMethodologySteps = () => {
 								{currentStep.items.map((item, idx) => (
 									<li key={idx} className="flex items-start gap-3">
 										<CheckCircle className="w-5 h-5 text-gray-700 flex-shrink-0 mt-0.5" />
-										<span className="text-gray-700 text-sm">{item}</span>
+										<span className="text-gray-700">{item}</span>
 									</li>
 								))}
 							</ul>

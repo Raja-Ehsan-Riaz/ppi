@@ -51,6 +51,15 @@ export default function JournalFilters({
 			handleSearch()
 		}
 	}
+	const getCategorySymbol = category => {
+		const symbols = {
+			Alpha: "α",
+			Beta: "β",
+			Gamma: "γ",
+			Delta: "δ",
+		}
+		return symbols[category] || ""
+	}
 
 	return (
 		<div>
@@ -63,10 +72,13 @@ export default function JournalFilters({
 							type="text"
 							placeholder="Search by journal name, ISSN, or topic..."
 							value={keyword}
-							onChange={e => setKeyword(e.target.value)}
+							onChange={e => {
+								const value = e.target.value
+								setKeyword(value)
+								handleSearch(value) // Trigger search on every keystroke
+							}}
 							onKeyPress={handleKeyPress}
 							className="pl-10 h-10"
-							disabled={isSearching}
 						/>
 					</div>
 					<Button
@@ -105,7 +117,7 @@ export default function JournalFilters({
 							<SelectItem value="all">All Categories</SelectItem>
 							{categories.map(cat => (
 								<SelectItem key={cat} value={cat}>
-									{cat}
+									{getCategorySymbol(cat)} - {cat}
 								</SelectItem>
 							))}
 						</SelectContent>

@@ -47,13 +47,23 @@ export default async function JournalDetailPage({ params }) {
 		journal.tier4Papers
 	const unrankedPapers = journal.totalPapers - totalRanked
 
+	const getCategorySymbol = category => {
+		const symbols = {
+			Alpha: "α",
+			Beta: "β",
+			Gamma: "γ",
+			Delta: "δ",
+		}
+		return symbols[category] || ""
+	}
+
 	return (
 		<div>
 			<div className="px-10 md:px-16 lg:px-24 pt-16 md:pt-32 bg-white">
 				{/* Header Section */}
 				<div className="bg-white rounded-lg py-8">
 					<div className="max-w-7xl mx-auto ">
-						<div className="flex items-start justify-between gap-8">
+						<div className="flex items-center justify-between gap-8">
 							<div
 								className="flex-1"
 								data-aos="fade"
@@ -69,12 +79,12 @@ export default async function JournalDetailPage({ params }) {
 									)}
 								</h1>
 
-								<div className="flex items-center gap-6 text-sm text-gray-600 mb-3">
-									<div>
+								<div className="flex items-center gap-6 text-sm text-gray-600 mb-3 divide-x-2 divide-gray-600">
+									<div className="pr-6">
 										<span className="font-semibold">Publisher:</span>{" "}
 										{journal.publisher || "N/A"}
 									</div>
-									<div>
+									<div className="pr-6">
 										<span className="font-semibold">ISSN:</span>{" "}
 										{journal.issn || "N/A"}
 									</div>
@@ -82,30 +92,25 @@ export default async function JournalDetailPage({ params }) {
 										<span className="font-semibold">eISSN:</span>{" "}
 										{journal.eissn || "N/A"}
 									</div>
-									{journal.abbreviation && (
-										<div className="uppercase text-xs px-2 py-1 rounded bg-gray-100">
-											{journal.abbreviation}
-										</div>
-									)}
 								</div>
 
-								<p className="text-gray-600 text-sm mb-4 max-w-3xl">
-									Nature is a weekly international journal publishing the finest
-									peer-reviewed research in all fields of science and
-									technology. It is one of the most cited scientific journals in
-									the world.
-								</p>
-
-								<div className="flex items-center gap-3">
-									{journal.category && journal.category.trim() !== "" && (
+								<div>
+									{journal.category && journal.category.trim() !== "" ? (
 										<Badge
 											variant="outline"
-											className={`text-sm px-3 rounded ${getCategoryBadgeColor(
+											className={`text-xs px-3 rounded-sm ${getCategoryBadgeColor(
 												journal.category
 											)}`}
 										>
-											{journal.category}
+											<span className="flex items-center gap-1">
+												<span className="text-sm mb-0.5">
+													{getCategorySymbol(journal.category)}
+												</span>
+												<span>{journal.category}</span>
+											</span>
 										</Badge>
+									) : (
+										<span className="text-xs text-gray-400">-</span>
 									)}
 								</div>
 							</div>
@@ -120,15 +125,19 @@ export default async function JournalDetailPage({ params }) {
 								<div className="text-gray-700 text-sm font-medium mb-1">
 									Peer Perception Index
 								</div>
-								<div className="text-6xl font-bold text-blue-600 mb-1">
+								<div className="text-6xl font-bold text-blue-600 mb-6">
 									{journal.ppi.toFixed(1)}
 								</div>
-								<div className="text-gray-600 text-sm mb-4">out of 100</div>
 
 								<div className="space-y-2 text-left text-sm border-t pt-4">
 									<div className="flex justify-between">
 										<span className="text-gray-600">Category</span>
-										<span className="font-semibold">{journal.category}</span>
+										<span className="font-semibold flex gap-1">
+											<span >
+												{getCategorySymbol(journal.category)}
+											</span>
+											{journal.category}
+										</span>
 									</div>
 									{/* <div className="flex justify-between">
 									<span className="text-gray-600">Global Rank</span>
@@ -219,7 +228,7 @@ export default async function JournalDetailPage({ params }) {
 									{totalCountries}
 								</div>
 								<p className="text-xs text-gray-500">
-									Geographic distribution of authors
+									Geographic distribution of first authors
 								</p>
 							</CardContent>
 						</Card>

@@ -65,7 +65,7 @@ const Funding = () => {
 							className="bg-gray-50 hover:bg-gray-100 rounded-2xl p-6 shadow-sm transition-shadow duration-300"
 						>
 							{/* Icon */}
-							<div className="w-12 h-12 rounded-xl bg-blue-1	00 flex items-center justify-center text-primary mb-4">
+							<div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-primary mb-4">
 								{item.icon}
 							</div>
 

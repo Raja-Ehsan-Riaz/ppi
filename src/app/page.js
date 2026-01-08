@@ -10,7 +10,6 @@ export default function HomePage() {
 	return (
 		<div>
 			<Hero />
-			<LogoSlider />
 			<FeaturesSection />
 			<PPIMethodologyCarousel />
 			<StatsSection />
