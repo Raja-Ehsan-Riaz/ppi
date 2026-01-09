@@ -165,7 +165,7 @@ export default async function JournalDetailPage({ params }) {
 				{/* Main Content */}
 				<div className="max-w-7xl mx-auto  py-8">
 					{/* Stats Grid */}
-					<div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
 						<Card
 							className={"bg-gray-50"}
 							data-aos="fade-up"
@@ -175,7 +175,7 @@ export default async function JournalDetailPage({ params }) {
 						>
 							<CardHeader className="flex flex-row items-center justify-between pb-2">
 								<CardTitle className="text-sm font-medium text-gray-600">
-									Total Papers (2008 onwards)
+									Total Papers <span className="text-xs">(2008 onwards)</span> 
 								</CardTitle>
 								<FileText className="h-5 w-5 text-primary" />
 							</CardHeader>
@@ -237,7 +237,7 @@ export default async function JournalDetailPage({ params }) {
 							</CardContent>
 						</Card>
 
-						<Card
+						{/* <Card
 							className={"bg-gray-50"}
 							data-aos="fade-up"
 							data-aos-delay="500"
@@ -258,7 +258,7 @@ export default async function JournalDetailPage({ params }) {
 									Contributing academic institutions
 								</p>
 							</CardContent>
-						</Card>
+						</Card> */}
 					</div>
 
 					{/* Two Column Layout */}

@@ -34,7 +34,7 @@ export default function PPICategoriesExplained() {
 		{
 			icon: "α",
 			label: "Alpha",
-			range: "PPI ≥ 15",
+			range: "PPI ≥ 15.00",
 			description:
 				" Most prestigious journals where top universities and organizations frequently publish.",
 			color: "bg-blue-50 border-blue-300 text-blue-700",
@@ -43,7 +43,7 @@ export default function PPICategoriesExplained() {
 		{
 			icon: "β",
 			label: "Beta",
-			range: "(15 > PPI ≥ 10)",
+			range: "(15.00 > PPI ≥ 10.00)",
 			description:
 				" Well-regarded journals with strong participation from high-ranking institutions.",
 			color: "bg-green-50 border-green-300 text-green-700",
@@ -52,7 +52,7 @@ export default function PPICategoriesExplained() {
 		{
 			icon: "γ",
 			label: "Gamma",
-			range: "(10 > PPI ≥ 5)",
+			range: "(10.00 > PPI ≥ 5.00)",
 			description:
 				"Low-quality journals with moderate participation from recognized institutions.",
 			color: "bg-orange-50 border-orange-300 text-orange-700",
@@ -61,7 +61,7 @@ export default function PPICategoriesExplained() {
 		{
 			icon: "δ",
 			label: "Delta",
-			range: "(5 > PPI ≥ 2)",
+			range: "(5.00 > PPI ≥ 2.00)",
 			description:
 				"Borderline predatory journals with negative perception among academic peers.",
 			color: "bg-purple-50 border-purple-300 text-purple-700",

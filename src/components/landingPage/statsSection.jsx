@@ -60,15 +60,15 @@ const StatCard = ({ icon: Icon, value, label, type }) => {
 
 	return (
 		<div ref={ref} className="flex flex-col items-center gap-4">
-			<div className="w-16 h-16 rounded-full border flex items-center justify-center mb-4 border-primary/70">
-				<Icon className="w-7 h-7 text-primary" />
+			<div className="w-18 h-18 rounded-full border flex items-center justify-center mb-4 border-primary/70">
+				<Icon className="w-10 h-10 text-primary" />
 			</div>
 
-			<div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
+			<div className="text-4xl md:text-6xl font-bold text-gray-900 mb-2">
 				{humanizeCount(count, type)}
 			</div>
 
-			<div className="text-sm text-gray-600 text-center">{label}</div>
+			<div className="text-gray-600 text-center">{label}</div>
 		</div>
 	)
 }
@@ -97,7 +97,7 @@ export default function StatsSection() {
 				</div>
 
 				<div className="w-full bg-blue-50 p-16 lg:py-24 rounded-4xl">
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-16 place-items-center">
+					<div className="flex flex-col md:flex-row gap-16 justify-evenly	">
 						<StatCard
 							icon={BookOpen}
 							value={totalJournals}

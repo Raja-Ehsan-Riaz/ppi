@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react"
 import { Search, Filter, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { useJournals } from "@/context/journalsContext" // Adjust path as needed
+import { Badge } from "../ui/badge"
 
 const Hero = () => {
 	const [searchQuery, setSearchQuery] = useState("")
@@ -33,7 +34,24 @@ const Hero = () => {
 			window.location.href = "/journals"
 		}
 	}
-
+	const getCategorySymbol = category => {
+		const symbols = {
+			Alpha: "α",
+			Beta: "β",
+			Gamma: "γ",
+			Delta: "δ",
+		}
+		return symbols[category] || ""
+	}
+	const getCategoryBadgeColor = category => {
+		const colors = {
+			Alpha: "bg-blue-100 text-blue-700 border-blue-300",
+			Beta: "bg-green-100 text-green-700 border-green-300",
+			Gamma: "bg-yellow-100 text-yellow-700 border-yellow-300",
+			Delta: "bg-purple-100 text-purple-700 border-purple-300",
+		}
+		return colors[category] || "bg-gray-100 text-gray-700 border-gray-300"
+	}
 	return (
 		<div>
 			<main className="max-w-8xl mx-auto px-4 sm:px-4 lg:px-8 py-16 pt-24 relative rounded-4xl overflow-hidden mt-12 ">
@@ -173,9 +191,24 @@ const Hero = () => {
 													{journal.ppi.toFixed(2)}
 												</td>
 												<td className="px-4 py-4">
-													<span className="inline-flex items-center px-4.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
-														{journal.category}
-													</span>
+													{journal.category &&
+													journal.category.trim() !== "" ? (
+														<Badge
+															variant="outline"
+															className={`text-xs px-3 rounded-sm ${getCategoryBadgeColor(
+																journal.category
+															)}`}
+														>
+															<span className="flex items-center gap-1">
+																<span className="text-sm">
+																	{getCategorySymbol(journal.category)}
+																</span>
+																<span>{journal.category}</span>
+															</span>
+														</Badge>
+													) : (
+														<span className="text-xs text-gray-400">-</span>
+													)}
 												</td>
 												<td className="px-4 py-4">
 													<Link href={`/journals/${journal.slug}`}>

@@ -1,14 +1,28 @@
 "use client"
-import React from "react"
+import React, { useMemo } from "react"
 import { Database, TrendingUp, Globe, Filter } from "lucide-react"
+import { useJournals } from "@/context/journalsContext"
 
+const humanizeJournalsCount = count => {
+	if (!count) return "0+"
+	return `${Math.floor(count / 100) * 100}+`
+}
 const FeaturesSection = () => {
+	const { journals } = useJournals()
+
+	const { totalJournals } = useMemo(() => {
+		return {
+			totalJournals: journals.length,
+		}
+	}, [journals])
+
 	const features = [
 		{
 			icon: <Database className="w-6 h-6 text-primary" />,
 			title: "Search Journals",
-			description:
-				"Access a comprehensive directory of 1,000+ journals with detailed PPI and metrics.",
+			description: `Access a comprehensive directory of ${humanizeJournalsCount(
+				totalJournals
+			)} journals with detailed PPI and metrics.`,
 			iconBg: "bg-blue-100",
 		},
 		{
@@ -33,7 +47,6 @@ const FeaturesSection = () => {
 			iconBg: "bg-blue-100",
 		},
 	]
-
 	return (
 		<section className="px-6 md:px-16 lg:px-24 py-16 md:py-24 bg-blue-50">
 			<div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6  rounded-4xl  ">
