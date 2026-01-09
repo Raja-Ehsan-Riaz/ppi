@@ -178,7 +178,9 @@ const Hero = () => {
 													</span>
 												</td>
 												<td className="px-4 py-4">
-													<ExternalLink className="w-4 h-4 text-gray-400" />
+													<Link href={`/journals/${journal.slug}`}>
+														<ExternalLink className="w-4 h-4 text-gray-400" />
+													</Link>
 												</td>
 											</tr>
 										))}
