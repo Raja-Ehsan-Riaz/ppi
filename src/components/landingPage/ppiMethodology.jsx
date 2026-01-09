@@ -15,13 +15,12 @@ const PPIMethodologySteps = () => {
 			number: "01",
 			title: "Collect First Author Data",
 			icon: Database,
-			description:
-				"Identify first author affiliations and their institutions.",
+			description: "Identify first author affiliations and their institutions.",
 			items: [
 				"Identify first author affiliations from research publications",
 				"Record associated universities and organizations",
 				"Track publications across journals and conferences",
-				"Normalize institution names for consistency"
+				"Normalize institution names for consistency",
 			],
 		},
 		{
@@ -32,7 +31,7 @@ const PPIMethodologySteps = () => {
 				"Give influence to top-ranked institutions based on their prestige.",
 			items: [
 				"Categorize institutions using THE global rankings",
-				"Assign c1 - c4 based on ranking brackets (1 - 50, 51 - 100, 101 - 150, 151 - 200)",
+				"Assign weightage based on ranking brackets (1 - 50, 51 - 100, 101 - 150, 151 - 200)",
 				"Give higher weight to top-tier universities",
 				"Lower weight for lower-ranked or unranked institutions",
 			],
@@ -41,8 +40,7 @@ const PPIMethodologySteps = () => {
 			number: "03",
 			title: "Calculate Index",
 			icon: Calculator,
-			description:
-				"Combine weighted contributions to produce the PPI score.",
+			description: "Combine weighted contributions to produce the PPI score.",
 			items: [
 				"Apply weights to publications based on first author affiliations",
 				"Reflect where elite researchers choose to publish",
@@ -86,7 +84,7 @@ const PPIMethodologySteps = () => {
 					{steps.map((step, index) => (
 						<div
 							key={index}
-							className="flex flex-col items-center flex-1  border-b-2 pb-4 group"
+							className="flex flex-col items-center flex-1  border-b-2 pb-4 group cursor-pointer"
 							onClick={() => setActiveStep(index)}
 						>
 							<button

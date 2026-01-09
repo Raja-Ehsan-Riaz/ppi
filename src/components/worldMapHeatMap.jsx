@@ -149,7 +149,7 @@ export default function WorldMapHeatmap({ countries }) {
 				</p>
 			</CardHeader>
 			<CardContent>
-				<div className="w-full h-[500px] mb-6 relative group">
+				<div className="w-full h-[300px] md:h-[500px] mb-6 relative group">
 					{/* Interactive Hint Overlay */}
 					<div className="absolute inset-0 bg-gradient-to-b from-blue-500/0 via-transparent to-transparent pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
 						<div className="absolute top-2 right-2 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm border border-gray-200">

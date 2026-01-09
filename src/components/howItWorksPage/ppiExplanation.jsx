@@ -21,16 +21,14 @@ const CategoryCard = ({
 		<div
 			className={`bg-white rounded-lg p-4 border border-gray-200 transition-all duration-700 `}
 		>
-			<div className="flex items-center gap-8">
+			<div className="flex flex-col md:flex-row items-start md:items-center gap-8">
 				<div
 					className={`px-3  py-1 min-w-25 justify-start gap-2 flex items-center rounded-md border  ${color}`}
 				>
 					<div className={`${iconColor} text-lg mb-0.5`}>{icon}</div>
 					<span className="text-sm">{label}</span>
 				</div>
-				<div className="flex-2 font-semibold text-gray-600 mb-2">
-					{range}
-				</div>
+				<div className="flex-2 font-semibold text-gray-600 mb-2">{range}</div>
 				<p className="text-gray-500 flex-10 leading-relaxed">{description}</p>
 			</div>
 		</div>
@@ -44,7 +42,7 @@ const StepCard = ({ step, index, isVisible }) => {
 		<div className="relative">
 			{/* Timeline line */}
 			{index < 3 && (
-				<div className="absolute left-[35px] top-[40px] w-[1.5px] h-full">
+				<div className="absolute left-[35px] top-[40px] w-[1.5px] h-full hidden md:block">
 					<div
 						className={`h-full ${
 							isVisible ? "bg-blue-600" : "bg-gray-300"
@@ -55,7 +53,7 @@ const StepCard = ({ step, index, isVisible }) => {
 
 			<div className="flex gap-8 relative">
 				{/* Number Circle */}
-				<div className="flex-shrink-0">
+				<div className="flex-shrink-0 hidden md:block">
 					<div
 						className={`w-18 h-18 rounded-full ${
 							isVisible ? "bg-blue-600" : "bg-gray-300"
@@ -77,7 +75,7 @@ const StepCard = ({ step, index, isVisible }) => {
 							<div>
 								<Icon size={40} className={` transition-colors duration-700`} />
 							</div>
-							<h2 className="text-3xl font-bold text-gray-900">{step.title}</h2>
+							<h2 className="text-xl md:text-3xl font-bold text-gray-900">{step.title}</h2>
 						</div>
 
 						<p className="text-gray-600">{step.description}</p>
@@ -189,7 +187,7 @@ export default function PPIExplanation() {
 		},
 		{
 			number: "04",
-			title: "Categorize Journals/Conferences",
+			title: "Categorize Journals / Conferences",
 			description:
 				"Based on the final PPI, journals and conferences are categorized to reflect their standing among academic peers:",
 			details:
@@ -266,7 +264,10 @@ export default function PPIExplanation() {
 	}, [])
 
 	return (
-		<div className="bg-gradient-to-b from-gray-50 to-white px-6 md:px-16 lg:px-24 py-16 md:py-24 rounded-t-[5rem]">
+		<div
+			className="bg-gradient-to-b from-gray-50 to-white px-6 md:px-16 lg:px-24 py-16 md:py-24 rounded-t-[5rem]"
+			id="methodology"
+		>
 			<div className="max-w-7xl mx-auto">
 				{/* Header */}
 				<div className="text-center mb-16">

@@ -1,15 +1,23 @@
 "use client"
+import { useMemo } from "react"
+import { BookOpen, FileText } from "lucide-react"
+import { useJournals } from "@/context/journalsContext"
 import { useEffect, useRef, useState } from "react"
-import { BookOpen, FileText, Globe, Building2 } from "lucide-react"
 
-const StatCard = ({
-	icon: Icon,
-	about,
-	value,
-	suffix,
-	label,
-	duration = 2000,
-}) => {
+const humanizeCount = (value, type) => {
+	if (type === "journals") {
+		return `${Math.floor(value / 100) * 100}+`
+	}
+
+	if (type === "papers") {
+		const millions = Math.floor(value / 1_000_000)
+		return `${millions}M+`
+	}
+
+	return `${value}+`
+}
+
+const StatCard = ({ icon: Icon, value, label, type }) => {
 	const [count, setCount] = useState(0)
 	const [isVisible, setIsVisible] = useState(false)
 	const ref = useRef(null)
@@ -26,30 +34,21 @@ const StatCard = ({
 			{ threshold: 0.3 }
 		)
 
-		if (ref.current) {
-			observer.observe(ref.current)
-		}
-
-		return () => {
-			if (ref.current) {
-				observer.unobserve(ref.current)
-			}
-		}
+		if (ref.current) observer.observe(ref.current)
+		return () => ref.current && observer.unobserve(ref.current)
 	}, [])
 
 	useEffect(() => {
 		if (!isVisible) return
 
-		const numericValue =
-			typeof value === "string" ? parseFloat(value.replace(/,/g, "")) : value
-
-		const increment = numericValue / (duration / 16)
+		const duration = 2000
+		const increment = value / (duration / 16)
 		let current = 0
 
 		const timer = setInterval(() => {
 			current += increment
-			if (current >= numericValue) {
-				setCount(numericValue)
+			if (current >= value) {
+				setCount(value)
 				clearInterval(timer)
 			} else {
 				setCount(current)
@@ -57,60 +56,37 @@ const StatCard = ({
 		}, 16)
 
 		return () => clearInterval(timer)
-	}, [isVisible, value, duration])
-
-	const formatNumber = num => {
-		return Math.floor(num).toLocaleString()
-	}
+	}, [isVisible, value])
 
 	return (
 		<div ref={ref} className="flex flex-col items-center gap-4">
-			<div
-				className={`w-16 h-16 rounded-full border flex items-center justify-center mb-4 border-primary/70`}
-			>
-				<Icon className={`w-7 h-7 text-primary`} />
+			<div className="w-16 h-16 rounded-full border flex items-center justify-center mb-4 border-primary/70">
+				<Icon className="w-7 h-7 text-primary" />
 			</div>
-			<div className="text-4xl font-bold text-gray-800 mb-2">
-				{formatNumber(count)}
-				{suffix}
+
+			<div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
+				{humanizeCount(count, type)}
 			</div>
-			<div className="text-sm text-gray-600">{label}</div>
+
+			<div className="text-sm text-gray-600 text-center">{label}</div>
 		</div>
 	)
 }
 
 export default function StatsSection() {
-	const stats = [
-		{
-			icon: BookOpen,
-			value: 48000,
-			suffix: "+",
-			label: "Journals Analyzed",
-		},
-		{
-			icon: FileText,
-			value: 12,
-			suffix: "M+",
-			label: "Papers Indexed",
-		},
-		{
-			icon: Globe,
-			value: 195,
-			suffix: "",
-			label: "Countries Represented",
-		},
-		{
-			icon: Building2,
-			value: 8500,
-			suffix: "+",
-			label: "Institutions Mapped",
-		},
-	]
+	const { journals } = useJournals()
+
+	const { totalJournals, totalPapers } = useMemo(() => {
+		return {
+			totalJournals: journals.length,
+			totalPapers: journals.reduce((sum, j) => sum + (j.totalPapers || 0), 0),
+		}
+	}, [journals])
 
 	return (
-		<div className={`px-10 md:px-16 lg:px-24 py-16 md:py-24 `}>
-			<div className="max-w-7xl mx-auto ">
-				<div className="flex flex-col gap-8 items-center text-center justify-between  mb-12 ">
+		<div className="px-10 md:px-16 lg:px-24 py-16 md:py-24">
+			<div className="max-w-7xl mx-auto">
+				<div className="flex flex-col gap-8 items-center text-center mb-12">
 					<h2 className="text-4xl md:text-5xl font-bold text-gray-900">
 						Supported by numbers
 					</h2>
@@ -119,19 +95,22 @@ export default function StatsSection() {
 						publish, revealing true academic prestige beyond citation counts.
 					</p>
 				</div>
+
 				<div className="w-full bg-blue-50 p-16 lg:py-24 rounded-4xl">
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-						{stats.map((stat, index) => (
-							<StatCard
-								key={index}
-								about
-								icon={stat.icon}
-								value={stat.value}
-								suffix={stat.suffix}
-								label={stat.label}
-								duration={2000}
-							/>
-						))}
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-16 place-items-center">
+						<StatCard
+							icon={BookOpen}
+							value={totalJournals}
+							type="journals"
+							label="Journals Analyzed"
+						/>
+
+						<StatCard
+							icon={FileText}
+							value={totalPapers}
+							type="papers"
+							label="Papers Indexed"
+						/>
 					</div>
 				</div>
 			</div>

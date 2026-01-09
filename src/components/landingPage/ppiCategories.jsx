@@ -15,16 +15,14 @@ const CategoryCard = ({
 		<div
 			className={`bg-gray-50/50 rounded-lg p-8 border border-gray-200 transition-all duration-700 `}
 		>
-			<div className="flex items-center gap-8">
+			<div className="flex flex-col md:flex-row items-start md:items-center gap-8">
 				<div
 					className={`px-3  py-1 min-w-25 justify-start gap-2 flex items-center rounded-md border  ${color}`}
 				>
 					<div className={`${iconColor} text-lg mb-0.5`}>{icon}</div>
 					<span className="text-sm">{label}</span>
 				</div>
-				<div className="text-lg flex-2 font-semibold  text-gray-600 mb-2">
-					{range}
-				</div>
+				<div className="flex-2 font-semibold  text-gray-600 mb-2">{range}</div>
 				<p className="text-gray-500 flex-9 leading-relaxed">{description}</p>
 			</div>
 		</div>
@@ -81,7 +79,7 @@ export default function PPICategoriesExplained() {
 	]
 
 	return (
-		<div className="px-10 md:px-16 lg:px-24 py-16 md:py-24 ">
+		<div className="px-10 md:px-16 lg:px-24 py-16 md:py-24 " id="categories">
 			<div className="max-w-6xl mx-auto">
 				<div className="text-center mb-12">
 					<h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8 max-w-2xl mx-auto leading-tight">
@@ -89,8 +87,7 @@ export default function PPICategoriesExplained() {
 					</h1>
 					<p className="text-gray-600 text-lg max-w-5xl">
 						Journals and conferences are classified into five tiers based on
-						their PPI, reflecting prestige and quality among academic
-						peers.
+						their PPI, reflecting prestige and quality among academic peers.
 					</p>
 				</div>
 

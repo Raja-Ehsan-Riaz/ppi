@@ -63,7 +63,7 @@ export default async function JournalDetailPage({ params }) {
 				{/* Header Section */}
 				<div className="bg-white rounded-lg py-8">
 					<div className="max-w-7xl mx-auto ">
-						<div className="flex items-center justify-between gap-8">
+						<div className="flex flex-col  md:flex-row items-center justify-between gap-8">
 							<div
 								className="flex-1"
 								data-aos="fade"
@@ -110,14 +110,14 @@ export default async function JournalDetailPage({ params }) {
 											</span>
 										</Badge>
 									) : (
-										<span className="text-xs text-gray-400">-</span>
+										<span className="text-xs text-gray-400">None</span>
 									)}
 								</div>
 							</div>
 
 							{/* PPI Score Card */}
 							<div
-								className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 text-center min-w-[200px]"
+								className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 text-center w-full md:min-w-[200px]"
 								data-aos="fade-left"
 								data-aos-duration="500"
 								data-aos-easing="ease-out-cubic"
@@ -133,10 +133,12 @@ export default async function JournalDetailPage({ params }) {
 									<div className="flex justify-between">
 										<span className="text-gray-600">Category</span>
 										<span className="font-semibold flex gap-1">
-											<span >
-												{getCategorySymbol(journal.category)}
-											</span>
-											{journal.category}
+											<span>{getCategorySymbol(journal.category)}</span>
+											{journal.category && journal.category.trim() !== "" ? (
+												<> {journal.category}</>
+											) : (
+												<>None</>
+											)}
 										</span>
 									</div>
 									{/* <div className="flex justify-between">
@@ -173,7 +175,7 @@ export default async function JournalDetailPage({ params }) {
 						>
 							<CardHeader className="flex flex-row items-center justify-between pb-2">
 								<CardTitle className="text-sm font-medium text-gray-600">
-									Total Papers
+									Total Papers (2008 onwards)
 								</CardTitle>
 								<FileText className="h-5 w-5 text-primary" />
 							</CardHeader>
@@ -202,7 +204,9 @@ export default async function JournalDetailPage({ params }) {
 							</CardHeader>
 							<CardContent>
 								<div className="text-3xl font-bold text-gray-900 mb-1">
-									{journal.locationData?.totalCitations.toLocaleString()}
+									{journal.locationData
+										? journal.locationData.totalCitations.toLocaleString()
+										: "0"}
 								</div>
 								<p className="text-xs text-gray-500">
 									Total citations across all papers
@@ -260,10 +264,16 @@ export default async function JournalDetailPage({ params }) {
 					{/* Two Column Layout */}
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
 						{/* Author Affiliations by University Tier */}
-						<TopCountriesBarChart
-							topCountries={journal.locationData?.topCountries}
-							totalPapers={journal.totalPapers}
-						/>
+						{journal.locationData ? (
+							<TopCountriesBarChart
+								topCountries={journal.locationData?.topCountries}
+								totalPapers={journal.totalPapers}
+							/>
+						) : (
+							<div className="flex justify-center items-center bg-gray-200 rounded-xl">
+								No Geographic Data Available
+							</div>
+						)}
 
 						{/* Author Contribution by Institutional Prestige - Use Component */}
 						<InstitutionalPrestigeChart
@@ -274,8 +284,6 @@ export default async function JournalDetailPage({ params }) {
 							totalPapers={journal.totalPapers}
 						/>
 					</div>
-
-					{/* Geographic Distribution - Use Component */}
 					<WorldMapHeatmap countries={journal.locationData?.countries || []} />
 				</div>
 			</div>

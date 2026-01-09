@@ -1,6 +1,8 @@
+// app/api/Journals/route.js
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import * as XLSX from 'xlsx';
 
 function generateSlug(name) {
   if (!name) return 'unknown';
@@ -13,11 +15,22 @@ function generateSlug(name) {
 }
 
 export async function GET() {
-  const jsonPath = path.join(process.cwd(), 'public', 'journals.json');
+  const xlsxPath = path.join(process.cwd(), 'public', 'journals.xlsx'); // Changed to .xlsx
   
   try {
-    const data = fs.readFileSync(jsonPath, 'utf8');
-    const rawJournals = JSON.parse(data);
+    // Read the Excel file
+    const fileBuffer = fs.readFileSync(xlsxPath);
+    const workbook = XLSX.read(fileBuffer, { type: 'buffer' });
+    
+    // Get the first sheet
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    
+    // Convert to JSON
+    const rawJournals = XLSX.utils.sheet_to_json(worksheet, { 
+      raw: false,
+      defval: '' 
+    });
     
     const journals = rawJournals.map((row, index) => {
       const name = (row['Journal/Conference _x'] || '').trim();

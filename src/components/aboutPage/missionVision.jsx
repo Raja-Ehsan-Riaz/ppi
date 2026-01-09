@@ -28,7 +28,7 @@ export default function MissionVision() {
 								<p className="font-semibold text-gray-600 mb-4">
 									Collaborating Organizations and Funders
 								</p>
-								<div className="flex flex-col md:flex-row items-start justify-start gap-12">
+								<div className="flex flex-col md:flex-row items-center md:items-start justify-start gap-12">
 									<div className="w-32 h-32 relative">
 										<Image
 											src={"/logos/nust.png"}

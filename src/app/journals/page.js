@@ -13,11 +13,16 @@ import JournalTable from "@/components/JournalTable"
 import Pagination from "@/components/Pagination"
 import { Button } from "@/components/ui/button"
 import { Download, Loader2 } from "lucide-react"
-import CTASection from "@/components/shared/ctaSection"
 import ProductCTA from "@/components/shared/productCTA"
+import { useJournals } from "@/context/journalsContext"
+
+const humanizeJournalsCount = count => {
+	if (!count) return "0+"
+	return `${Math.floor(count / 100) * 100}+`
+}
 
 // Loading fallback component
-function JournalsLoading() {
+function JournalsLoading({ allJournals }) {
 	return (
 		<div className="px-10 md:px-16 lg:px-24 py-16 md:py-24">
 			<div className="max-w-7xl mx-auto mt-12">
@@ -26,8 +31,8 @@ function JournalsLoading() {
 						Journal Directory
 					</h1>
 					<p className="text-lg text-gray-600 max-w-2xl mx-auto">
-						Search and filter over 1,000+ academic journals by Peer Perception
-						Index, category, discipline, and geographic distribution.
+						Search and filter academic journals by Peer Perception Index,
+						category, discipline, and geographic distribution.
 					</p>
 				</div>
 			</div>
@@ -51,7 +56,9 @@ function JournalsContent() {
 	const router = useRouter()
 	const searchParams = useSearchParams()
 
-	const [allJournals, setAllJournals] = useState([])
+	// Get data from context instead of fetching again
+	const { journals: allJournals, loading: contextLoading } = useJournals()
+
 	const [displayedJournals, setDisplayedJournals] = useState([])
 	const [paginatedJournals, setPaginatedJournals] = useState([])
 	const [categories, setCategories] = useState([])
@@ -71,30 +78,24 @@ function JournalsContent() {
 		ppiSort: "high_to_low",
 	})
 
-	// Track if we came from another page with search param
-	const [hasInitializedFromURL, setHasInitializedFromURL] = useState(false)
-
-	// Load journals on mount
+	// Load and process journals when context data is ready
 	useEffect(() => {
+		if (contextLoading || allJournals.length === 0) return
+
 		const loadData = async () => {
 			setIsInitialLoading(true)
 
 			// Get search parameter from URL
 			const urlSearchParam = searchParams.get("search") || ""
 
-			const response = await fetch("/api/Journals")
-			const journals = await response.json()
-
-			setAllJournals(journals.journals)
-			setCategories(getCategories(journals.journals))
+			setCategories(getCategories(allJournals))
 
 			// If URL has search parameter, use it as initial keyword
 			if (urlSearchParam) {
 				setCurrentKeyword(urlSearchParam)
-				setHasInitializedFromURL(true)
 
 				// Apply search with URL parameter
-				const sorted = processJournals(journals.journals, {
+				const sorted = processJournals(allJournals, {
 					keyword: urlSearchParam,
 					category: "all",
 					ppiSort: "high_to_low",
@@ -116,7 +117,7 @@ function JournalsContent() {
 				router.replace("/journals", { scroll: false })
 			} else {
 				// Apply initial sort without search
-				const sorted = processJournals(journals.journals, {
+				const sorted = processJournals(allJournals, {
 					keyword: "",
 					category: "all",
 					ppiSort: "high_to_low",
@@ -139,7 +140,7 @@ function JournalsContent() {
 		}
 
 		loadData()
-	}, [])
+	}, [allJournals, contextLoading])
 
 	// Handle search separately
 	const handleSearch = keyword => {
@@ -255,7 +256,7 @@ function JournalsContent() {
 		window.scrollTo({ top: 0, behavior: "smooth" })
 	}
 
-	if (isInitialLoading) {
+	if (contextLoading || isInitialLoading) {
 		return <JournalsLoading />
 	}
 
@@ -269,8 +270,10 @@ function JournalsContent() {
 							Journal Directory
 						</h1>
 						<p className="text-lg text-gray-600 max-w-2xl mx-auto">
-							Search and filter over 12,000 academic journals by Peer Perception
-							Index, category, discipline, and geographic distribution.
+							Search and filter over{" "}
+							<span>{humanizeJournalsCount(allJournals.length)}</span> academic
+							journals by Peer Perception Index, category, discipline, and
+							geographic distribution.
 						</p>
 					</div>
 

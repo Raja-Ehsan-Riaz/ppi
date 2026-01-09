@@ -5,8 +5,8 @@ import Image from "next/image"
 
 const ProductCTA = () => {
 	return (
-		<section className="px-10 md:px-16 lg:px-24 py-16 md:py-24">
-			<div className="max-w-7xl mx-auto  rounded-4xl p-16 lg:py-24 relative overflow-hidden shadow-lg  bg-linear-to-b from-blue-50/60 via-primary/50  to-primary/20">
+		<section className="px-6 md:px-16 lg:px-24 py-16 md:py-24">
+			<div className="max-w-7xl mx-auto  rounded-4xl p-8 md:p-16 lg:py-24 relative overflow-hidden shadow-lg  bg-linear-to-b from-blue-50/60 via-primary/50  to-primary/20">
 				<div className="max-w-4xl mx-auto text-center">
 					<h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 max-w-2xl mx-auto">
 						Prestige Through Choice, Not Metrics

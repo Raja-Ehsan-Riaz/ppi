@@ -95,7 +95,7 @@ export default function InstitutionalPrestigePieChart({
           className="transition-opacity duration-1000 ease-in"
           style={{ opacity: isVisible ? 1 : 0 }}
         >
-          <ChartContainer config={chartConfig} className="h-[280px]">
+          <ChartContainer config={chartConfig} className="h-[280px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie

@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import React from "react"
 
 const Footer = () => {
@@ -20,93 +21,89 @@ const Footer = () => {
 
 					{/* Platform Links */}
 					<div>
-						<h3 className="font-semibold text-gray-900 mb-4">Platform</h3>
+						<h3 className="font-semibold text-gray-900 mb-4">Explore</h3>
 						<ul className="space-y-3">
 							<li>
-								<a
-									href="#"
+								<Link
+									href="/journals"
 									className="text-gray-600 hover:text-blue-600 text-sm transition-colors"
 								>
 									Journal Directory
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a
-									href="#"
+								<Link
+									href="/how-it-works#methodology"
 									className="text-gray-600 hover:text-blue-600 text-sm transition-colors"
 								>
 									Methodology
-								</a>
+								</Link>
 							</li>
 							<li>
-								<a
-									href="#"
+								<Link
+									href="/#categories"
 									className="text-gray-600 hover:text-blue-600 text-sm transition-colors"
 								>
-									About
-								</a>
+									Categories
+								</Link>
 							</li>
 						</ul>
 					</div>
 
 					{/* Resources Links */}
 					<div>
-						<h3 className="font-semibold text-gray-900 mb-4">Resources</h3>
+						<h3 className="font-semibold text-gray-900 mb-4">About</h3>
 						<ul className="space-y-3">
 							<li>
-								<a
-									href="#"
+								<Link
+									href="/about-us#team"
 									className="text-gray-600 hover:text-blue-600 text-sm transition-colors"
 								>
-									Documentation
-								</a>
+									Our Team
+								</Link>
 							</li>
 							<li>
-								<a
-									href="#"
+								<Link
+									href="/about-us#whyppi"
 									className="text-gray-600 hover:text-blue-600 text-sm transition-colors"
 								>
-									Research
-								</a>
+									Why PPI
+								</Link>
 							</li>
 							<li>
-								<a
-									href="#"
+								<Link
+									href="/about-us#funding"
 									className="text-gray-600 hover:text-blue-600 text-sm transition-colors"
 								>
-									API Access
-								</a>
+									Funding & Support
+								</Link>
 							</li>
 						</ul>
 					</div>
 
 					{/* Contact Links */}
 					<div>
-						<h3 className="font-semibold text-gray-900 mb-4">Contact</h3>
+						<h3 className="font-semibold text-gray-900 mb-4">
+							Contact Details
+						</h3>
 						<ul className="space-y-3">
 							<li>
-								<a
-									href="#"
+								<Link
+									href="tel:05190852123"
+									target="_blank"
 									className="text-gray-600 hover:text-blue-600 text-sm transition-colors"
 								>
-									Get in Touch
-								</a>
+									05190852123
+								</Link>
 							</li>
 							<li>
-								<a
-									href="#"
+								<Link
+									href="mailto:latif.anjum@seecs.edu.pk"
+									target="_blank"
 									className="text-gray-600 hover:text-blue-600 text-sm transition-colors"
 								>
-									Institutional Access
-								</a>
-							</li>
-							<li>
-								<a
-									href="#"
-									className="text-gray-600 hover:text-blue-600 text-sm transition-colors"
-								>
-									Feedback
-								</a>
+									latif.anjum@seecs.edu.pk
+								</Link>
 							</li>
 						</ul>
 					</div>
@@ -118,18 +115,18 @@ const Footer = () => {
 						© 2025 Peer Perception Index. All rights reserved.
 					</p>
 					<div className="flex gap-6">
-						<a
+						<Link
 							href="#"
 							className="text-sm text-gray-600 hover:text-blue-600 transition-colors"
 						>
 							Privacy Policy
-						</a>
-						<a
+						</Link>
+						<Link
 							href="#"
 							className="text-sm text-gray-600 hover:text-blue-600 transition-colors"
 						>
 							Terms of Service
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>

@@ -1,6 +1,8 @@
+// app/api/Journals/[slug]/route.js
 import { NextResponse } from "next/server"
 import fs from "fs"
 import path from "path"
+import * as XLSX from "xlsx"
 import { getJournalLocationData } from "@/lib/googleDrive"
 
 function generateSlug(name) {
@@ -16,15 +18,24 @@ function generateSlug(name) {
 // GET journal by slug
 export async function GET(request, { params }) {
 	const { slug } = await params
-	const jsonPath = path.join(process.cwd(), "public", "journals.json")
+	const xlsxPath = path.join(process.cwd(), "public", "journals.xlsx")
 
 	try {
-		const data = fs.readFileSync(jsonPath, "utf8")
-		const rawJournals = JSON.parse(data)
+		// Read Excel file
+		const fileBuffer = fs.readFileSync(xlsxPath)
+		const workbook = XLSX.read(fileBuffer, { type: "buffer" })
 
-		// Find journal with matching slug
+		// Get first sheet
+		const sheetName = workbook.SheetNames[0]
+		const worksheet = workbook.Sheets[sheetName]
+
+		// Convert to JSON
+		const rawJournals = XLSX.utils.sheet_to_json(worksheet, {
+			raw: false,
+			defval: "",
+		})
+
 		let foundJournal = null
-		let foundIndex = -1
 
 		for (let i = 0; i < rawJournals.length; i++) {
 			const row = rawJournals[i]
@@ -32,10 +43,9 @@ export async function GET(request, { params }) {
 			const journalSlug = generateSlug(name)
 
 			if (journalSlug === slug) {
-				foundIndex = i
 				foundJournal = {
 					id: `journal-${i + 1}`,
-					name: name,
+					name,
 					abbreviation: (row["Abbreviated Journal"] || "").trim(),
 					publisher: (row["Publisher"] || "").trim(),
 					issn: (row["ISSN"] || "").trim(),
@@ -78,7 +88,7 @@ export async function GET(request, { params }) {
 			return NextResponse.json({ error: "Journal not found" }, { status: 404 })
 		}
 
-		// Fetch geographic data from Google Drive
+		// Fetch geographic data from Google Drive (optional)
 		try {
 			const locationData = await getJournalLocationData(foundJournal.name)
 			if (locationData) {
@@ -86,7 +96,6 @@ export async function GET(request, { params }) {
 			}
 		} catch (error) {
 			console.error("Error fetching location data:", error)
-			// Continue without location data if there's an error
 		}
 
 		return NextResponse.json({ journal: foundJournal })

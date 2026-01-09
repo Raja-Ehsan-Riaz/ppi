@@ -26,7 +26,10 @@ export default function WhyPeerPerceptionIndex() {
 	]
 
 	return (
-		<div className="bg-linear-to-b from-white to-gray-50 px-6 md:px-16 lg:px-24 py-16 md:py-24">
+		<div
+			className="bg-linear-to-b from-white to-gray-50 px-6 md:px-16 lg:px-24 py-16 md:py-24"
+			id="whyppi"
+		>
 			<div className="max-w-7xl mx-auto">
 				<div className="grid md:grid-cols-2 gap-12 items-start">
 					{/* Left Column - Title */}

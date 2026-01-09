@@ -3,6 +3,7 @@ import "./globals.css"
 import Header from "@/components/header/header"
 import Footer from "@/components/footer/footer"
 import AOSProvider from "@/providers/aosProvider"
+import { JournalsProvider } from "@/context/journalsContext"
 
 const inter = Inter({
 	variable: "--font-inter",
@@ -19,10 +20,12 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className={`${inter.variable} } font-sans antialiased`}>
-				<AOSProvider />
-				<Header />
-				{children}
-				<Footer />
+				<JournalsProvider>
+					<AOSProvider />
+					<Header />
+					{children}
+					<Footer />
+				</JournalsProvider>
 			</body>
 		</html>
 	)

@@ -1,80 +1,27 @@
 "use client"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Search, Filter, ExternalLink } from "lucide-react"
 import Link from "next/link"
+import { useJournals } from "@/context/journalsContext" // Adjust path as needed
 
 const Hero = () => {
 	const [searchQuery, setSearchQuery] = useState("")
-	const [journals, setJournals] = useState([
-		{
-			id: "journal-1",
-			name: "QUARTERLY JOURNAL OF ECONOMICS",
-			abbreviation: "Q J ECON",
-			publisher: "OXFORD UNIV PRESS INC",
-			issn: "0033-5533",
-			eissn: "1531-4650",
-			category: "Alpha",
-			ppi: 30.91,
-			totalPapers: 1068,
-			tier1Papers: 613,
-			tier2Papers: 76,
-			tier3Papers: 17,
-			tier4Papers: 21,
-			slug: "quarterly-journal-of-economics",
-		},
-		{
-			id: "journal-2",
-			name: "Journal of Causal Inference",
-			abbreviation: "J CAUSAL INFERENCE",
-			publisher: "DE GRUYTER POLAND SP Z O O",
-			issn: "2193-3677",
-			eissn: "2193-3685",
-			category: "Alpha",
-			ppi: 28.96,
-			totalPapers: 332,
-			tier1Papers: 173,
-			tier2Papers: 29,
-			tier3Papers: 12,
-			tier4Papers: 6,
-			slug: "journal-of-causal-inference",
-		},
-		{
-			id: "journal-3",
-			name: "Foundations and Trends in Machine Learning",
-			abbreviation: "FOUND TRENDS MACH LE",
-			publisher: "NOW PUBLISHERS INC",
-			issn: "1935-8237",
-			eissn: "1935-8245",
-			category: "Alpha",
-			ppi: 27.43,
-			totalPapers: 103,
-			tier1Papers: 49,
-			tier2Papers: 12,
-			tier3Papers: 3,
-			tier4Papers: 3,
-			slug: "foundations-and-trends-in-machine-learning",
-		},
-		{
-			id: "journal-4",
-			name: "Foundations and Trends in Machine Learning",
-			abbreviation: "FOUND TRENDS MACH LE",
-			publisher: "NOW PUBLISHERS INC",
-			issn: "1935-8237",
-			eissn: "1935-8245",
-			category: "Alpha",
-			ppi: 27.43,
-			totalPapers: 103,
-			tier1Papers: 49,
-			tier2Papers: 12,
-			tier3Papers: 3,
-			tier4Papers: 3,
-			slug: "foundations-and-trends-in-machine-learning",
-		},
-	])
-	const [loading, setLoading] = useState(false)
+	const [previewJournals, setPreviewJournals] = useState([])
 
-	// Data is now hardcoded above, no need to fetch
-	// useEffect removed
+	const { journals, loading, searchJournals, getTopJournals } = useJournals()
+
+	// Update preview journals when search query changes or data loads
+	useEffect(() => {
+		if (searchQuery.trim()) {
+			// Show top 3 matching search results
+			const filtered = searchJournals(searchQuery).slice(0, 3)
+			setPreviewJournals(filtered)
+		} else {
+			// Show top 3 journals by PPI when no search query
+			const top = getTopJournals(4)
+			setPreviewJournals(top)
+		}
+	}, [searchQuery, journals])
 
 	const handleSearch = e => {
 		e.preventDefault()
@@ -96,14 +43,6 @@ const Hero = () => {
 					data-aos-duration="1500"
 					data-aos-easing="ease-out-cubic"
 				>
-					{/* Badge */}
-					{/* <div className="inline-flex items-center bg-white/80 p-2 rounded-full font-medium border border-gray-200  space-x-2 mb-2">
-						<div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-						<span className="text-xs text-gray-600">
-							Academic Journal Intelligence
-						</span>
-					</div> */}
-
 					{/* Main Heading */}
 					<h1 className="text-[56px] font-bold text-gray-900 mb-4  mx-auto leading-tight max-w-xl ">
 						Know Quality Perception of Peers
@@ -157,94 +96,95 @@ const Hero = () => {
 					<div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden p-2">
 						{/* Table Header */}
 						<div className="px-4 py-4 border-b border-gray-200 flex justify-between items-center">
-							<h2 className="text-xl font-bold text-gray-900">Journals Directory</h2>
+							<h2 className="text-xl font-bold text-gray-900">
+								{searchQuery.trim() ? "Search Preview" : "Top Journals"}
+							</h2>
 							<div className="flex items-center space-x-3">
 								<button className="px-3 py-1.5 text-xs text-gray-600 border border-gray-300 rounded-lg flex items-center space-x-2 hover:bg-gray-50 transition-colors">
 									<Filter className="w-4 h-4" />
 									<span>Filters</span>
 								</button>
-								{/* <button className="px-3 py-1.5 text-xs text-gray-600 border border-gray-300 rounded-lg flex items-center space-x-2 hover:bg-gray-50 transition-colors">
-									<span>Export data</span>
-								</button> */}
 							</div>
 						</div>
 
 						{/* Table */}
 						<div className="overflow-x-auto">
-							<table className="w-full">
-								<thead className="bg-gray-50 border-b border-gray-200">
-									<tr>
-										{/* <th className="w-12 px-4 py-"></th> */}
-										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-											Journal
-										</th>
-										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-											Abbreviation
-										</th>
-										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-											Publisher
-										</th>
-										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-											ISSN
-										</th>
-										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-											eISSN
-										</th>
-										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-											PPI
-										</th>
-										<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-											Category
-										</th>
-										<th className="w-12 px-4 py-4"></th>
-									</tr>
-								</thead>
-								<tbody className="bg-white divide-y divide-gray-200">
-									{journals.map((journal, index) => (
-										<tr
-											key={journal.id}
-											className="hover:bg-gray-50 transition-colors pointer-events-none"
-											style={{
-												opacity: 1 - index * 0.25,
-											}}
-										>
-											{/* <td className="px-4 py-4">
-												<input
-													type="checkbox"
-													className="rounded border-gray-300 text-blue-600 focus:ring-blue-600"
-													disabled
-												/>
-											</td> */}
-											<td className="px-4 py-4 text-xs font-medium text-gray-900">
-												{journal.name}
-											</td>
-											<td className="px-4 py-4 text-xs text-gray-600">
-												{journal.abbreviation}
-											</td>
-											<td className="px-4 py-4 text-xs text-gray-600">
-												{journal.publisher}
-											</td>
-											<td className="px-4 py-4 text-xs text-gray-600">
-												{journal.issn || "-"}
-											</td>
-											<td className="px-4 py-4 text-xs text-gray-600">
-												{journal.eissn || "-"}
-											</td>
-											<td className="px-4 py-4 text-xs text-blue-600 font-semibold">
-												{journal.ppi}
-											</td>
-											<td className="px-4 py-4">
-												<span className="inline-flex items-center px-4.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
-													{journal.category}
-												</span>
-											</td>
-											<td className="px-4 py-4">
-												<ExternalLink className="w-4 h-4 text-gray-400" />
-											</td>
+							{loading ? (
+								<div className="px-4 py-12 text-center text-gray-500">
+									Loading journals...
+								</div>
+							) : previewJournals.length === 0 ? (
+								<div className="px-4 py-12 text-center text-gray-500">
+									No journals found matching "{searchQuery}"
+								</div>
+							) : (
+								<table className="w-full">
+									<thead className="bg-gray-50 border-b border-gray-200">
+										<tr>
+											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+												Journal
+											</th>
+											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+												Abbreviation
+											</th>
+											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+												Publisher
+											</th>
+											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+												ISSN
+											</th>
+											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+												eISSN
+											</th>
+											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+												PPI
+											</th>
+											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+												Category
+											</th>
+											<th className="w-12 px-4 py-4"></th>
 										</tr>
-									))}
-								</tbody>
-							</table>
+									</thead>
+									<tbody className="bg-white divide-y divide-gray-200">
+										{previewJournals.map((journal, index) => (
+											<tr
+												key={journal.id}
+												className="hover:bg-gray-50 transition-colors"
+												style={{
+													opacity: 1 - index * 0.25,
+												}}
+											>
+												<td className="px-4 py-4 text-xs font-medium text-gray-900">
+													{journal.name}
+												</td>
+												<td className="px-4 py-4 text-xs text-gray-600">
+													{journal.abbreviation}
+												</td>
+												<td className="px-4 py-4 text-xs text-gray-600">
+													{journal.publisher}
+												</td>
+												<td className="px-4 py-4 text-xs text-gray-600">
+													{journal.issn || "-"}
+												</td>
+												<td className="px-4 py-4 text-xs text-gray-600">
+													{journal.eissn || "-"}
+												</td>
+												<td className="px-4 py-4 text-xs text-blue-600 font-semibold">
+													{journal.ppi.toFixed(2)}
+												</td>
+												<td className="px-4 py-4">
+													<span className="inline-flex items-center px-4.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
+														{journal.category}
+													</span>
+												</td>
+												<td className="px-4 py-4">
+													<ExternalLink className="w-4 h-4 text-gray-400" />
+												</td>
+											</tr>
+										))}
+									</tbody>
+								</table>
+							)}
 						</div>
 
 						{/* Fade overlay */}
@@ -254,7 +194,11 @@ const Hero = () => {
 					{/* Explore Button */}
 					<div className="flex justify-center mt-8 relative z-10">
 						<Link
-							href="/journals"
+							href={
+								searchQuery.trim()
+									? `/journals?search=${encodeURIComponent(searchQuery)}`
+									: `/journals`
+							}
 							className="px-8 py-4 bg-black/80 hover:bg-black/90 text-white rounded-xl text-sm font-semibold transition-colors  shadow-lg hover:shadow-xl transform transition-transform"
 						>
 							Explore full directory

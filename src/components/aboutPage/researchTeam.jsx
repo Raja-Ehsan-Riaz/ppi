@@ -1,6 +1,6 @@
-// components/ResearchTeam.tsx
-import { Mail } from "lucide-react"
-import { Twitter, Instagram, Linkedin } from "lucide-react"
+"use client"
+
+import { Mail, Linkedin, SquareArrowOutUpRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -45,7 +45,7 @@ const teamMembers = [
 
 export default function ResearchTeam() {
 	return (
-		<section className="px-6 md:px-16 lg:px-24 py-16 md:py-24">
+		<section className="px-6 md:px-16 lg:px-24 py-16 md:py-24" id="team">
 			<div className="max-w-7xl mx-auto">
 				{/* Section Title */}
 				<h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -59,81 +59,99 @@ export default function ResearchTeam() {
 				{/* Team Grid */}
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 					{teamMembers.map((member, index) => (
-						<Link
-							href={member.social.seecs}
-							target="_blank"
+						<div
 							key={index}
-							className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer"
+							className="group relative rounded-3xl overflow-hidden aspect-[4/5]"
 						>
-							{/* Profile Image */}
+							{/* Image */}
 							<Image
 								src={member.image}
 								alt={member.name}
 								fill
-								style={{ objectPosition: "50% 50%" }}
-								className="object-cover transition-transform duration-500 group-hover:scale-105"
+								className="object-cover transition-transform duration-500 md:group-hover:scale-105"
 							/>
 
-							{/* Overlay gradient - always visible */}
+							{/* Overlay Gradient */}
 							<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
-							{/* Default Content (Name, Role, Social) */}
-							<div className="absolute bottom-0 left-0 right-0 p-6 text-white transition-opacity duration-300 group-hover:opacity-0">
-								<h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-								<p className="text-sm text-gray-200 mb-3">{member.role}</p>
+							{/* DEFAULT CONTENT (Desktop Only) */}
+							<div
+								className="
+									absolute bottom-0 left-0 right-0 p-6 text-white
+									opacity-0 md:opacity-100
+									md:group-hover:opacity-0
+									transition-opacity duration-300
+								"
+							>
+								<h3 className="text-xl font-semibold mb-1">
+									{member.name}
+								</h3>
+								<p className="text-sm text-gray-200 mb-3">
+									{member.role}
+								</p>
 
-								{/* Social Links */}
 								<div className="flex gap-3">
 									<Link
 										href={`mailto:${member.social.email}`}
-										className="hover:text-pink-400 transition-colors"
-										aria-label="Instagram"
-										target="_blank"
+										className="hover:text-pink-400"
 									>
-										<Mail className="w-5 h-5" />
+										<Mail size={20} />
 									</Link>
 									<Link
 										href={member.social.linkedin}
-										className="hover:text-blue-500 transition-colors"
-										aria-label="LinkedIn"
+										className="hover:text-blue-400"
 										target="_blank"
 									>
-										<Linkedin className="w-5 h-5" />
+										<Linkedin size={20} />
 									</Link>
 								</div>
 							</div>
 
-							{/* Hover Content (Description) */}
-							<div className="absolute inset-0 p-6 text-white flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-								<h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-								<p className="text-sm text-gray-200 mb-3">{member.role}</p>
+							{/* HOVER CONTENT (Mobile Default) */}
+							<div
+								className="
+									absolute inset-0 p-6 text-white flex flex-col justify-end
+									opacity-100 md:opacity-0
+									md:group-hover:opacity-100
+									transition-opacity duration-300
+								"
+							>
+								<Link
+									href={member.social.seecs}
+									target="_blank"
+									className="absolute top-6 right-6 hover:text-blue-300"
+								>
+									<SquareArrowOutUpRight size={20} />
+								</Link>
 
-								{/* Social Links on Hover */}
+								<h3 className="text-xl font-semibold mb-1">
+									{member.name}
+								</h3>
+								<p className="text-sm text-gray-200 mb-3">
+									{member.role}
+								</p>
+
 								<div className="flex gap-3">
 									<Link
 										href={`mailto:${member.social.email}`}
-										className="hover:text-pink-400 transition-colors"
-										aria-label="Instagram"
-										target="_blank"
+										className="hover:text-pink-400"
 									>
-										<Mail className="w-5 h-5" />
+										<Mail size={20} />
 									</Link>
 									<Link
 										href={member.social.linkedin}
-										className="hover:text-blue-500 transition-colors"
-										aria-label="LinkedIn"
+										className="hover:text-blue-400"
 										target="_blank"
 									>
-										<Linkedin className="w-5 h-5" />
+										<Linkedin size={20} />
 									</Link>
 								</div>
 
-								{/* Description */}
-								<p className="text-sm text-gray-100 leading-relaxed">
+								<p className="text-sm text-gray-100 leading-relaxed mt-4">
 									{member.description}
 								</p>
 							</div>
-						</Link>
+						</div>
 					))}
 				</div>
 			</div>

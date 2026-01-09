@@ -29,14 +29,18 @@ const Funding = () => {
 	]
 
 	return (
-		<div className="px-6 md:px-16 lg:px-24 py-16 md:py-24 bg-white">
+		<div
+			className="px-6 md:px-16 lg:px-24 py-16 md:py-24 bg-white"
+			id="funding"
+		>
 			<div className="max-w-7xl mx-auto">
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 					{/* Left Side - Text Content */}
 					<div>
 						{/* Header */}
 						<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-							Funding &<br />Support
+							Funding &<br />
+							Support
 						</h1>
 						<div className="space-y-4 mb-12">
 							<p className="text-gray-600 text-base md:text-lg leading-relaxed">
@@ -53,7 +57,7 @@ const Funding = () => {
 
 					{/* Right Side - Illustration */}
 					<div className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center">
-						<FundingIllustration  />
+						<FundingIllustration />
 					</div>
 				</div>
 

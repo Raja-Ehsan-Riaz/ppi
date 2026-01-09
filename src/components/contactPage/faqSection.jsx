@@ -9,34 +9,29 @@ import {
 const FAQSection = () => {
 	const faqs = [
 		{
-			question: "How often is the PPI database updated?",
+			question: "What is the Peer Perception Index (PPI)?",
 			answer:
-				"The PPI database is updated quarterly to ensure the most current and accurate information for researchers.",
+				"The Peer Perception Index is a metric used to assess the prestige of journals and conferences based on where researchers from top-ranked universities and organizations choose to publish.",
 		},
 		{
-			question: "Can journals request to be added to PPI?",
+			question: "Why was the Peer Perception Index created?",
 			answer:
-				"Yes, journals can submit a request through our contact form. We evaluate all submissions based on our methodology criteria.",
+				"PPI was developed by researchers at NUST SEECS in response to concerns that traditional metrics, particularly the Journal Impact Factor, do not reliably reflect true scholarly prestige.",
 		},
 		{
-			question: "Is API access available?",
+			question: "How does PPI measure journal and conference quality?",
 			answer:
-				"Yes, we offer API access for institutional subscribers. Please contact us for more information about API documentation and access.",
+				"PPI analyzes first-author affiliations in research publications and weights them using Times Higher Education global university rankings.",
 		},
 		{
-			question: "How can I cite the PPI in my work?",
+			question: "What does a high PPI score indicate?",
 			answer:
-				"You can cite the PPI using our standard citation format available in our documentation section.",
+				"A high PPI score indicates that a journal or conference attracts a larger share of publications from top-ranked universities and organizations.",
 		},
 		{
-			question: "Do you offer institutional subscriptions?",
+			question: "How are journals and conferences categorized using PPI?",
 			answer:
-				"Yes, we offer institutional subscriptions with additional features and bulk access. Contact our team for pricing details.",
-		},
-		{
-			question: "How can I contribute to the project?",
-			answer:
-				"We welcome feedback on our methodology and are open to research collaborations. For specific opportunities, contact us at research@peerperceptionindex.org.",
+				"Based on their PPI score, journals and conferences are classified as Alpha, Beta, Gamma, Delta, or None.",
 		},
 	]
 
@@ -49,8 +44,8 @@ const FAQSection = () => {
 						Frequently asked questions
 					</h2>
 					<p className="text-gray-600 text-lg">
-						Quick answers to common questions about the PPI platform and
-						methodology.
+						Here are <b>5 core</b> FAQs, refined for a website, using only your
+						provided content and nothing else:
 					</p>
 				</div>
 
