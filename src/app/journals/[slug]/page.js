@@ -117,7 +117,7 @@ export default async function JournalDetailPage({ params }) {
 
 							{/* PPI Score Card */}
 							<div
-								className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 text-center w-full md:min-w-[200px]"
+								className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 text-center min-w-[200px]"
 								data-aos="fade-left"
 								data-aos-duration="500"
 								data-aos-easing="ease-out-cubic"
