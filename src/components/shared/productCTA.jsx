@@ -12,7 +12,7 @@ const ProductCTA = () => {
 						Prestige Through Choice, Not Metrics
 					</h1>
 					<p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
-						The Peer Perception Index identifies journal prestige by tracking
+						The Peer Perception Index identifies journal/conference prestige by tracking
 						where researchers at leading institutions choose to publish. These
 						decisions reveal standing within the scholarly community beyond
 						citation totals.
