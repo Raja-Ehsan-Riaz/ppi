@@ -45,7 +45,7 @@ export default function JournalTable({ journals }) {
 								/>
 							</th> */}
 							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
-								Journal
+								Journal / Conference
 							</th>
 							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
 								Abbreviation

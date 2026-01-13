@@ -152,7 +152,11 @@ export default async function JournalDetailPage({ params }) {
 								</div>
 
 								<Button variant="outline" className="w-full mt-4" asChild>
-									<Link href="#" rel="noopener noreferrer">
+									<Link
+										href={`https://www.google.com/search?q="${journal.name}"&btnI=1`}
+										rel="noopener noreferrer"
+										target="_blank"
+									>
 										Visit journal website
 										<ExternalLink className="w-4 h-4 ml-2" />
 									</Link>

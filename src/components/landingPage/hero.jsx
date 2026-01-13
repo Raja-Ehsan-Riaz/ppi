@@ -69,7 +69,7 @@ const Hero = () => {
 					{/* Subheading */}
 					<p className="text-lg text-gray-600 max-w-5xl mx-auto mb-8">
 						The Peer Perception Index analyzes where top researchers actually
-						publish, providing a transparent metric for journal quality beyond
+						publish, providing a transparent metric for journal/conference quality beyond
 						traditional impact factors.
 					</p>
 
@@ -85,7 +85,7 @@ const Hero = () => {
 									type="text"
 									value={searchQuery}
 									onChange={e => setSearchQuery(e.target.value)}
-									placeholder="Search by journal name, ISSN, or topic..."
+									placeholder="Search by journal/conference name, ISSN, or topic..."
 									className="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 text-sm focus:outline-none bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent"
 								/>
 							</div>
@@ -115,7 +115,7 @@ const Hero = () => {
 						{/* Table Header */}
 						<div className="px-4 py-4 border-b border-gray-200 flex justify-between items-center">
 							<h2 className="text-xl font-bold text-gray-900">
-								{searchQuery.trim() ? "Search Preview" : "Top Journals"}
+								{searchQuery.trim() ? "Search Preview" : "Top Journals / Conferences"}
 							</h2>
 							<div className="flex items-center space-x-3">
 								<button className="px-3 py-1.5 text-xs text-gray-600 border border-gray-300 rounded-lg flex items-center space-x-2 hover:bg-gray-50 transition-colors">
@@ -140,7 +140,7 @@ const Hero = () => {
 									<thead className="bg-gray-50 border-b border-gray-200">
 										<tr>
 											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
-												Journal
+												Journal / Conference
 											</th>
 											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 												Abbreviation

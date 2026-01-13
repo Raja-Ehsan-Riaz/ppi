@@ -77,7 +77,7 @@ export default function MissionVision() {
 								</h3>
 								<p className="text-gray-600 text-base leading-relaxed">
 									To provide a transparent, quality-centric evaluation of
-									academic journals by focusing on where leading researchers and
+									academic journals/conferences by focusing on where leading researchers and
 									institutions choose to publish, rather than relying on easily
 									manipulated metrics.
 								</p>

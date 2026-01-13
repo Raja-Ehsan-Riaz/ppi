@@ -19,17 +19,17 @@ const FeaturesSection = () => {
 	const features = [
 		{
 			icon: <Database className="w-6 h-6 text-primary" />,
-			title: "Search Journals",
+			title: "Search Journals / Conferences",
 			description: `Access a comprehensive directory of ${humanizeJournalsCount(
 				totalJournals
-			)} journals with detailed PPI and metrics.`,
+			)} journals/conferences with detailed PPI and metrics.`,
 			iconBg: "bg-blue-100",
 		},
 		{
 			icon: <TrendingUp className="w-6 h-6 text-primary" />,
 			title: "Evaluate PPI",
 			description:
-				"Understand journal prestige through data-driven analysis of first author affiliations and rankings.",
+				"Understand journal/conference prestige through data-driven analysis of first author affiliations and rankings.",
 			iconBg: "bg-blue-100",
 		},
 		{
@@ -43,7 +43,7 @@ const FeaturesSection = () => {
 			icon: <Filter className="w-6 h-6 text-primary" />,
 			title: "Identify Quality",
 			description:
-				"Filter journals by PPI category to distinguish high-quality from low-quality publications.",
+				"Filter journals/conferences by PPI category to distinguish high-quality from low-quality publications.",
 			iconBg: "bg-blue-100",
 		},
 	]

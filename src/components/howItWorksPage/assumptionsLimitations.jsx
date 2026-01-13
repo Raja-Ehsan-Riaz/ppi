@@ -7,7 +7,7 @@ const AssumptionsLimitations = () => {
 			icon: BookOpen,
 			title: "Institutional Prestige Proxy",
 			description:
-				"We assume researchers at top-ranked universities are well-informed about journal prestige and have strong incentives to publish in the most respected venues. This may not hold equally across all disciplines or career stages.",
+				"We assume researchers at top-ranked universities are well-informed about journal/conference prestige and have strong incentives to publish in the most respected venues. This may not hold equally across all disciplines or career stages.",
 		},
 		{
 			icon: Globe,
@@ -25,7 +25,7 @@ const AssumptionsLimitations = () => {
 			icon: TrendingUp,
 			title: "Complementary Metric",
 			description:
-				"PPI should be used alongside traditional metrics like impact factor, not as a replacement. It provides a different perspective on journal quality focused on institutional prestige rather than citations.",
+				"PPI should be used alongside traditional metrics like impact factor, not as a replacement. It provides a different perspective on journal/conference quality focused on institutional prestige rather than citations.",
 		},
 	]
 

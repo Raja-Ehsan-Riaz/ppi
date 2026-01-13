@@ -102,7 +102,7 @@ export default function StatsSection() {
 							icon={BookOpen}
 							value={totalJournals}
 							type="journals"
-							label="Journals Analyzed"
+							label="Journals / Conference Analyzed"
 						/>
 
 						<StatCard

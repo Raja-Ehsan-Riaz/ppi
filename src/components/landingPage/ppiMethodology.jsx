@@ -50,7 +50,7 @@ const PPIMethodologySteps = () => {
 		},
 		{
 			number: "04",
-			title: "Categorize Journals",
+			title: "Categorize Journals / Conferences",
 			icon: ArrowUpDown,
 			description:
 				"Classify journals to distinguish high-quality from low-quality venues.",

@@ -11,7 +11,7 @@ const Footer = () => {
 						<Image src="/logo.png" alt="logo" width={200} height={200} />
 					</div>
 					<p className="text-sm text-gray-600 leading-relaxed max-w-md">
-						A research infrastructure for evaluating academic journals based on
+						A research infrastructure for evaluating academic journals/conferences based on
 						true scholarly prestige.
 					</p>
 				</div>
@@ -28,7 +28,7 @@ const Footer = () => {
 									href="/journals"
 									className="text-gray-600 hover:text-blue-600 text-sm transition-colors"
 								>
-									Journal Directory
+									Journal/Conference Directory
 								</Link>
 							</li>
 							<li>

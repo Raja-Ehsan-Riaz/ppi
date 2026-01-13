@@ -44,8 +44,8 @@ const FAQSection = () => {
 						Frequently asked questions
 					</h2>
 					<p className="text-gray-600 text-lg">
-						Here are <b>5 core</b> FAQs, refined for a website, using only your
-						provided content and nothing else:
+						Quick answers to common questions about the PPI platform and
+						methodology.
 					</p>
 				</div>
 
