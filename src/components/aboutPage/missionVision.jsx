@@ -39,7 +39,7 @@ export default function MissionVision() {
 									</div>
 									<div className="w-32 h-32 relative">
 										<Image
-											src={"/logos/rasta.png"}
+											src={"/logos/rasta.PNG"}
 											alt=""
 											fill
 											className="absolute object-contain"
@@ -77,9 +77,9 @@ export default function MissionVision() {
 								</h3>
 								<p className="text-gray-600 text-base leading-relaxed">
 									To provide a transparent, quality-centric evaluation of
-									academic journals/conferences by focusing on where leading researchers and
-									institutions choose to publish, rather than relying on easily
-									manipulated metrics.
+									academic journals/conferences by focusing on where leading
+									researchers and institutions choose to publish, rather than
+									relying on easily manipulated metrics.
 								</p>
 							</CardContent>
 						</Card>

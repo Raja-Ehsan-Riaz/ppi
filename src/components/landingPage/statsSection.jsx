@@ -96,7 +96,7 @@ export default function StatsSection() {
 					</p>
 				</div>
 
-				<div className="w-full bg-blue-50 p-16 lg:py-24 rounded-4xl">
+				<div className="w-full bg-blue-50 p-16 lg:py-24 rounded-4xl shadow-lg">
 					<div className="flex flex-col md:flex-row gap-16 justify-evenly	">
 						<StatCard
 							icon={BookOpen}
