@@ -4,16 +4,16 @@ import { Mail } from 'lucide-react';
 const EmailsSection = () => {
   const emailCategories = [
     {
-      title: "General Inquiries",
-      email: "contact@peerperceptionindex.org"
+      title: "Dr Muhammad Latif Anjum",
+      email: "latif.anjum@seecs.edu.pk"
     },
     {
-      title: "Technical Support",
-      email: "support@peerperceptionindex.org"
+      title: "Dr Wajahat Hussain",
+      email: "wajahat.hussain@seecs.edu.pk"
     },
     {
-      title: "Media Inquiries",
-      email: "media@peerperceptionindex.org"
+      title: "Dr. Syed Taha Ali",
+      email: "taha.ali@seecs.edu.pk"
     }
   ];
 

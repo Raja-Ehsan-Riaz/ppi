@@ -67,7 +67,7 @@ const Header = () => {
 
 							<Link
 								href="/saheb-i-ejaad"
-								className="px-4 py-3 bg-blue-400 text-white text-sm rounded-lg hover:bg-blue-400/80 transition-colors"
+								className="px-4 py-3 bg-green-500 text-white text-sm rounded-lg hover:bg-green-500/80 transition-colors"
 							>
 								Saheb-i-Ejaad
 							</Link>
@@ -146,7 +146,7 @@ const Header = () => {
 						</Link>
 						<Link
 							href="/saheb-i-ejaad"
-							className="block px-4 py-2 bg-blue-400 text-white  text-center rounded-lg hover:bg-blue-500 transition-colors"
+							className="block px-4 py-2 bg-green-500 text-white  text-center rounded-lg hover:bg-green-500/80 transition-colors"
 							onClick={() => setMobileMenuOpen(false)}
 						>
 							Saheb-i-Ejaad

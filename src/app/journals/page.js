@@ -28,11 +28,11 @@ function JournalsLoading({ allJournals }) {
 			<div className="max-w-7xl mx-auto mt-12">
 				<div className="text-center">
 					<h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-gray-900 mb-8">
-						Journal Directory
+						Journal / Conference Directory
 					</h1>
 					<p className="text-lg text-gray-600 max-w-2xl mx-auto">
-						Search and filter academic journals by Peer Perception Index,
-						category, discipline, and geographic distribution.
+						Search and filter academic journals / conference by Peer Perception
+						Index, category, discipline, and geographic distribution.
 					</p>
 				</div>
 			</div>
@@ -51,7 +51,6 @@ function JournalsLoading({ allJournals }) {
 	)
 }
 
-// Main content component that uses useSearchParams
 function JournalsContent() {
 	const router = useRouter()
 	const searchParams = useSearchParams()
@@ -267,13 +266,13 @@ function JournalsContent() {
 					{/* Header */}
 					<div className="text-center">
 						<h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-gray-900 mb-8">
-							Journal Directory
+							Journal / Conference Directory
 						</h1>
 						<p className="text-lg text-gray-600 max-w-2xl mx-auto">
 							Search and filter over{" "}
 							<span>{humanizeJournalsCount(allJournals.length)}</span> academic
-							journals by Peer Perception Index, category, discipline, and
-							geographic distribution.
+							journals / conferences by Peer Perception Index, category,
+							discipline, and geographic distribution.
 						</p>
 					</div>
 

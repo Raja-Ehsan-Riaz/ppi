@@ -175,7 +175,7 @@ export default async function JournalDetailPage({ params }) {
 						>
 							<CardHeader className="flex flex-row items-center justify-between pb-2">
 								<CardTitle className="text-sm font-medium text-gray-600">
-									Total Papers <span className="text-xs">(2008 onwards)</span> 
+									Total Papers <span className="text-xs">(2008 onwards)</span>
 								</CardTitle>
 								<FileText className="h-5 w-5 text-primary" />
 							</CardHeader>

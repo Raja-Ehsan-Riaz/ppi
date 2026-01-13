@@ -337,7 +337,7 @@ function SahebIEjadContent() {
 							Journals / Conferences featuring research publications from
 							Pakistani first authors. Explore over{" "}
 							<span>{humanizeJournalsCount(allJournals.length)}</span> journals
-							/ conference with contributions from Pakistan.
+							/ conferences with contributions from Pakistan.
 						</p>
 					</div>
 
