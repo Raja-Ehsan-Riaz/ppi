@@ -69,8 +69,8 @@ const Hero = () => {
 					{/* Subheading */}
 					<p className="text-lg text-gray-600 max-w-5xl mx-auto mb-8">
 						The Peer Perception Index analyzes where top researchers actually
-						publish, providing a transparent metric for journal/conference quality beyond
-						traditional impact factors.
+						publish, providing a transparent metric for journal/conference
+						quality beyond traditional impact factors.
 					</p>
 
 					{/* Search Bar */}
@@ -115,7 +115,9 @@ const Hero = () => {
 						{/* Table Header */}
 						<div className="px-4 py-4 border-b border-gray-200 flex justify-between items-center">
 							<h2 className="text-xl font-bold text-gray-900">
-								{searchQuery.trim() ? "Search Preview" : "Top Journals / Conferences"}
+								{searchQuery.trim()
+									? "Search Preview"
+									: "Top Journals / Conferences"}
 							</h2>
 							<div className="flex items-center space-x-3">
 								<button className="px-3 py-1.5 text-xs text-gray-600 border border-gray-300 rounded-lg flex items-center space-x-2 hover:bg-gray-50 transition-colors">
@@ -172,8 +174,13 @@ const Hero = () => {
 													opacity: 1 - index * 0.25,
 												}}
 											>
-												<td className="px-4 py-4 text-xs font-medium text-gray-900">
-													{journal.name}
+												<td className="px-4 py-4 text-xs font-medium  text-gray-900">
+													<Link
+														href={`/journal/${journal.name}`}
+														className="hover:text-primary"
+													>
+														{journal.name}
+													</Link>
 												</td>
 												<td className="px-4 py-4 text-xs text-gray-600">
 													{journal.abbreviation}
@@ -200,10 +207,10 @@ const Hero = () => {
 															)}`}
 														>
 															<span className="flex items-center gap-1">
-																<span className="text-sm">
-																	{getCategorySymbol(journal.category)}
-																</span>
 																<span>{journal.category}</span>
+																<span className="text-sm">
+																	({getCategorySymbol(journal.category)})
+																</span>
 															</span>
 														</Badge>
 													) : (

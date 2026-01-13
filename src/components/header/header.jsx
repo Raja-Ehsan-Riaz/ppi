@@ -58,16 +58,24 @@ const Header = () => {
 							Contact
 						</Link>
 						<div className="flex items-center gap-3">
-							<Link
-								href="/journals"
-								className="px-4 py-3 bg-primary text-white text-sm rounded-lg hover:bg-primary/80 transition-colors"
-							>
-								Explore Journals
-							</Link>
+							{pathname !== "/saheb-i-ejaad" ? (
+								<Link
+									href="/journals"
+									className="px-4 py-3 bg-primary text-white text-sm rounded-lg hover:bg-primary/80 transition-colors"
+								>
+									Explore Journals
+								</Link>
+							) : (
+								<></>
+							)}
 
 							<Link
 								href="/saheb-i-ejaad"
-								className="px-4 py-3 bg-green-500 text-white text-sm rounded-lg hover:bg-green-500/80 transition-colors"
+								className={`px-4 py-3 ${
+									pathname === "/saheb-i-ejaad"
+										? "bg-green-500 hover:bg-green-500/80"
+										: "bg-black hover:bg-black/70"
+								}  text-white text-sm rounded-lg  transition-colors`}
 							>
 								Saheb-i-Ejaad
 							</Link>
@@ -137,16 +145,24 @@ const Header = () => {
 						>
 							Contact
 						</Link>
-						<Link
-							href="/journals"
-							className="block px-4 py-2 bg-blue-600 text-white  text-center rounded-lg hover:bg-blue-700 transition-colors"
-							onClick={() => setMobileMenuOpen(false)}
-						>
-							Explore Journals
-						</Link>
+						{pathname !== "/saheb-i-ejaad" ? (
+							<Link
+								href="/journals"
+								className="block px-4 py-2 bg-blue-600 text-white  text-center rounded-lg hover:bg-blue-700 transition-colors"
+								onClick={() => setMobileMenuOpen(false)}
+							>
+								Explore Journals
+							</Link>
+						) : (
+							<></>
+						)}
 						<Link
 							href="/saheb-i-ejaad"
-							className="block px-4 py-2 bg-green-500 text-white  text-center rounded-lg hover:bg-green-500/80 transition-colors"
+							className={`block px-4 py-2 text-white  text-center rounded-lg ${
+								pathname === "/saheb-i-ejaad"
+									? "bg-green-500 hover:bg-green-500/80"
+									: "bg-black hover:bg-black/70"
+							} transition-colors`}
 							onClick={() => setMobileMenuOpen(false)}
 						>
 							Saheb-i-Ejaad

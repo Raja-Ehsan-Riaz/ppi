@@ -14,7 +14,7 @@ const teamMembers = [
 		social: {
 			seecs: "https://seecs.nust.edu.pk/faculty/muhammad-latif-anjum/",
 			email: "latif.anjum@seecs.edu.pk",
-			linkedin: "#",
+			linkedin: "https://www.linkedin.com/in/muhammad-latif-anjum-ph-d-187656b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
 		},
 	},
 	{
@@ -26,7 +26,7 @@ const teamMembers = [
 		social: {
 			seecs: "https://seecs.nust.edu.pk/faculty/muhammad-wajahat-hussain/",
 			email: "wajahat.hussain@seecs.edu.pk",
-			linkedin: "#",
+			linkedin: "https://www.linkedin.com/in/wajahat-hussain-13a2907b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
 		},
 	},
 	{

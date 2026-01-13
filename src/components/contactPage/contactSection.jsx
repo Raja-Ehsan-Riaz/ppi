@@ -8,7 +8,7 @@ const ContactSection = () => {
 				{/* Header */}
 				<div className="flex justify-center mb-12 ">
 					<h2 className="text-4xl md:text-5xl font-bold text-gray-900 ">
-						Our Offices
+						Our Location
 					</h2>
 				</div>
 
@@ -41,17 +41,7 @@ const ContactSection = () => {
 						<div className="space-y-8">
 							<div>
 								<h4 className="font-semibold text-gray-900 mb-2 text-lg">
-									Our Office
-								</h4>
-								<p className="text-gray-600 leading-relaxed">
-									NSTP, NUST, H-12
-								</p>
-								<p className="text-gray-600 leading-relaxed">Islamabad</p>
-							</div>
-
-							<div>
-								<h4 className="font-semibold text-gray-900 mb-2 text-lg">
-									Institution
+									Our 	Institution
 								</h4>
 								<p className="text-gray-600 leading-relaxed">NUST, H-12</p>
 								<p className="text-gray-600 leading-relaxed">Islamabad</p>

@@ -6,6 +6,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select"
+import { usePathname } from "next/navigation"
 
 export default function Pagination({
 	currentPage,
@@ -14,6 +15,8 @@ export default function Pagination({
 	handlePerPage,
 	onPageChange,
 }) {
+	
+	const pathname = usePathname()
 	const handlePerPageChange = value => {
 		handlePerPage(value)
 	}
@@ -116,7 +119,7 @@ export default function Pagination({
 								onClick={() => onPageChange(page)}
 								className={`h-8 w-8 p-0 ${
 									currentPage === page
-										? "bg-primary text-white hover:bg-primary/90"
+										? `${pathname==="/saheb-i-ejaad"?"bg-green-500 text-white hover:bg-green-500/80":"bg-primary text-white hover:bg-primary/90"}`
 										: ""
 								}`}
 							>

@@ -25,11 +25,11 @@ export default function MissionVision() {
 						{/* Backed By Section */}
 						<Card className="bg-white border-none shadow-sm mt-8">
 							<CardContent className="p-6 py-0">
-								<p className="font-semibold text-gray-600 mb-4">
+								<p className="font-semibold text-gray-600 text-center mb-4">
 									Collaborating Organizations and Funders
 								</p>
-								<div className="flex flex-col md:flex-row items-center md:items-start justify-start gap-12">
-									<div className="w-32 h-32 relative">
+								<div className="flex flex-col md:flex-row items-center  justify-start gap-12 mx-4">
+									<div className="w-26 h-26 relative">
 										<Image
 											src={"/logos/nust.png"}
 											alt=""

@@ -23,13 +23,13 @@ const CategoryCard = ({
 		>
 			<div className="flex flex-col md:flex-row items-start md:items-center gap-8">
 				<div
-					className={`px-3  py-1 min-w-25 justify-start gap-2 flex items-center rounded-md border  ${color}`}
+					className={`px-3  py-1 min-w-28 justify-start  flex items-center rounded-md border  ${color}`}
 				>
-					<div className={`${iconColor} text-lg mb-0.5`}>{icon}</div>
-					<span className="text-sm">{label}</span>
+					<span className="text-sm mr-2">{label}</span>
+					(<div className={`${iconColor} text-sm mb-0.5`}>{icon}</div>)
 				</div>
 				<div className="flex-2 font-semibold text-gray-600 mb-2">{range}</div>
-				<p className="text-gray-500 flex-10 leading-relaxed">{description}</p>
+				<p className="text-gray-500 flex-9 leading-relaxed">{description}</p>
 			</div>
 		</div>
 	)

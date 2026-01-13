@@ -116,8 +116,10 @@ export default function JournalTable({ journals }) {
 											)}`}
 										>
 											<span className="flex items-center gap-1">
-												<span className="text-sm">{getCategorySymbol(journal.category)}</span>
 												<span>{journal.category}</span>
+												<span className="text-sm">
+													({getCategorySymbol(journal.category)})
+												</span>
 											</span>
 										</Badge>
 									) : (

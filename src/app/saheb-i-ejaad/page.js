@@ -95,7 +95,7 @@ function SahebIEjadLoading() {
 			</div>
 			<div className="max-w-7xl mx-auto px-6 py-8">
 				<div className="bg-white rounded-lg border p-16 flex flex-col items-center justify-center">
-					<Loader2 className="h-16 w-16 animate-spin text-blue-600 mb-4" />
+					<Loader2 className="h-16 w-16 animate-spin text-green-500 mb-4" />
 					<p className="text-gray-600 text-lg font-medium">
 						Loading journals...
 					</p>

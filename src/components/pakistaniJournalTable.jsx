@@ -76,7 +76,7 @@ export default function PakistaniJournalTable({ journals }) {
 									<td className="px-4 py-4">
 										<Link
 											href={`/journals/${journal.slug}`}
-											className="text-xs font-semibold text-gray-900 hover:text-blue-600"
+											className="text-xs font-semibold text-gray-900 hover:text-green-500"
 										>
 											{journal.name}
 										</Link>
@@ -94,7 +94,7 @@ export default function PakistaniJournalTable({ journals }) {
 										{journal.eissn || "-"}
 									</td>
 									<td className="px-4 py-4">
-										<span className="text-xs font-semibold text-blue-600">
+										<span className="text-xs font-semibold text-green-500">
 											{journal.ppi.toFixed(1)}
 										</span>
 									</td>
@@ -107,10 +107,10 @@ export default function PakistaniJournalTable({ journals }) {
 												)}`}
 											>
 												<span className="flex items-center gap-1">
-													<span className="text-sm">
-														{getCategorySymbol(journal.category)}
-													</span>
 													<span>{journal.category}</span>
+													<span className="text-sm">
+														({getCategorySymbol(journal.category)})
+													</span>
 												</span>
 											</Badge>
 										) : (
@@ -126,7 +126,7 @@ export default function PakistaniJournalTable({ journals }) {
 										{journal.references && journal.references.length > 0 ? (
 											<button
 												onClick={() => toggleRow(journal.id)}
-												className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded transition-colors"
+												className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-green-500 hover:text-blue-800 hover:bg-blue-50 rounded transition-colors"
 											>
 												<FileText className="h-3.5 w-3.5" />
 												{expandedRow === journal.id ? (
@@ -142,7 +142,7 @@ export default function PakistaniJournalTable({ journals }) {
 									<td className="px-4 py-4">
 										<Link
 											href={`/journals/${journal.slug}`}
-											className="text-gray-400 hover:text-blue-600"
+											className="text-gray-400 hover:text-green-500"
 										>
 											<ExternalLink className="h-4 w-4" />
 										</Link>
@@ -152,10 +152,13 @@ export default function PakistaniJournalTable({ journals }) {
 									journal.references &&
 									journal.references.length > 0 && (
 										<tr>
-											<td colSpan="10" className="px-4 py-4 bg-blue-50 border-t border-blue-100">
+											<td
+												colSpan="10"
+												className="px-4 py-4 bg-blue-50 border-t border-blue-100"
+											>
 												<div className="space-y-2">
 													<h4 className="font-semibold text-xs text-gray-900 mb-3 flex items-center gap-2">
-														<FileText className="h-4 w-4 text-blue-600" />
+														<FileText className="h-4 w-4 text-green-500" />
 														References ({journal.references.length})
 													</h4>
 													<ol className="space-y-3 list-decimal list-outside ml-5">
