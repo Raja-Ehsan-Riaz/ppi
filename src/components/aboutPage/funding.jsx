@@ -6,24 +6,24 @@ const Funding = () => {
 	const items = [
 		{
 			icon: <GraduationCap className="w-6 h-6" />,
-			title: "Project Title:",
+			title: "Project Title",
 			description:
 				"Evaluating Our Higher Education Experiment: A Rigorous Quality-centric Appraisal of Pakistan's Research Publication Landscape",
 		},
 		{
 			icon: <Building2 className="w-6 h-6" />,
-			title: "Funding Agency:",
+			title: "Funding Agency",
 			description: "Pakistan Institute of Development Economics (PIDE)",
 		},
 		{
 			icon: <Banknote className="w-6 h-6" />,
-			title: "Funding Stream:",
+			title: "Funding Stream",
 			description:
 				"Competitive Research Grants for Policy Oriented Research (RASTA)",
 		},
 		{
 			icon: <Globe className="w-6 h-6" />,
-			title: "Funding Cycle:",
+			title: "Funding Cycle",
 			description: "RASTA CGP 7.0",
 		},
 	]

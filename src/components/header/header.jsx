@@ -22,7 +22,16 @@ const Header = () => {
 						href="/"
 						className="flex items-center space-x-2 h-full w-46 relative "
 					>
-						<Image src="/logo.png" alt="logo" fill className="object-contain" />
+						<Image
+							src={`${
+							pathname.includes("/saheb-i-ejaad")
+									? "/logo - green.png"
+									: "/logo.png"
+							}`}
+							alt="logo"
+							fill
+							className="object-contain"
+						/>
 					</Link>
 
 					{/* Desktop Navigation */}
@@ -58,7 +67,7 @@ const Header = () => {
 							Contact
 						</Link>
 						<div className="flex items-center gap-3">
-							{pathname !== "/saheb-i-ejaad" ? (
+							{!pathname.includes("/saheb-i-ejaad") ? (
 								<Link
 									href="/journals"
 									className="px-4 py-3 bg-primary text-white text-sm rounded-lg hover:bg-primary/80 transition-colors"
@@ -72,8 +81,8 @@ const Header = () => {
 							<Link
 								href="/saheb-i-ejaad"
 								className={`px-4 py-3 ${
-									pathname === "/saheb-i-ejaad"
-										? "bg-green-500 hover:bg-green-500/80"
+								pathname.includes("/saheb-i-ejaad")
+										? "bg-[#31a694] hover:bg-[#31a694]/80"
 										: "bg-black hover:bg-black/70"
 								}  text-white text-sm rounded-lg  transition-colors`}
 							>
@@ -159,8 +168,8 @@ const Header = () => {
 						<Link
 							href="/saheb-i-ejaad"
 							className={`block px-4 py-2 text-white  text-center rounded-lg ${
-								pathname === "/saheb-i-ejaad"
-									? "bg-green-500 hover:bg-green-500/80"
+							pathname.includes("/saheb-i-ejaad")
+									? "bg-[#31a694] hover:bg-[#31a694]/80"
 									: "bg-black hover:bg-black/70"
 							} transition-colors`}
 							onClick={() => setMobileMenuOpen(false)}

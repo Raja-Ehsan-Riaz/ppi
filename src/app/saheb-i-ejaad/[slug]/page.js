@@ -1,6 +1,6 @@
 // page.tsx - Journal Detail Page with react-simple-maps and shadcn/ui charts
 import { notFound } from "next/navigation"
-import { fetchJournalBySlug } from "@/lib/journalData"
+import { fetchPakistaniJournalBySlug } from "@/lib/journalData"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -11,15 +11,16 @@ import {
 	Building2,
 	ExternalLink,
 } from "lucide-react"
+import InstitutionalPrestigeChart from "@/components/InstitutionalPrestidgeChart"
+import WorldMapHeatmap from "@/components/worldMapHeatMap"
+import UniversityTierBarChart from "@/components/universityTierBarChart"
 import Link from "next/link"
 import ProductCTA from "@/components/shared/productCTA"
 import TopCountriesBarChart from "@/components/universityTierBarChart"
-import InstitutionalPrestigePieChart from "@/components/InstitutionalPrestidgeChart"
-import WorldMapHeatmap from "@/components/worldMapHeatMap"
 
 export default async function JournalDetailPage({ params }) {
 	const { slug } = await params
-	const journal = await fetchJournalBySlug(slug)
+	const journal = await fetchPakistaniJournalBySlug(slug)
 
 	if (!journal) {
 		notFound()
@@ -34,17 +35,6 @@ export default async function JournalDetailPage({ params }) {
 		}
 		return colors[category] || "bg-gray-100 text-gray-700 border-gray-300"
 	}
-
-	// Calculate stats
-	const totalAuthors = 42847 // You can calculate this from your data
-	const totalCountries = journal.locationData?.countries?.length || 0
-	const totalInstitutions = 3421 // You can calculate this from your data
-	const totalRanked =
-		journal.tier1Papers +
-		journal.tier2Papers +
-		journal.tier3Papers +
-		journal.tier4Papers
-	const unrankedPapers = journal.totalPapers - totalRanked
 
 	const getCategorySymbol = category => {
 		const symbols = {
@@ -125,7 +115,7 @@ export default async function JournalDetailPage({ params }) {
 								<div className="text-gray-700 text-sm font-medium mb-1">
 									Peer Perception Index
 								</div>
-								<div className="text-6xl font-bold text-blue-600 mb-6">
+								<div className="text-6xl font-bold text-[#31a694] mb-6">
 									{journal.ppi.toFixed(1)}
 								</div>
 
@@ -142,13 +132,13 @@ export default async function JournalDetailPage({ params }) {
 										</span>
 									</div>
 									{/* <div className="flex justify-between">
-									<span className="text-gray-600">Global Rank</span>
-									<span className="font-semibold">#1</span>
-								</div>
-								<div className="flex justify-between">
-									<span className="text-gray-600">Discipline Rank</span>
-									<span className="font-semibold">#2345</span>
-								</div> */}
+                                    <span className="text-gray-600">Global Rank</span>
+                                    <span className="font-semibold">#1</span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <span className="text-gray-600">Discipline Rank</span>
+                                    <span className="font-semibold">#2345</span>
+                                </div> */}
 								</div>
 
 								<Button variant="outline" className="w-full mt-4" asChild>
@@ -167,9 +157,9 @@ export default async function JournalDetailPage({ params }) {
 				</div>
 
 				{/* Main Content */}
-				<div className="max-w-7xl mx-auto  py-8">
+				<div className="max-w-6xl mx-auto  py-8">
 					{/* Stats Grid */}
-					<div className="grid grid-cols-1 md:grid-col-3 lg:grid-cols-5 gap-6 mb-8">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
 						<Card
 							className={"bg-gray-50"}
 							data-aos="fade-up"
@@ -181,135 +171,50 @@ export default async function JournalDetailPage({ params }) {
 								<CardTitle className="text-sm font-medium text-gray-600">
 									Total Papers <span className="text-xs">(2008 onwards)</span>
 								</CardTitle>
-								<FileText className="h-5 w-5 text-primary" />
+								<FileText className="h-5 w-5 text-[#31a694]" />
 							</CardHeader>
 							<CardContent>
 								<div className="text-3xl font-bold text-gray-900 mb-1">
-									{journal.totalPapers.toLocaleString()}
+									{journal.totalPapers?.toLocaleString()}
 								</div>
 								<p className="text-xs text-gray-500">
 									Analyzed in PPI calculation
 								</p>
 							</CardContent>
 						</Card>
+
 						<Card
 							className={"bg-gray-50"}
 							data-aos="fade-up"
-							data-aos-delay="200"
+							data-aos-delay="300"
 							data-aos-duration="500"
 							data-aos-easing="ease-out-cubic"
 						>
 							<CardHeader className="flex flex-row items-center justify-between pb-2">
 								<CardTitle className="text-sm font-medium text-gray-600">
-									Tier 1 papers
+									Total Pakistani Papers
 								</CardTitle>
-								<FileText className="h-5 w-5 text-primary" />
+								<TrendingUp className="h-5 w-5 text-[#31a694]" />
 							</CardHeader>
 							<CardContent>
 								<div className="text-3xl font-bold text-gray-900 mb-1">
-									{journal.tier1Papers.toLocaleString()}
+									{journal.totalPakistaniPapers.toLocaleString()}
 								</div>
-								<p className="text-xs text-gray-500">
-									First Author Papers from Institutions
-									ranked 1-50.
-								</p>
-							</CardContent>
-						</Card>
-						<Card
-							className={"bg-gray-50"}
-							data-aos="fade-up"
-							data-aos-delay="200"
-							data-aos-duration="500"
-							data-aos-easing="ease-out-cubic"
-						>
-							<CardHeader className="flex flex-row items-center justify-between pb-2">
-								<CardTitle className="text-sm font-medium text-gray-600">
-									Tier 2 papers
-								</CardTitle>
-								<FileText className="h-5 w-5 text-primary" />
-							</CardHeader>
-							<CardContent>
-								<div className="text-3xl font-bold text-gray-900 mb-1">
-									{journal.tier2Papers.toLocaleString()}
-								</div>
-								<p className="text-xs text-gray-500">
-									First Author Papers from Institutions
-									ranked 51-100.
-								</p>
-							</CardContent>
-						</Card>
-						<Card
-							className={"bg-gray-50"}
-							data-aos="fade-up"
-							data-aos-delay="200"
-							data-aos-duration="500"
-							data-aos-easing="ease-out-cubic"
-						>
-							<CardHeader className="flex flex-row items-center justify-between pb-2">
-								<CardTitle className="text-sm font-medium text-gray-600">
-									Tier 3 papers
-								</CardTitle>
-								<FileText className="h-5 w-5 text-primary" />
-							</CardHeader>
-							<CardContent>
-								<div className="text-3xl font-bold text-gray-900 mb-1">
-									{journal.tier3Papers.toLocaleString()}
-								</div>
-								<p className="text-xs text-gray-500">
-									First Author Papers from Institutions
-									ranked 101-150.
-								</p>
-							</CardContent>
-						</Card>
-						<Card
-							className={"bg-gray-50"}
-							data-aos="fade-up"
-							data-aos-delay="200"
-							data-aos-duration="500"
-							data-aos-easing="ease-out-cubic"
-						>
-							<CardHeader className="flex flex-row items-center justify-between pb-2">
-								<CardTitle className="text-sm font-medium text-gray-600">
-									Tier 4 papers
-								</CardTitle>
-								<FileText className="h-5 w-5 text-primary" />
-							</CardHeader>
-							<CardContent>
-								<div className="text-3xl font-bold text-gray-900 mb-1">
-									{journal.tier4Papers.toLocaleString()}
-								</div>
-								<p className="text-xs text-gray-500">
-									First Author Papers from Institutions
-									ranked 151-200.
-								</p>
+								<p className="text-xs text-gray-500">Total pakistani papers</p>
 							</CardContent>
 						</Card>
 					</div>
-
-					{/* Two Column Layout */}
-					<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-						{/* Author Affiliations by University Tier */}
-						{journal.locationData ? (
-							<TopCountriesBarChart
-								topCountries={journal.locationData?.topCountries}
-								totalPapers={journal.totalPapers}
-							/>
-						) : (
-							<div className="flex justify-center items-center bg-gray-200 rounded-xl">
-								No Geographic Data Available
+					<div className="bg-gray-50 flex-col gap-6 rounded-xl border p-6 shadow-sm  text-sm">
+						<div className="font-semibold text-gray-700 leading-none pb-6">
+							References
+						</div>
+						{journal.references?.map((reference, index) => (
+							<div key={index} className="text-gray-600 flex gap-2 mb-1">
+								<span>•</span>
+								{reference}
 							</div>
-						)}
-
-						{/* Author Contribution by Institutional Prestige - Use Component */}
-						<InstitutionalPrestigePieChart
-							tier1Papers={journal.tier1Papers}
-							tier2Papers={journal.tier2Papers}
-							tier3Papers={journal.tier3Papers}
-							tier4Papers={journal.tier4Papers}
-							totalPapers={journal.totalPapers}
-						/>
+						))}
 					</div>
-					<WorldMapHeatmap countries={journal.locationData?.countries || []} />
 				</div>
 			</div>
 			<ProductCTA />

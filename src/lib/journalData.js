@@ -73,3 +73,43 @@ export function paginateJournals(journals, page = 1, perPage = 10) {
 		totalResults: journals.length,
 	}
 }
+
+// Find a journal by slug
+export async function fetchPakistaniJournalBySlug(slug) {
+	try {
+		// Fetch Pakistani papers data
+		const pakistaniResponse = await fetch(
+			`${process.env.NEXT_PUBLIC_URL}/api/saheb-i-ejaad/${slug}`
+		)
+
+		if (!pakistaniResponse.ok) {
+			return null
+		}
+
+		const pakistaniData = await pakistaniResponse.json()
+		const journal = pakistaniData.journal
+
+		// Fetch total papers from main journal route
+		try {
+			const mainJournalResponse = await fetch(
+				`${process.env.NEXT_PUBLIC_URL}/api/Journals/${slug}`
+			)
+
+			if (mainJournalResponse.ok) {
+				const mainJournalData = await mainJournalResponse.json()
+
+				// Merge total papers into the Pakistani journal data
+				journal.totalPapers = mainJournalData.journal.totalPapers || 0
+			}
+		} catch (error) {
+			console.warn("Could not fetch total papers:", error)
+			// Continue with Pakistani data only if main journal fetch fails
+		}
+
+		console.log(journal)
+		return journal
+	} catch (error) {
+		console.error("Error fetching Pakistani journal:", error)
+		return null
+	}
+}

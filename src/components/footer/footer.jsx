@@ -1,18 +1,31 @@
+"use client"
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import React from "react"
 
 const Footer = () => {
+	const pathname = usePathname()
+
 	return (
 		<footer className="bg-white border-t border-gray-200/70">
 			<div className="max-w-7xl mx-auto px-4 py-12">
 				<div className="mb-8">
 					<div className="flex items-center gap-2 mb-4">
-						<Image src="/logo.png" alt="logo" width={200} height={200} />
+						<Image
+							src={`${
+								pathname.includes("/saheb-i-ejaad")
+									? "/logo - green.png"
+									: "/logo.png"
+							}`}
+							alt="logo"
+							width={200}
+							height={200}
+						/>
 					</div>
 					<p className="text-sm text-gray-600 leading-relaxed max-w-md">
-						A research infrastructure for evaluating academic journals/conferences based on
-						true scholarly prestige.
+						A research infrastructure for evaluating academic
+						journals/conferences based on true scholarly prestige.
 					</p>
 				</div>
 

@@ -119,7 +119,7 @@ export default function Pagination({
 								onClick={() => onPageChange(page)}
 								className={`h-8 w-8 p-0 ${
 									currentPage === page
-										? `${pathname==="/saheb-i-ejaad"?"bg-green-500 text-white hover:bg-green-500/80":"bg-primary text-white hover:bg-primary/90"}`
+										? `${pathname==="/saheb-i-ejaad"?"bg-[#31a694] text-white hover:bg-[#31a694]/80":"bg-primary text-white hover:bg-primary/90"}`
 										: ""
 								}`}
 							>

@@ -9,6 +9,7 @@ import Pagination from "@/components/Pagination"
 import { Button } from "@/components/ui/button"
 import { Download, Loader2 } from "lucide-react"
 import ProductCTA from "@/components/shared/productCTA"
+import Image from "next/image"
 
 const humanizeJournalsCount = count => {
 	if (!count) return "0+"
@@ -95,7 +96,7 @@ function SahebIEjadLoading() {
 			</div>
 			<div className="max-w-7xl mx-auto px-6 py-8">
 				<div className="bg-white rounded-lg border p-16 flex flex-col items-center justify-center">
-					<Loader2 className="h-16 w-16 animate-spin text-green-500 mb-4" />
+					<Loader2 className="h-16 w-16 animate-spin text-[#31a694] mb-4" />
 					<p className="text-gray-600 text-lg font-medium">
 						Loading journals...
 					</p>
@@ -327,7 +328,15 @@ function SahebIEjadContent() {
 	return (
 		<div>
 			<div className="px-10 md:px-16 lg:px-24 pt-16 md:pt-24">
-				<div className="max-w-7xl mx-auto mt-12">
+				<div className="max-w-7xl mx-auto ">
+					<div className="bg-gray-200  aspect-video relative overflow-hidden rounded-[5rem] max-w-5xl mx-auto mb-12">
+						<Image
+							src="/Saheb-i-Ejaad Hero.jpg"
+							alt=""
+							fill
+							className="object-cover"
+						/>
+					</div>
 					{/* Header */}
 					<div className="text-center">
 						<h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-gray-900 mb-8">
@@ -378,8 +387,8 @@ function SahebIEjadContent() {
 						{/* Loading States */}
 						{isSearching && (
 							<div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4 flex items-center gap-3">
-								<Loader2 className="h-5 w-5 animate-spin text-blue-600" />
-								<span className="text-blue-700 font-medium">
+								<Loader2 className="h-5 w-5 animate-spin text-[#31a694]" />
+								<span className="text-[#31a694] font-medium">
 									Searching journals...
 								</span>
 							</div>
@@ -387,8 +396,8 @@ function SahebIEjadContent() {
 
 						{isFiltering && (
 							<div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4 flex items-center gap-3">
-								<Loader2 className="h-5 w-5 animate-spin text-blue-600" />
-								<span className="text-blue-700 font-medium">
+								<Loader2 className="h-5 w-5 animate-spin text-[#31a694]" />
+								<span className="text-[#31a694] font-medium">
 									Applying filters...
 								</span>
 							</div>

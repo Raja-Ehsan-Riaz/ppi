@@ -7,7 +7,6 @@ import {
 	Geography,
 	ZoomableGroup,
 } from "react-simple-maps"
-import { scaleQuantile } from "d3-scale"
 import { useState } from "react"
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
@@ -62,16 +61,18 @@ const countryNameMap = {
 	"SRI LANKA": "Sri Lanka",
 }
 
-// Blue color palette (10 shades from medium to dark - blue-500 to blue-900)
+// 10 shades of blue from light to dark (10% gaps)
 const colorPalette = [
-	"#93C5FD", // blue-300 (lighter highlight)
-	"#60A5FA", // blue-400
-	"#3B82F6", // blue-500
-	"#2563EB", // blue-600
-	"#1D4ED8", // blue-700
-	"#1E40AF", // blue-800
-	"#1E3A8A", // blue-900
-	"#172554", // blue-950 (deeper anchor)
+	"#DBEAFE", // blue-100 (0-10%)
+	"#BFDBFE", // blue-200 (10-20%)
+	"#93C5FD", // blue-300 (20-30%)
+	"#60A5FA", // blue-400 (30-40%)
+	"#3B82F6", // blue-500 (40-50%)
+	"#2563EB", // blue-600 (50-60%)
+	"#1D4ED8", // blue-700 (60-70%)
+	"#1E40AF", // blue-800 (70-80%)
+	"#1E3A8A", // blue-900 (80-90%)
+	"#172554", // blue-950 (90-100%)
 ]
 
 export default function WorldMapHeatmap({ countries }) {
@@ -92,45 +93,25 @@ export default function WorldMapHeatmap({ countries }) {
 		}
 	})
 
-	// Get max papers to determine ranges
-	const maxPapers = Math.max(
-		...Array.from(countryDataMap.values()).map(c => c.papers),
-		1
-	)
-
-	// Create fixed ranges with 50-paper gaps
-	const ranges = [
-		0, // 0-50
-		10, // 50-100
-		20, // 100-150
-		30, // 150-200
-		40, // 200-250
-		50, // 250-300
-		60, // 300-350
-	]
-
-	// Function to get color based on paper count
-	const getColorForPapers = papers => {
-		for (let i = ranges.length - 1; i >= 0; i--) {
-			if (papers >= ranges[i]) {
-				return colorPalette[i]
-			}
-		}
-		return colorPalette[0]
+	// Function to get color based on percentage (0-100%)
+	const getColorForPercentage = percentage => {
+		// Determine which 10% range the percentage falls into
+		const index = Math.min(Math.floor(percentage / 10), 9)
+		return colorPalette[index]
 	}
 
-	// Get color legend data with 50-paper ranges
+	// Get color legend data with 10% ranges
 	const getLegendData = () => {
-		return ranges.map((range, index) => {
-			if (index === ranges.length - 1) {
+		return colorPalette.map((color, index) => {
+			if (index === 9) {
 				return {
-					color: colorPalette[index],
-					label: `${range}+`,
+					color: color,
+					label: `90-100%`,
 				}
 			}
 			return {
-				color: colorPalette[index],
-				label: `${range}-${ranges[index + 1] - 1}`,
+				color: color,
+				label: `${index * 10}-${(index + 1) * 10}%`,
 			}
 		})
 	}
@@ -186,7 +167,7 @@ export default function WorldMapHeatmap({ countries }) {
 										const countryName = geo.properties.name
 										const countryData = countryDataMap.get(countryName)
 										const fillColor = countryData
-											? getColorForPapers(countryData.papers)
+											? getColorForPercentage(countryData.percentage)
 											: "#F3F4F6" // gray-100 for countries with no data
 
 										return (
@@ -239,20 +220,20 @@ export default function WorldMapHeatmap({ countries }) {
 						<div key={index} className="flex justify-between items-center">
 							<span className="text-gray-700">{country.country}</span>
 							<span className="font-semibold text-gray-900">
-								{country.percentage.toFixed(0)}%
+								{country.percentage.toFixed(1)}%
 							</span>
 						</div>
 					))}
 				</div>
 
-				{/* Enhanced Legend with Paper Count Ranges */}
+				{/* Enhanced Legend with Percentage Ranges */}
 				<div className="border-t pt-4">
 					<div className="flex items-center justify-between mb-3">
 						<span className="text-xs font-medium text-gray-700">
-							Paper Distribution
+							Percentage Distribution
 						</span>
 						<span className="text-xs text-gray-500">
-							(Number of papers per country)
+							(% of total papers per country)
 						</span>
 					</div>
 
@@ -267,37 +248,33 @@ export default function WorldMapHeatmap({ countries }) {
 					</div>
 
 					<div className="flex justify-between text-xs text-gray-600">
-						<span>Fewer papers</span>
-						<span>More papers</span>
+						<span>Lower percentage</span>
+						<span>Higher percentage</span>
 					</div>
 
-					{/* Quantile ranges */}
-					{legendData.length > 0 && (
-						<div className="mt-4 grid grid-cols-5 gap-2">
-							{legendData.slice(0, 5).map((item, index) => (
-								<div key={index} className="flex items-center gap-1.5">
-									<div
-										className="w-3 h-3 rounded flex-shrink-0"
-										style={{ backgroundColor: item.color }}
-									/>
-									<span className="text-xs text-gray-600">{item.label}</span>
-								</div>
-							))}
-						</div>
-					)}
-					{legendData.length > 5 && (
-						<div className="mt-2 grid grid-cols-5 gap-2">
-							{legendData.slice(5).map((item, index) => (
-								<div key={index} className="flex items-center gap-1.5">
-									<div
-										className="w-3 h-3 rounded flex-shrink-0"
-										style={{ backgroundColor: item.color }}
-									/>
-									<span className="text-xs text-gray-600">{item.label}</span>
-								</div>
-							))}
-						</div>
-					)}
+					{/* Percentage ranges */}
+					<div className="mt-4 grid grid-cols-5 gap-2">
+						{legendData.slice(0, 5).map((item, index) => (
+							<div key={index} className="flex items-center gap-1.5">
+								<div
+									className="w-3 h-3 rounded flex-shrink-0"
+									style={{ backgroundColor: item.color }}
+								/>
+								<span className="text-xs text-gray-600">{item.label}</span>
+							</div>
+						))}
+					</div>
+					<div className="mt-2 grid grid-cols-5 gap-2">
+						{legendData.slice(5).map((item, index) => (
+							<div key={index} className="flex items-center gap-1.5">
+								<div
+									className="w-3 h-3 rounded flex-shrink-0"
+									style={{ backgroundColor: item.color }}
+								/>
+								<span className="text-xs text-gray-600">{item.label}</span>
+							</div>
+						))}
+					</div>
 				</div>
 			</CardContent>
 		</Card>
