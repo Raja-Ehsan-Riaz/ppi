@@ -126,7 +126,7 @@ export default function PakistaniJournalFilters({
 					</div>
 					<Button
 						onClick={handleSearch}
-						className="h-10 bg-[#31a694] hover:bg-[#31a694]/80 cursor-pointer"
+						className="h-10 bg-[#007856] hover:bg-[#007856]/80 cursor-pointer"
 						disabled={isSearching}
 					>
 						{isSearching ? (
@@ -188,7 +188,7 @@ export default function PakistaniJournalFilters({
 					{/* Apply Filters Button */}
 					<Button
 						onClick={handleApplyFilters}
-						className="h-9 min-w-[120px] bg-[#31a694] hover:bg-[#31a694]/80 cursor-pointer"
+						className="h-9 min-w-[120px] bg-[#007856] hover:bg-[#007856]/80 cursor-pointer"
 						disabled={isFiltering}
 					>
 						{isFiltering ? (

@@ -76,7 +76,7 @@ export default function PakistaniJournalTable({ journals }) {
 									<td className="px-4 py-4">
 										<Link
 											href={`/saheb-i-ejaad/${journal.slug}`}
-											className="text-xs font-semibold text-gray-900 hover:text-[#31a694]"
+											className="text-xs font-semibold text-gray-900 hover:text-[#007856]"
 										>
 											{journal.name}
 										</Link>
@@ -94,7 +94,7 @@ export default function PakistaniJournalTable({ journals }) {
 										{journal.eissn || "-"}
 									</td>
 									<td className="px-4 py-4">
-										<span className="text-xs font-semibold text-[#31a694]">
+										<span className="text-xs font-semibold text-[#007856]">
 											{journal.ppi.toFixed(1)}
 										</span>
 									</td>
@@ -126,7 +126,7 @@ export default function PakistaniJournalTable({ journals }) {
 										{journal.references && journal.references.length > 0 ? (
 											<button
 												onClick={() => toggleRow(journal.id)}
-												className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-[#31a694]  hover:bg-green-50 rounded transition-colors"
+												className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-[#007856]  hover:bg-green-50 rounded transition-colors"
 											>
 												<FileText className="h-3.5 w-3.5" />
 												{expandedRow === journal.id ? (
@@ -142,7 +142,7 @@ export default function PakistaniJournalTable({ journals }) {
 									<td className="px-4 py-4">
 										<Link
 											href={`/saheb-i-ejaad/${journal.slug}`}
-											className="text-gray-400 hover:text-[#31a694]"
+											className="text-gray-400 hover:text-[#007856]"
 										>
 											<ExternalLink className="h-4 w-4" />
 										</Link>
@@ -158,7 +158,7 @@ export default function PakistaniJournalTable({ journals }) {
 											>
 												<div className="space-y-2">
 													<h4 className="font-semibold text-xs text-gray-900 mb-3 flex items-center gap-2">
-														<FileText className="h-4 w-4 text-[#31a694]" />
+														<FileText className="h-4 w-4 text-[#007856]" />
 														References ({journal.references.length})
 													</h4>
 													<ol className="space-y-3 list-decimal list-outside ml-5">

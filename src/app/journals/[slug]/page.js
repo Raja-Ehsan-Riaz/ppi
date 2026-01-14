@@ -201,7 +201,7 @@ export default async function JournalDetailPage({ params }) {
 						>
 							<CardHeader className="flex flex-row items-center justify-between pb-2">
 								<CardTitle className="text-sm font-medium text-gray-600">
-									Tier 1 papers
+									Tier 1 Papers
 								</CardTitle>
 								<FileText className="h-5 w-5 text-primary" />
 							</CardHeader>
@@ -224,7 +224,7 @@ export default async function JournalDetailPage({ params }) {
 						>
 							<CardHeader className="flex flex-row items-center justify-between pb-2">
 								<CardTitle className="text-sm font-medium text-gray-600">
-									Tier 2 papers
+									Tier 2 Papers
 								</CardTitle>
 								<FileText className="h-5 w-5 text-primary" />
 							</CardHeader>
@@ -247,7 +247,7 @@ export default async function JournalDetailPage({ params }) {
 						>
 							<CardHeader className="flex flex-row items-center justify-between pb-2">
 								<CardTitle className="text-sm font-medium text-gray-600">
-									Tier 3 papers
+									Tier 3 Papers
 								</CardTitle>
 								<FileText className="h-5 w-5 text-primary" />
 							</CardHeader>
@@ -270,7 +270,7 @@ export default async function JournalDetailPage({ params }) {
 						>
 							<CardHeader className="flex flex-row items-center justify-between pb-2">
 								<CardTitle className="text-sm font-medium text-gray-600">
-									Tier 4 papers
+									Tier 4 Papers
 								</CardTitle>
 								<FileText className="h-5 w-5 text-primary" />
 							</CardHeader>

@@ -176,7 +176,7 @@ const Hero = () => {
 											>
 												<td className="px-4 py-4 text-xs font-medium  text-gray-900">
 													<Link
-														href={`/journal/${journal.name}`}
+														href={`/journals/${journal.name}`}
 														className="hover:text-primary"
 													>
 														{journal.name}

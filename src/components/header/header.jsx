@@ -24,7 +24,7 @@ const Header = () => {
 					>
 						<Image
 							src={`${
-							pathname.includes("/saheb-i-ejaad")
+								pathname.includes("/saheb-i-ejaad")
 									? "/logo - green.png"
 									: "/logo.png"
 							}`}
@@ -81,8 +81,8 @@ const Header = () => {
 							<Link
 								href="/saheb-i-ejaad"
 								className={`px-4 py-3 ${
-								pathname.includes("/saheb-i-ejaad")
-										? "bg-[#31a694] hover:bg-[#31a694]/80"
+									pathname.includes("/saheb-i-ejaad")
+										? "bg-[#007856] hover:bg-[#007856]/80"
 										: "bg-black hover:bg-black/70"
 								}  text-white text-sm rounded-lg  transition-colors`}
 							>
@@ -168,8 +168,8 @@ const Header = () => {
 						<Link
 							href="/saheb-i-ejaad"
 							className={`block px-4 py-2 text-white  text-center rounded-lg ${
-							pathname.includes("/saheb-i-ejaad")
-									? "bg-[#31a694] hover:bg-[#31a694]/80"
+								pathname.includes("/saheb-i-ejaad")
+									? "bg-[#007856] hover:bg-[#007856]/80"
 									: "bg-black hover:bg-black/70"
 							} transition-colors`}
 							onClick={() => setMobileMenuOpen(false)}

@@ -115,7 +115,7 @@ export default async function JournalDetailPage({ params }) {
 								<div className="text-gray-700 text-sm font-medium mb-1">
 									Peer Perception Index
 								</div>
-								<div className="text-6xl font-bold text-[#31a694] mb-6">
+								<div className="text-6xl font-bold text-[#007856] mb-6">
 									{journal.ppi.toFixed(1)}
 								</div>
 
@@ -171,7 +171,7 @@ export default async function JournalDetailPage({ params }) {
 								<CardTitle className="text-sm font-medium text-gray-600">
 									Total Papers <span className="text-xs">(2008 onwards)</span>
 								</CardTitle>
-								<FileText className="h-5 w-5 text-[#31a694]" />
+								<FileText className="h-5 w-5 text-[#007856]" />
 							</CardHeader>
 							<CardContent>
 								<div className="text-3xl font-bold text-gray-900 mb-1">
@@ -194,13 +194,15 @@ export default async function JournalDetailPage({ params }) {
 								<CardTitle className="text-sm font-medium text-gray-600">
 									Total Pakistani Papers
 								</CardTitle>
-								<TrendingUp className="h-5 w-5 text-[#31a694]" />
+								<TrendingUp className="h-5 w-5 text-[#007856]" />
 							</CardHeader>
 							<CardContent>
 								<div className="text-3xl font-bold text-gray-900 mb-1">
 									{journal.totalPakistaniPapers.toLocaleString()}
 								</div>
-								<p className="text-xs text-gray-500">Total pakistani papers</p>
+								<p className="text-xs text-gray-500">
+									Number of pakistani papers in this journal/conference
+								</p>
 							</CardContent>
 						</Card>
 					</div>
