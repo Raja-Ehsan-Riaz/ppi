@@ -327,7 +327,7 @@ function SahebIEjadContent() {
 
 	return (
 		<div>
-			<div className="bg-gray-200 h-[90vh]  relative overflow-hidden mx-auto  mt-20 ">
+			<div className="bg-gray-200 h-[90vh] max-w-400  relative overflow-hidden mx-auto  mt-20 ">
 				<Image
 					src="/Saheb-i-Ejaad Hero.jpg"
 					alt=""
