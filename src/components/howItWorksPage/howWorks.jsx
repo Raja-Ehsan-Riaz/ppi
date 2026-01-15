@@ -18,14 +18,12 @@ const HowWeWorks = () => {
 						</h2>
 						<p className="text-gray-600 text-base md:text-lg leading-relaxed">
 							The Peer Perception Index evaluates journal and conference
-							prestige by analyzing{" "}
-							<b>
-								where researchers from top-ranked universities choose to publish
-							</b>{" "}
-							, rather than relying on citation-based metrics such as the
-							Journal Impact Factor. By weighting first-author affiliations
-							using <b>Times Higher Education rankings</b>, PPI provides a
-							quality-centric view of academic reputation.
+							prestige by analyzing where researchers from top-ranked
+							universities choose to publish , rather than relying on
+							citation-based metrics such as the Journal Impact Factor. By
+							weighting first-author affiliations using Times Higher Education
+							rankings, PPI provides a quality-centric view of academic
+							reputation.
 						</p>
 					</div>
 

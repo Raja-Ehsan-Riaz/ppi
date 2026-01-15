@@ -62,7 +62,7 @@ const FeaturesSection = () => {
 					</h2>
 					<p className="text-base md:text-lg text-gray-600 max-w-md">
 						A quality-centric framework for researchers, academics, and
-						institutions to evaluate the <b> true prestige</b> of journals and
+						institutions to evaluate the true prestige of journals and
 						conferences beyond traditional metrics.
 					</p>
 				</div>

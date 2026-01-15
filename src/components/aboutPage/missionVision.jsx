@@ -18,7 +18,7 @@ export default function MissionVision() {
 						</h2>
 						<p className="text-gray-600 text-base md:text-lg">
 							PPI helps researchers and institutions{" "}
-							<b>assess the quality and prestige of journals and conferences</b>{" "}
+							assess the quality and prestige of journals and conferences{" "}
 							based on where top researchers publish.
 						</p>
 

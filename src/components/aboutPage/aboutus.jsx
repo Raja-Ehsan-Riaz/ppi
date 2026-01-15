@@ -19,13 +19,13 @@ const AboutUs = () => {
 							Index
 						</h2>
 						<p className="text-gray-600 text-base md:text-lg leading-relaxed">
-							The <b>Peer Perception Index (PPI)</b> emerged from ongoing discussions
+							The Peer Perception Index (PPI) emerged from ongoing discussions
 							among researchers at the NUST School of Electrical Engineering and
 							Computer Science (SEECS). The team was concerned with the
 							limitations of traditional journal-ranking metrics, particularly
-							the <b>Journal Impact Factor</b>, which often fails to reflect <b>genuine
-							scholarly prestige</b>. PPI provides a <b>quality-focused and
-							perception-based measure</b>  of journals and conferences, showing
+							the Journal Impact Factor, which often fails to reflect genuine
+							scholarly prestige. PPI provides a quality-focused and
+							perception-based measure  of journals and conferences, showing
 							where top researchers and institutions choose to publish.
 						</p>
 					</div>
