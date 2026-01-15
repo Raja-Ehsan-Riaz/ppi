@@ -16,7 +16,7 @@ const ProductCTA = () => {
 				}"`}
 			>
 				<div className="max-w-4xl mx-auto text-center">
-					<h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 max-w-2xl mx-auto">
+					<h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 max-w-2xl mx-auto leading-tight">
 						Prestige Through Choice, Not Metrics
 					</h1>
 					<p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">

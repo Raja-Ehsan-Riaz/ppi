@@ -153,7 +153,7 @@ export default async function JournalDetailPage({ params }) {
 
 								<Button variant="outline" className="w-full mt-4" asChild>
 									<Link
-										href={`https://www.google.com/search?q="${journal.name}"&btnI=1`}
+										href={`https://www.google.com/search?q="${journal.name} journal"`}
 										rel="noopener noreferrer"
 										target="_blank"
 									>
@@ -210,8 +210,7 @@ export default async function JournalDetailPage({ params }) {
 									{journal.tier1Papers.toLocaleString()}
 								</div>
 								<p className="text-xs text-gray-500">
-									First Author Papers from Institutions
-									ranked 1-50.
+									First Author Papers from Institutions ranked 1-50.
 								</p>
 							</CardContent>
 						</Card>
@@ -233,8 +232,7 @@ export default async function JournalDetailPage({ params }) {
 									{journal.tier2Papers.toLocaleString()}
 								</div>
 								<p className="text-xs text-gray-500">
-									First Author Papers from Institutions
-									ranked 51-100.
+									First Author Papers from Institutions ranked 51-100.
 								</p>
 							</CardContent>
 						</Card>
@@ -256,8 +254,7 @@ export default async function JournalDetailPage({ params }) {
 									{journal.tier3Papers.toLocaleString()}
 								</div>
 								<p className="text-xs text-gray-500">
-									First Author Papers from Institutions
-									ranked 101-150.
+									First Author Papers from Institutions ranked 101-150.
 								</p>
 							</CardContent>
 						</Card>
@@ -279,8 +276,7 @@ export default async function JournalDetailPage({ params }) {
 									{journal.tier4Papers.toLocaleString()}
 								</div>
 								<p className="text-xs text-gray-500">
-									First Author Papers from Institutions
-									ranked 151-200.
+									First Author Papers from Institutions ranked 151-200.
 								</p>
 							</CardContent>
 						</Card>
