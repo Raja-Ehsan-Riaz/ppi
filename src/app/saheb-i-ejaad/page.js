@@ -327,7 +327,7 @@ function SahebIEjadContent() {
 
 	return (
 		<div>
-			<div className="bg-gray-200 h-[90vh] max-w-400  relative overflow-hidden mx-auto  mt-20 ">
+			<div className="bg-gray-200 lg:h-[90vh] aspect-video  lg:aspect-auto max-w-500  relative overflow-hidden mx-auto  mt-20 ">
 				<Image
 					src="/Saheb-i-Ejaad Hero.jpg"
 					alt=""
@@ -340,7 +340,7 @@ function SahebIEjadContent() {
 					{/* Header */}
 					<div className="text-center">
 						<h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-gray-900 mb-8">
-							Saheb-e-Ejaad
+							Saheb-i-Ejaad
 						</h1>
 						<p className="text-lg text-gray-600 max-w-2xl mx-auto">
 							Journals / Conferences featuring research publications from

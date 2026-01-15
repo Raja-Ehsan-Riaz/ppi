@@ -17,6 +17,7 @@ import UniversityTierBarChart from "@/components/universityTierBarChart"
 import Link from "next/link"
 import ProductCTA from "@/components/shared/productCTA"
 import TopCountriesBarChart from "@/components/universityTierBarChart"
+import Image from "next/image"
 
 export default async function JournalDetailPage({ params }) {
 	const { slug } = await params
@@ -107,7 +108,7 @@ export default async function JournalDetailPage({ params }) {
 
 							{/* PPI Score Card */}
 							<div
-								className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 text-center min-w-[200px]"
+								className="bg-green-50 border-2 border-[#007856]/30 rounded-lg p-6 text-center min-w-[200px]"
 								data-aos="fade-left"
 								data-aos-duration="500"
 								data-aos-easing="ease-out-cubic"
@@ -194,7 +195,14 @@ export default async function JournalDetailPage({ params }) {
 								<CardTitle className="text-sm font-medium text-gray-600">
 									Total Pakistani Papers
 								</CardTitle>
-								<TrendingUp className="h-5 w-5 text-[#007856]" />
+								<div className="w-10 h-10 relative overflow-hidden">
+									<Image
+										src="/flag.png"
+										alt=""
+										fill
+										className=" absolute object-contain text-[#007856]"
+									/>
+								</div>
 							</CardHeader>
 							<CardContent>
 								<div className="text-3xl font-bold text-gray-900 mb-1">
@@ -206,7 +214,11 @@ export default async function JournalDetailPage({ params }) {
 							</CardContent>
 						</Card>
 					</div>
-					<div className="bg-gray-50 flex-col gap-6 rounded-xl border p-6 shadow-sm  text-sm">
+					<div className="bg-gray-50 flex-col gap-6 rounded-xl border p-6 shadow-sm  text-sm" 
+							data-aos="fade-up"
+							data-aos-delay="300"
+							data-aos-duration="500"
+							data-aos-easing="ease-out-cubic">
 						<div className="font-semibold text-gray-700 leading-none pb-6">
 							References
 						</div>

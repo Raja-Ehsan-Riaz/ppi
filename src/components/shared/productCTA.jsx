@@ -11,7 +11,7 @@ const ProductCTA = () => {
 			<div
 				className={`max-w-7xl mx-auto  rounded-4xl p-8 md:p-16 lg:py-24 relative overflow-hidden shadow-lg  bg-linear-to-b ${
 					pathname.includes("/saheb-i-ejaad")
-						? "from-green-50/60 via-[#007856]/50  to-[#007856]/50"
+						? "from-green-50/60 via-[#007856]/30  to-[#007856]/50"
 						: "from-blue-50/60 via-primary/50  to-primary/20"
 				}"`}
 			>
