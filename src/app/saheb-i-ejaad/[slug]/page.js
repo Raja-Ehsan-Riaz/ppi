@@ -144,7 +144,7 @@ export default async function JournalDetailPage({ params }) {
 
 								<Button variant="outline" className="w-full mt-4" asChild>
 									<Link
-										href={`https://www.google.com/search?q="${journal.name}"&btnI=1`}
+										href={`https://www.google.com/search?q="${journal.name} journal"`}
 										rel="noopener noreferrer"
 										target="_blank"
 									>
@@ -214,11 +214,13 @@ export default async function JournalDetailPage({ params }) {
 							</CardContent>
 						</Card>
 					</div>
-					<div className="bg-gray-50 flex-col gap-6 rounded-xl border p-6 shadow-sm  text-sm" 
-							data-aos="fade-up"
-							data-aos-delay="300"
-							data-aos-duration="500"
-							data-aos-easing="ease-out-cubic">
+					<div
+						className="bg-gray-50 flex-col gap-6 rounded-xl border p-6 shadow-sm  text-sm"
+						data-aos="fade-up"
+						data-aos-delay="300"
+						data-aos-duration="500"
+						data-aos-easing="ease-out-cubic"
+					>
 						<div className="font-semibold text-gray-700 leading-none pb-6">
 							References
 						</div>
