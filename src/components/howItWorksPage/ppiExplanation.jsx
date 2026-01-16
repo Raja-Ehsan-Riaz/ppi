@@ -144,7 +144,7 @@ export default function PPIExplanation() {
 				"Identify first authors and their affiliated universities or organizations",
 			],
 			footer:
-				"Data sources: Crossref, PubMed, arXiv, institutional repositories",
+				"Data source: Clarivate Insights, Web of Science (WoS)",
 			icon: Database,
 		},
 		{

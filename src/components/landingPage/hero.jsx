@@ -67,7 +67,7 @@ const Hero = () => {
 					</h1>
 
 					{/* Subheading */}
-					<p className="text-lg text-gray-600 max-w-5xl mx-auto mb-8">
+					<p className="text-lg font-light  max-w-5xl mx-auto mb-8">
 						The Peer Perception Index analyzes where top researchers actually
 						publish, providing a transparent metric for journal/conference
 						quality beyond traditional impact factors.
@@ -111,16 +111,16 @@ const Hero = () => {
 					data-aos-duration="500"
 					data-aos-easing="ease-out-cubic"
 				>
-					<div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden p-2">
+					<div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden ">
 						{/* Table Header */}
-						<div className="px-4 py-4 border-b border-gray-200 flex justify-between items-center">
+						<div className="p-6 border-b border-gray-200 flex justify-between items-center ">
 							<h2 className="text-xl font-bold text-gray-900">
 								{searchQuery.trim()
 									? "Search Preview"
 									: "Top Journals / Conferences"}
 							</h2>
 							<div className="flex items-center space-x-3">
-								<button className="px-3 py-1.5 text-xs text-gray-600 border border-gray-300 rounded-lg flex items-center space-x-2 hover:bg-gray-50 transition-colors">
+								<button className="px-3 py-1.5 text-xs border border-gray-300 rounded-lg flex items-center space-x-2 hover:bg-gray-50 transition-colors">
 									<Filter className="w-4 h-4" />
 									<span>Filters</span>
 								</button>
@@ -141,25 +141,25 @@ const Hero = () => {
 								<table className="w-full">
 									<thead className="bg-gray-50 border-b border-gray-200">
 										<tr>
-											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+											<th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 												Journal / Conference
 											</th>
-											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+											<th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 												Abbreviation
 											</th>
-											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+											<th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 												Publisher
 											</th>
-											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+											<th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 												ISSN
 											</th>
-											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+											<th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 												eISSN
 											</th>
-											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+											<th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 												PPI
 											</th>
-											<th className="px-4 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+											<th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
 												Category
 											</th>
 											<th className="w-12 px-4 py-4"></th>
@@ -167,34 +167,30 @@ const Hero = () => {
 									</thead>
 									<tbody className="bg-white divide-y divide-gray-200">
 										{previewJournals.map((journal, index) => (
-											<tr
+											<Link
 												key={journal.id}
-												className="hover:bg-gray-50 transition-colors"
+												href={`/journals/${journal.slug}`}
+												className="table-row hover:bg-gray-100 group align-middle text-gray-600 hover:text-primary transition-colors cursor-pointer"
 												style={{
-													opacity: 1 - index * 0.25,
+													opacity: 1 - index * 0.15,
 												}}
 											>
-												<td className="px-4 py-4 text-xs font-medium  text-gray-900">
-													<Link
-														href={`/journals/${journal.slug}`}
-														className="hover:text-primary"
-													>
-														{journal.name}
-													</Link>
+												<td className="px-6 py-4 text-xs font-medium group-hover:text-primary text-gray-900">
+													{journal.name}
 												</td>
-												<td className="px-4 py-4 text-xs text-gray-600">
+												<td className="px-6 py-4 text-xs">
 													{journal.abbreviation}
 												</td>
-												<td className="px-4 py-4 text-xs text-gray-600">
+												<td className="px-6 py-4 text-xs">
 													{journal.publisher}
 												</td>
-												<td className="px-4 py-4 text-xs text-gray-600">
+												<td className="px-6 py-4 text-xs">
 													{journal.issn || "-"}
 												</td>
-												<td className="px-4 py-4 text-xs text-gray-600">
+												<td className="px-6 py-4 text-xs">
 													{journal.eissn || "-"}
 												</td>
-												<td className="px-4 py-4 text-xs text-blue-600 font-semibold">
+												<td className="px-6 py-4 text-xs text-blue-600 font-semibold">
 													{journal.ppi.toFixed(2)}
 												</td>
 												<td className="px-4 py-4">
@@ -218,11 +214,9 @@ const Hero = () => {
 													)}
 												</td>
 												<td className="px-4 py-4">
-													<Link href={`/journals/${journal.slug}`}>
-														<ExternalLink className="w-4 h-4 text-gray-400" />
-													</Link>
+													<ExternalLink className="w-4 h-4" />
 												</td>
-											</tr>
+											</Link>
 										))}
 									</tbody>
 								</table>

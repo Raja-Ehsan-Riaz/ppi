@@ -69,7 +69,7 @@ export default async function JournalDetailPage({ params }) {
 								data-aos-duration="500"
 								data-aos-easing="ease-out-cubic"
 							>
-								<h1 className="text-5xl font-bold text-gray-900 mb-2 max-w-xl leading-tight">
+								<h1 className="text-5xl font-bold text-gray-900 mb-4 max-w-xl leading-tight">
 									{journal.name}
 									{journal.abbreviation && (
 										<span className="text-gray-500 text-lg font-normal ml-2">
@@ -78,7 +78,7 @@ export default async function JournalDetailPage({ params }) {
 									)}
 								</h1>
 
-								<div className="flex items-center gap-6 text-sm text-gray-600 mb-3 divide-x-2 divide-gray-600">
+								<div className="flex items-center gap-6 text-sm text-gray-600 mb-6 divide-x-2 divide-gray-600">
 									<div className="pr-6">
 										<span className="font-semibold">Publisher:</span>{" "}
 										{journal.publisher || "N/A"}
@@ -97,13 +97,13 @@ export default async function JournalDetailPage({ params }) {
 									{journal.category && journal.category.trim() !== "" ? (
 										<Badge
 											variant="outline"
-											className={`text-xs px-3 rounded-sm ${getCategoryBadgeColor(
+											className={`text-xs py-1 px-4 rounded-sm ${getCategoryBadgeColor(
 												journal.category
 											)}`}
 										>
-											<span className="flex items-center gap-1">
+											<span className="flex text-lg items-center gap-1">
 												<span>{journal.category}</span>(
-												<span className="text-sm mb-0.5">
+												<span className="mb-0.5">
 													{getCategorySymbol(journal.category)}
 												</span>
 												)
@@ -134,7 +134,7 @@ export default async function JournalDetailPage({ params }) {
 										<span className="text-gray-600">Category</span>
 										<span className="font-semibold flex gap-1">
 											{journal.category && journal.category.trim() !== "" ? (
-												<> {journal.category}</>
+												<> {journal.category} </>
 											) : (
 												<>None</>
 											)}

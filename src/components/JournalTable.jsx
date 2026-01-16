@@ -26,7 +26,7 @@ export default function JournalTable({ journals }) {
 			Gamma: "bg-yellow-100 text-yellow-700 border-yellow-300",
 			Delta: "bg-purple-100 text-purple-700 border-purple-300",
 		}
-		return colors[category] || "bg-gray-100 text-gray-700 border-gray-300"
+		return colors[category] || "bg-gray-100  border-gray-300"
 	}
 
 	return (
@@ -44,25 +44,25 @@ export default function JournalTable({ journals }) {
 									onCheckedChange={handleSelectAll}
 								/>
 							</th> */}
-							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+							<th className="px-4 py-3 text-left text-sm font-semibold  uppercase tracking-wider">
 								Journal / Conference
 							</th>
-							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+							<th className="px-4 py-3 text-left text-sm font-semibold  uppercase tracking-wider">
 								Abbreviation
 							</th>
-							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+							<th className="px-4 py-3 text-left text-sm font-semibold  uppercase tracking-wider">
 								Publisher
 							</th>
-							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+							<th className="px-4 py-3 text-left text-sm font-semibold  uppercase tracking-wider">
 								ISSN
 							</th>
-							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+							<th className="px-4 py-3 text-left text-sm font-semibold  uppercase tracking-wider">
 								eISSN
 							</th>
-							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+							<th className="px-4 py-3 text-left text-sm font-semibold  uppercase tracking-wider">
 								PPI
 							</th>
-							<th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider">
+							<th className="px-4 py-3 text-left text-sm font-semibold  uppercase tracking-wider">
 								Category
 							</th>
 							<th className="w-12 px-4 py-3"></th>
@@ -70,9 +70,10 @@ export default function JournalTable({ journals }) {
 					</thead>
 					<tbody className="divide-y divide-gray-200">
 						{journals.map(journal => (
-							<tr
+							<Link
 								key={journal.id}
-								className="hover:bg-gray-50 transition-colors"
+								href={`/journals/${journal.slug}`}
+								className="table-row hover:bg-gray-50 group align-middle text-gray-600 hover:text-primary  transition-colors group"
 							>
 								{/* <td className="px-4 py-4">
 									<Checkbox
@@ -82,24 +83,19 @@ export default function JournalTable({ journals }) {
 										}
 									/>
 								</td> */}
-								<td className="px-4 py-4">
-									<Link
-										href={`/journals/${journal.slug}`}
-										className="text-xs font-semibold text-gray-900 hover:text-blue-600"
-									>
-										{journal.name}
-									</Link>
+								<td className="px-4 py-4 text-xs font-semibold text-gray-900 group-hover:text-primary">
+									{journal.name}
 								</td>
-								<td className="px-4 py-4 text-xs text-gray-700">
+								<td className="px-4 py-4 text-xs ">
 									{journal.abbreviation || "-"}
 								</td>
-								<td className="px-4 py-4 text-xs text-gray-700">
+								<td className="px-4 py-4 text-xs ">
 									{journal.publisher || "-"}
 								</td>
-								<td className="px-4 py-4 text-xs text-gray-600">
+								<td className="px-4 py-4 text-xs">
 									{journal.issn || "-"}
 								</td>
-								<td className="px-4 py-4 text-xs text-gray-600">
+								<td className="px-4 py-4 text-xs">
 									{journal.eissn || "-"}
 								</td>
 								<td className="px-4 py-4">
@@ -127,14 +123,9 @@ export default function JournalTable({ journals }) {
 									)}
 								</td>
 								<td className="px-4 py-4">
-									<Link
-										href={`/journals/${journal.slug}`}
-										className="text-gray-400 hover:text-blue-600"
-									>
-										<ExternalLink className="h-4 w-4" />
-									</Link>
+									<ExternalLink className="h-4 w-4 " />
 								</td>
-							</tr>
+							</Link>
 						))}
 					</tbody>
 				</table>

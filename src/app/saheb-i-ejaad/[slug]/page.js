@@ -60,7 +60,7 @@ export default async function JournalDetailPage({ params }) {
 								data-aos-duration="500"
 								data-aos-easing="ease-out-cubic"
 							>
-								<h1 className="text-5xl font-bold text-gray-900 mb-2 max-w-xl leading-tight">
+								<h1 className="text-5xl font-bold text-gray-900 mb-4 max-w-xl leading-tight">
 									{journal.name}
 									{journal.abbreviation && (
 										<span className="text-gray-500 text-lg font-normal ml-2">
@@ -69,7 +69,7 @@ export default async function JournalDetailPage({ params }) {
 									)}
 								</h1>
 
-								<div className="flex items-center gap-6 text-sm text-gray-600 mb-3 divide-x-2 divide-gray-600">
+								<div className="flex items-center gap-6 text-sm text-gray-600 mb-6 divide-x-2 divide-gray-600">
 									<div className="pr-6">
 										<span className="font-semibold">Publisher:</span>{" "}
 										{journal.publisher || "N/A"}
@@ -88,13 +88,13 @@ export default async function JournalDetailPage({ params }) {
 									{journal.category && journal.category.trim() !== "" ? (
 										<Badge
 											variant="outline"
-											className={`text-xs px-3 rounded-sm ${getCategoryBadgeColor(
+											className={`text-xs py-1 px-4 rounded-sm ${getCategoryBadgeColor(
 												journal.category
 											)}`}
 										>
-											<span className="flex items-center gap-1">
+											<span className="flex text-lg items-center gap-1">
 												<span>{journal.category}</span>(
-												<span className="text-sm mb-0.5">
+												<span className="mb-0.5">
 													{getCategorySymbol(journal.category)}
 												</span>
 												)
@@ -125,7 +125,7 @@ export default async function JournalDetailPage({ params }) {
 										<span className="text-gray-600">Category</span>
 										<span className="font-semibold flex gap-1">
 											{journal.category && journal.category.trim() !== "" ? (
-												<> {journal.category}</>
+												<> {journal.category} </>
 											) : (
 												<>None</>
 											)}
@@ -158,17 +158,17 @@ export default async function JournalDetailPage({ params }) {
 				</div>
 
 				{/* Main Content */}
-				<div className="max-w-6xl mx-auto  py-8">
+				<div className="max-w-5xl mx-auto  py-8">
 					{/* Stats Grid */}
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
 						<Card
-							className={"bg-gray-50"}
+							className={"bg-gray-50 justify-between"}
 							data-aos="fade-up"
-							data-aos-delay="200"
+							data-aos-delay="300"
 							data-aos-duration="500"
 							data-aos-easing="ease-out-cubic"
 						>
-							<CardHeader className="flex flex-row items-center justify-between pb-2">
+							<CardHeader className="flex flex-row items-start justify-between pb-2">
 								<CardTitle className="text-sm font-medium text-gray-600">
 									Total Papers <span className="text-xs">(2008 onwards)</span>
 								</CardTitle>
@@ -183,15 +183,14 @@ export default async function JournalDetailPage({ params }) {
 								</p>
 							</CardContent>
 						</Card>
-
 						<Card
-							className={"bg-gray-50"}
+							className={"bg-gray-50 justify-between"}
 							data-aos="fade-up"
 							data-aos-delay="300"
 							data-aos-duration="500"
 							data-aos-easing="ease-out-cubic"
 						>
-							<CardHeader className="flex flex-row items-center justify-between pb-2">
+							<CardHeader className="flex flex-row items-start justify-between pb-2">
 								<CardTitle className="text-sm font-medium text-gray-600">
 									Total Pakistani Papers
 								</CardTitle>
@@ -209,28 +208,32 @@ export default async function JournalDetailPage({ params }) {
 									{journal.totalPakistaniPapers.toLocaleString()}
 								</div>
 								<p className="text-xs text-gray-500">
-									Number of pakistani papers in this journal/conference
+									No. of papers with first author from Pakistan
 								</p>
 							</CardContent>
 						</Card>
 					</div>
-					<div
-						className="bg-gray-50 flex-col gap-6 rounded-xl border p-6 shadow-sm  text-sm"
-						data-aos="fade-up"
-						data-aos-delay="300"
-						data-aos-duration="500"
-						data-aos-easing="ease-out-cubic"
-					>
-						<div className="font-semibold text-gray-700 leading-none pb-6">
-							References
-						</div>
-						{journal.references?.map((reference, index) => (
-							<div key={index} className="text-gray-600 flex gap-2 mb-1">
-								<span>•</span>
-								{reference}
+					{journal.references ? (
+						<div
+							className="bg-gray-50 flex-col gap-6 rounded-xl border p-6 shadow-sm  text-sm"
+							data-aos="fade-up"
+							data-aos-delay="300"
+							data-aos-duration="500"
+							data-aos-easing="ease-out-cubic"
+						>
+							<div className="font-semibold text-gray-700 leading-none pb-6">
+								First Author Pakistani Papers in this venue
 							</div>
-						))}
-					</div>
+							{journal.references?.map((reference, index) => (
+								<div key={index} className="text-gray-600 flex gap-2 mb-4">
+									<span>•</span>
+									{reference}
+								</div>
+							))}
+						</div>
+					) : (
+						<></>
+					)}
 				</div>
 			</div>
 			<ProductCTA />

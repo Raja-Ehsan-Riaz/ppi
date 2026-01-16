@@ -13,19 +13,19 @@ const AssumptionsLimitations = () => {
 			icon: Globe,
 			title: "Global Rankings Validity",
 			description:
-				"University rankings themselves have methodological limitations and may not perfectly capture research quality. We use composite rankings from multiple sources to mitigate individual ranking biases.",
+				"University rankings themselves have methodological limitations and may not perfectly capture research quality. We use Times Higher Education (THE) ranking for this analysis.",
 		},
 		{
 			icon: Target,
 			title: "Disciplinary Differences",
 			description:
-				"Publishing norms vary significantly across disciplines. PPI are normalized within disciplinary groups, but cross-discipline comparisons should be made cautiously.",
+				"Publishing norms vary significantly across disciplines. While other metrics (such as citations, impact factor) vary across disciplines, PPI normalizes data with respect to the total papers published in a specific journal or conference. Therefore, in our opinion, PPI scores can be easily compared across multiple disciplines.",
 		},
 		{
 			icon: TrendingUp,
 			title: "Complementary Metric",
 			description:
-				"PPI should be used alongside traditional metrics like impact factor, not as a replacement. It provides a different perspective on journal/conference quality focused on institutional prestige rather than citations.",
+				"PPI can be used alongside traditional metrics like impact factor, not as a replacement. It provides a different perspective on journal/conference quality focused on institutional prestige rather than citations.",
 		},
 	]
 

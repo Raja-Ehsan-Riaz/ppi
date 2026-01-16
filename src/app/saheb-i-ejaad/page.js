@@ -327,7 +327,7 @@ function SahebIEjadContent() {
 
 	return (
 		<div>
-			<div className="bg-gray-200 lg:h-[90vh] aspect-video  lg:aspect-auto max-w-500  relative overflow-hidden mx-auto  mt-20 ">
+			<div className="bg-gray-200 max-w-5xl aspect-video md:aspect-auto md:h-[60vh] relative overflow-hidden mx-auto  mt-30 rounded-4xl">
 				<Image
 					src="/Saheb-i-Ejaad Hero.jpg"
 					alt=""
@@ -335,11 +335,11 @@ function SahebIEjadContent() {
 					className="object-cover"
 				/>
 			</div>
-			<div className="px-10 md:px-16 lg:px-24 pt-16 md:pt-24">
+			<div className="px-10 md:px-16 lg:px-24 pt-16">
 				<div className="max-w-7xl mx-auto ">
 					{/* Header */}
 					<div className="text-center">
-						<h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-gray-900 mb-8">
+						<h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-gray-900 mb-6">
 							Saheb-i-Ejaad
 						</h1>
 						<p className="text-lg text-gray-600 max-w-2xl mx-auto">
