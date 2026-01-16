@@ -7,116 +7,135 @@ import {
 	Geography,
 	ZoomableGroup,
 } from "react-simple-maps"
-import { useState } from "react"
+import { useState, useMemo } from "react"
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
 
-// Country name mapping to match topojson names
-const countryNameMap = {
-	USA: "United States of America",
-	"UNITED KINGDOM": "United Kingdom",
-	ENGLAND: "United Kingdom",
-	SCOTLAND: "United Kingdom",
-	"GERMANY (FED REP GER)": "Germany",
-	FRANCE: "France",
-	ITALY: "Italy",
-	SPAIN: "Spain",
-	CANADA: "Canada",
-	AUSTRALIA: "Australia",
-	JAPAN: "Japan",
-	CHINA: "China",
-	INDIA: "India",
-	BRAZIL: "Brazil",
-	RUSSIA: "Russia",
-	"SOUTH KOREA": "South Korea",
-	NETHERLANDS: "Netherlands",
-	SWITZERLAND: "Switzerland",
-	SWEDEN: "Sweden",
-	BELGIUM: "Belgium",
-	AUSTRIA: "Austria",
-	DENMARK: "Denmark",
-	FINLAND: "Finland",
-	NORWAY: "Norway",
-	POLAND: "Poland",
-	PORTUGAL: "Portugal",
-	GREECE: "Greece",
-	ISRAEL: "Israel",
-	TURKIYE: "Turkey",
-	"SOUTH AFRICA": "South Africa",
-	ARGENTINA: "Argentina",
-	MEXICO: "Mexico",
-	SINGAPORE: "Singapore",
-	"HONG KONG": "China",
-	TAIWAN: "Taiwan",
-	IRELAND: "Ireland",
-	"NEW ZEALAND": "New Zealand",
-	"NETHERLANDS ANTILLES": "Netherlands",
-	WALES: "United Kingdom",
-	"NORTH IRELAND": "United Kingdom",
-	"PEOPLES R CHINA": "China",
-	"REP OF GEORGIA": "Georgia",
-	KENYA: "Kenya",
-	"COSTA RICA": "Costa Rica",
-	BOLIVIA: "Bolivia",
-	"SRI LANKA": "Sri Lanka",
-}
+// Using i18n-iso-countries for proper country name mapping
+// This library provides ISO 3166-1 standard country codes
+const countries = require("i18n-iso-countries")
+const enLocale = require("i18n-iso-countries/langs/en.json")
+countries.registerLocale(enLocale)
 
-// 10 shades of blue from light to dark (10% gaps)
+// 10 shades of blue from light to dark
 const colorPalette = [
-	"#DBEAFE", // blue-100 (0-10%)
-	"#BFDBFE", // blue-200 (10-20%)
-	"#93C5FD", // blue-300 (20-30%)
-	"#60A5FA", // blue-400 (30-40%)
-	"#3B82F6", // blue-500 (40-50%)
-	"#2563EB", // blue-600 (50-60%)
-	"#1D4ED8", // blue-700 (60-70%)
-	"#1E40AF", // blue-800 (70-80%)
-	"#1E3A8A", // blue-900 (80-90%)
-	"#172554", // blue-950 (90-100%)
+	"#DBEAFE", // blue-100
+	"#BFDBFE", // blue-200
+	"#93C5FD", // blue-300
+	"#60A5FA", // blue-400
+	"#3B82F6", // blue-500
+	"#2563EB", // blue-600
+	"#1D4ED8", // blue-700
+	"#1E40AF", // blue-800
+	"#1E3A8A", // blue-900
+	"#172554", // blue-950
 ]
 
-export default function WorldMapHeatmap({ countries }) {
+export default function WorldMapHeatmap({ countries: countryData }) {
 	const [tooltipContent, setTooltipContent] = useState("")
 
-	// Create a map of country data by standardized name
-	const countryDataMap = new Map()
-	countries.forEach(country => {
-		const standardName = countryNameMap[country.country] || country.country
-		const existing = countryDataMap.get(standardName)
+	// Process country data with ISO code mapping
+	const processedData = useMemo(() => {
+		const countryDataMap = new Map()
+		
+		countryData.forEach(country => {
+			// Try to get ISO Alpha-2 code from country name
+			let alpha2Code = countries.getAlpha2Code(country.country, "en")
+			
+			// If not found, try common variations
+			if (!alpha2Code) {
+				const variations = [
+					country.country.toUpperCase(),
+					country.country.toLowerCase(),
+					country.country.replace(/[^a-zA-Z\s]/g, ''),
+					// Handle specific cases
+					country.country === "USA" ? "United States of America" : null,
+					country.country === "UK" ? "United Kingdom" : null,
+					country.country === "UNITED KINGDOM" ? "United Kingdom" : null,
+					country.country === "ENGLAND" ? "United Kingdom" : null,
+					country.country === "SCOTLAND" ? "United Kingdom" : null,
+					country.country === "WALES" ? "United Kingdom" : null,
+					country.country === "NORTH IRELAND" ? "United Kingdom" : null,
+					country.country === "PEOPLES R CHINA" ? "China" : null,
+					country.country === "HONG KONG" ? "China" : null,
+					country.country === "TURKIYE" ? "Turkey" : null,
+					country.country === "REP OF GEORGIA" ? "Georgia" : null,
+					country.country === "SOUTH KOREA" ? "Korea, Republic of" : null,
+					country.country === "GERMANY (FED REP GER)" ? "Germany" : null,
+				].filter(Boolean)
+				
+				for (const variant of variations) {
+					alpha2Code = countries.getAlpha2Code(variant, "en")
+					if (alpha2Code) break
+				}
+			}
+			
+			if (alpha2Code) {
+				// Get the official country name from ISO standard
+				const officialName = countries.getName(alpha2Code, "en")
+				
+				const existing = countryDataMap.get(officialName)
+				if (existing) {
+					// Merge data for countries (e.g., UK regions)
+					existing.papers += country.papers
+					existing.percentage += country.percentage
+				} else {
+					countryDataMap.set(officialName, {
+						...country,
+						alpha2Code,
+						officialName,
+					})
+				}
+			} else {
+				console.warn(`Could not map country: ${country.country}`)
+			}
+		})
+		
+		return countryDataMap
+	}, [countryData])
 
-		if (existing) {
-			// Merge data for countries like UK (England + Scotland + UK)
-			existing.papers += country.papers
-			existing.percentage += country.percentage
-		} else {
-			countryDataMap.set(standardName, { ...country })
+	// Calculate min and max percentages for dynamic scaling
+	const { minPercentage, maxPercentage } = useMemo(() => {
+		const percentages = Array.from(processedData.values()).map(c => c.percentage)
+		return {
+			minPercentage: percentages.length > 0 ? Math.min(...percentages) : 0,
+			maxPercentage: percentages.length > 0 ? Math.max(...percentages) : 100,
 		}
-	})
+	}, [processedData])
 
-	// Function to get color based on percentage (0-100%)
-	const getColorForPercentage = percentage => {
-		// Determine which 10% range the percentage falls into
-		const index = Math.min(Math.floor(percentage / 10), 9)
+	// Function to get color based on percentage with dynamic scaling
+	const getColorForPercentage = (percentage) => {
+		if (processedData.size === 0) return colorPalette[0]
+		
+		// Normalize the percentage to 0-1 range based on actual data
+		const normalized = (percentage - minPercentage) / (maxPercentage - minPercentage || 1)
+		
+		// Map to color palette index (0-9)
+		const index = Math.min(Math.floor(normalized * 10), 9)
 		return colorPalette[index]
 	}
 
-	// Get color legend data with 10% ranges
-	const getLegendData = () => {
+	// Get color legend data with actual data ranges
+	const legendData = useMemo(() => {
+		const range = maxPercentage - minPercentage
+		const step = range / 10
+		
 		return colorPalette.map((color, index) => {
+			const rangeStart = minPercentage + (index * step)
+			const rangeEnd = minPercentage + ((index + 1) * step)
+			
 			if (index === 9) {
 				return {
 					color: color,
-					label: `90-100%`,
+					label: `${rangeStart.toFixed(1)}-${maxPercentage.toFixed(1)}%`,
 				}
 			}
 			return {
 				color: color,
-				label: `${index * 10}-${(index + 1) * 10}%`,
+				label: `${rangeStart.toFixed(1)}-${rangeEnd.toFixed(1)}%`,
 			}
 		})
-	}
-
-	const legendData = getLegendData()
+	}, [minPercentage, maxPercentage])
 
 	return (
 		<Card>
@@ -158,16 +177,16 @@ export default function WorldMapHeatmap({ countries }) {
 							scale: 300,
 							center: [10, 20],
 						}}
-						className="w-full h-full cursor-grab active:cursor-grabbing rounded-4xl"
+						className="w-full h-full cursor-grab active:cursor-grabbing"
 					>
 						<ZoomableGroup center={[10, 20]} zoom={1.2}>
 							<Geographies geography={geoUrl}>
 								{({ geographies }) =>
 									geographies.map(geo => {
 										const countryName = geo.properties.name
-										const countryData = countryDataMap.get(countryName)
-										const fillColor = countryData
-											? getColorForPercentage(countryData.percentage)
+										const countryInfo = processedData.get(countryName)
+										const fillColor = countryInfo
+											? getColorForPercentage(countryInfo.percentage)
 											: "#F3F4F6" // gray-100 for countries with no data
 
 										return (
@@ -178,11 +197,11 @@ export default function WorldMapHeatmap({ countries }) {
 												stroke="#FFFFFF"
 												strokeWidth={0.5}
 												onMouseEnter={() => {
-													if (countryData) {
+													if (countryInfo) {
 														setTooltipContent(
 															`${countryName}: ${
-																countryData.papers
-															} papers (${countryData.percentage.toFixed(1)}%)`
+																countryInfo.papers
+															} papers (${countryInfo.percentage.toFixed(1)}%)`
 														)
 													}
 												}}
@@ -192,9 +211,9 @@ export default function WorldMapHeatmap({ countries }) {
 												style={{
 													default: { outline: "none" },
 													hover: {
-														fill: countryData ? "#1E3A8A" : "#E5E7EB",
+														fill: countryInfo ? "#1E3A8A" : "#E5E7EB",
 														outline: "none",
-														cursor: countryData ? "pointer" : "default",
+														cursor: countryInfo ? "pointer" : "default",
 													},
 													pressed: { outline: "none" },
 												}}
@@ -215,25 +234,25 @@ export default function WorldMapHeatmap({ countries }) {
 				</div>
 
 				{/* Country List */}
-				<div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-3 text-sm mb-6">
-					{countries.map((country, index) => (
-						<div key={index} className="flex justify-between items-center">
-							<span className="text-gray-700">{country.country}</span>
-							<span className="font-semibold text-gray-900">
-								{country.percentage.toFixed(1)}%
-							</span>
-						</div>
-					))}
-				</div>
+					{/* <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-3 text-sm mb-6">
+						{countryData.map((country, index) => (
+							<div key={index} className="flex justify-between items-center">
+								<span className="text-gray-700">{country.country}</span>
+								<span className="font-semibold text-gray-900">
+									{country.percentage.toFixed(1)}%
+								</span>
+							</div>
+						))}
+					</div> */}
 
-				{/* Enhanced Legend with Percentage Ranges */}
+				{/* Enhanced Legend with Dynamic Percentage Ranges */}
 				<div className="border-t pt-4">
 					<div className="flex items-center justify-between mb-3">
 						<span className="text-xs font-medium text-gray-700">
 							Percentage Distribution
 						</span>
 						<span className="text-xs text-gray-500">
-							(% of total papers per country)
+							(Range: {minPercentage.toFixed(1)}% - {maxPercentage.toFixed(1)}%)
 						</span>
 					</div>
 
@@ -253,7 +272,7 @@ export default function WorldMapHeatmap({ countries }) {
 					</div>
 
 					{/* Percentage ranges */}
-					<div className="mt-4 grid grid-cols-5 gap-2">
+					{/* <div className="mt-4 grid grid-cols-5 gap-2">
 						{legendData.slice(0, 5).map((item, index) => (
 							<div key={index} className="flex items-center gap-1.5">
 								<div
@@ -274,7 +293,7 @@ export default function WorldMapHeatmap({ countries }) {
 								<span className="text-xs text-gray-600">{item.label}</span>
 							</div>
 						))}
-					</div>
+					</div> */}
 				</div>
 			</CardContent>
 		</Card>

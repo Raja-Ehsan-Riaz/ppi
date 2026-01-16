@@ -34,9 +34,9 @@ export function processJournals(journals, filters = {}) {
 // Find a journal by slug
 export async function fetchJournalBySlug(slug) {
 	try {
-		const response = await fetch(`http://localhost:3000/api/Journals/${slug}`, {
-			cache: "force-cache",
-		})
+		const response = await fetch(
+			`${process.env.NEXT_PUBLIC_URL}/api/Journals/${slug}`
+		)
 
 		if (!response.ok) {
 			return null
@@ -79,10 +79,7 @@ export async function fetchPakistaniJournalBySlug(slug) {
 	try {
 		// Fetch Pakistani papers data
 		const pakistaniResponse = await fetch(
-			`http://localhost:3000/api/saheb-i-ejaad/${slug}`,
-			{
-				cache: "force-cache",
-			}
+			`${process.env.NEXT_PUBLIC_URL}/api/saheb-i-ejaad/${slug}`
 		)
 
 		if (!pakistaniResponse.ok) {
@@ -95,10 +92,7 @@ export async function fetchPakistaniJournalBySlug(slug) {
 		// Fetch total papers from main journal route
 		try {
 			const mainJournalResponse = await fetch(
-				`http://localhost:3000/api/Journals/${slug}`,
-				{
-					cache: "force-cache",
-				}
+				`${process.env.NEXT_PUBLIC_URL}/api/Journals/${slug}`
 			)
 
 			if (mainJournalResponse.ok) {
