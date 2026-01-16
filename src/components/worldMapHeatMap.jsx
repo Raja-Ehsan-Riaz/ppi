@@ -107,8 +107,13 @@ export default function WorldMapHeatmap({ countries: countryData }) {
 	const getColorForPercentage = (percentage) => {
 		if (processedData.size === 0) return colorPalette[0]
 		
+		// If all countries have the same percentage, use the darkest color
+		if (minPercentage === maxPercentage) {
+			return colorPalette[9] // darkest color
+		}
+		
 		// Normalize the percentage to 0-1 range based on actual data
-		const normalized = (percentage - minPercentage) / (maxPercentage - minPercentage || 1)
+		const normalized = (percentage - minPercentage) / (maxPercentage - minPercentage)
 		
 		// Map to color palette index (0-9)
 		const index = Math.min(Math.floor(normalized * 10), 9)
@@ -234,16 +239,16 @@ export default function WorldMapHeatmap({ countries: countryData }) {
 				</div>
 
 				{/* Country List */}
-					{/* <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-3 text-sm mb-6">
-						{countryData.map((country, index) => (
-							<div key={index} className="flex justify-between items-center">
-								<span className="text-gray-700">{country.country}</span>
-								<span className="font-semibold text-gray-900">
-									{country.percentage.toFixed(1)}%
-								</span>
-							</div>
-						))}
-					</div> */}
+				{/* <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-3 text-sm mb-6">
+					{countryData.map((country, index) => (
+						<div key={index} className="flex justify-between items-center">
+							<span className="text-gray-700">{country.country}</span>
+							<span className="font-semibold text-gray-900">
+								{country.percentage.toFixed(1)}%
+							</span>
+						</div>
+					))}
+				</div> */}
 
 				{/* Enhanced Legend with Dynamic Percentage Ranges */}
 				<div className="border-t pt-4">

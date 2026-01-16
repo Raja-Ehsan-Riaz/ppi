@@ -8,6 +8,9 @@ import {
 	CheckCircle,
 } from "lucide-react"
 
+// Import KaTeX CSS
+import "katex/dist/katex.min.css"
+
 const CategoryCard = ({
 	icon,
 	label,
@@ -25,13 +28,39 @@ const CategoryCard = ({
 				<div
 					className={`px-3  py-1 min-w-28 justify-start  flex items-center rounded-md border  ${color}`}
 				>
-					<span className="text-sm mr-2">{label}</span>
-					(<div className={`${iconColor} text-sm mb-0.5`}>{icon}</div>)
+					<span className="text-sm mr-2">{label}</span>(
+					<div className={`${iconColor} text-sm mb-0.5`}>{icon}</div>)
 				</div>
 				<div className="flex-2 font-semibold text-gray-600 mb-2">{range}</div>
 				<p className="text-gray-500 flex-9 leading-relaxed">{description}</p>
 			</div>
 		</div>
+	)
+}
+
+// KaTeX Formula Component
+const MathFormula = ({ latex, block = false }) => {
+	const containerRef = useRef(null)
+
+	useEffect(() => {
+		if (containerRef.current && typeof window !== "undefined") {
+			const katex = require("katex")
+			try {
+				katex.render(latex, containerRef.current, {
+					throwOnError: false,
+					displayMode: block,
+				})
+			} catch (error) {
+				console.error("KaTeX rendering error:", error)
+			}
+		}
+	}, [latex, block])
+
+	return (
+		<span
+			ref={containerRef}
+			className={block ? "block my-4 overflow-x-auto" : "inline-block"}
+		/>
 	)
 }
 
@@ -75,7 +104,9 @@ const StepCard = ({ step, index, isVisible }) => {
 							<div>
 								<Icon size={40} className={` transition-colors duration-700`} />
 							</div>
-							<h2 className="text-xl md:text-3xl font-bold text-gray-900">{step.title}</h2>
+							<h2 className="text-xl md:text-3xl font-bold text-gray-900">
+								{step.title}
+							</h2>
 						</div>
 
 						<p className="text-gray-600">{step.description}</p>
@@ -89,7 +120,7 @@ const StepCard = ({ step, index, isVisible }) => {
 							{step.points.map((point, i) => (
 								<div key={i} className="flex items-start gap-3">
 									<CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-gray-800" />
-									<p className="text-gray-600 ">{point}</p>
+									<p className="text-gray-600">{point}</p>
 								</div>
 							))}
 						</div>
@@ -100,11 +131,12 @@ const StepCard = ({ step, index, isVisible }) => {
 						<div
 							className={`rounded-lg p-6 mb-6 border ${
 								isVisible ? `bg-white` : "bg-gray-50"
-							} max-w-2xl`}
+							}`}
 						>
-							<h4 className="font-semibold text-gray-900 ">
-								{step.formula.title}
-							</h4>
+							<h4 className="font-semibold text-gray-900 mb-4">Formula:</h4>
+							<div className="text-center">
+								<MathFormula latex={step.formula.latex} block={true} />
+							</div>
 						</div>
 					)}
 
@@ -143,8 +175,7 @@ export default function PPIExplanation() {
 				"Analyze research publications published in journals and conferences",
 				"Identify first authors and their affiliated universities or organizations",
 			],
-			footer:
-				"Data source: Clarivate Insights, Web of Science (WoS)",
+			footer: "Data source: Clarivate Insights, Web of Science (WoS)",
 			icon: Database,
 		},
 		{
@@ -172,13 +203,13 @@ export default function PPIExplanation() {
 			details:
 				"The Peer Perception Index (PPI) is computed by assigning different weights to publications from each ranking bracket and normalizing them by the total number of publications. The weights reflect the relative importance of each prestige group.",
 			formula: {
-				title:
-					"PPI = [0.5(λc₁/λ) + 0.25(λc₂/λ) + 0.15(λc₃/λ) + 0.1(λc₄/λ)] × 100",
+				latex:
+					"PPI = \\left[0.5\\left(\\frac{\\lambda_{c1}}{\\lambda}\\right) + 0.25\\left(\\frac{\\lambda_{c2}}{\\lambda}\\right) + 0.15\\left(\\frac{\\lambda_{c3}}{\\lambda}\\right) + 0.1\\left(\\frac{\\lambda_{c4}}{\\lambda}\\right)\\right] \\times 100",
 				weights: [
 					{ tier: "λc₁/λ (Ranked 1-50):", value: "50% weight" },
 					{ tier: "λc₂/λ (Ranked 51-100):", value: "25% weight" },
-					{ tier: "λ₃/λ (Ranked 101-150):", value: "15% weight" },
-					{ tier: "λ₄/λ (Ranked 151-200):", value: "10% weight" },
+					{ tier: "λc₃/λ (Ranked 101-150):", value: "15% weight" },
+					{ tier: "λc₄/λ (Ranked 151-200):", value: "10% weight" },
 				],
 			},
 			footer:
