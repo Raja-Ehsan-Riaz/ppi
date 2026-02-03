@@ -18,7 +18,7 @@ function generateSlug(name) {
 // GET journal by slug
 export async function GET(request, { params }) {
 	const { slug } = await params
-	const xlsxPath = path.join(process.cwd(), "public", "journals.xlsx")
+	const xlsxPath = path.join(process.cwd(), "public", "journals-data.xlsx")
 
 	try {
 		// Read Excel file
@@ -58,25 +58,25 @@ export async function GET(request, { params }) {
 						parseInt(
 							row[
 								"No. of First Auther Papers from Universities/Organizations ranked 1-50."
-							]
+							],
 						) || 0,
 					tier2Papers:
 						parseInt(
 							row[
 								"No. of First Auther Papers from Universities/Organizations ranked 51-100."
-							]
+							],
 						) || 0,
 					tier3Papers:
 						parseInt(
 							row[
 								"No. of First Auther Papers from Universities/Organizations ranked 101-150."
-							]
+							],
 						) || 0,
 					tier4Papers:
 						parseInt(
 							row[
 								"No. of First Auther Papers from Universities/Organizations ranked 151-200."
-							]
+							],
 						) || 0,
 					slug: journalSlug,
 				}
@@ -103,7 +103,7 @@ export async function GET(request, { params }) {
 		console.error("Error loading journal:", error)
 		return NextResponse.json(
 			{ error: "Failed to load journal" },
-			{ status: 500 }
+			{ status: 500 },
 		)
 	}
 }
