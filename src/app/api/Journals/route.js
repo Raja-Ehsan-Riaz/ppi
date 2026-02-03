@@ -15,7 +15,7 @@ function generateSlug(name) {
 }
 
 export async function GET() {
-	const xlsxPath = path.join(process.cwd(), "public", "journals.xlsx") // Changed to .xlsx
+	const xlsxPath = path.join(process.cwd(), "public", "journals-data.xlsx") // Changed to .xlsx
 
 	try {
 		// Read the Excel file
@@ -45,31 +45,32 @@ export async function GET() {
 				eissn: (row["eISSN"] || "").trim(),
 				category: (row["PPI Category"] || "").trim(),
 				ppi: parseFloat(row["PPI"]) || 0,
+				link: (row["Official Page Link"] || "").trim(),
 				totalPapers:
 					parseInt(row["Total Papers Published (2008 onwards)"]) || 0,
 				tier1Papers:
 					parseInt(
 						row[
 							"No. of First Auther Papers from Universities/Organizations ranked 1-50."
-						]
+						],
 					) || 0,
 				tier2Papers:
 					parseInt(
 						row[
 							"No. of First Auther Papers from Universities/Organizations ranked 51-100."
-						]
+						],
 					) || 0,
 				tier3Papers:
 					parseInt(
 						row[
 							"No. of First Auther Papers from Universities/Organizations ranked 101-150."
-						]
+						],
 					) || 0,
 				tier4Papers:
 					parseInt(
 						row[
 							"No. of First Auther Papers from Universities/Organizations ranked 151-200."
-						]
+						],
 					) || 0,
 				slug,
 			}
@@ -80,7 +81,7 @@ export async function GET() {
 		console.error("Error loading journals:", error)
 		return NextResponse.json(
 			{ error: "Failed to load journals" },
-			{ status: 500 }
+			{ status: 500 },
 		)
 	}
 }

@@ -42,7 +42,7 @@ export async function GET() {
 				h
 					.toString()
 					.toLowerCase()
-					.includes("no. of first author papers from pakistan")
+					.includes("no. of first author papers from pakistan"),
 		)
 
 		if (pakistanColumnIndex === -1) {
@@ -51,31 +51,31 @@ export async function GET() {
 				{
 					error: "Pakistani papers column not found in Excel file",
 				},
-				{ status: 500 }
+				{ status: 500 },
 			)
 		}
 
 		// Find other standard column indices by looking at headers
 		const nameIndex = headers.findIndex(
-			h => h && h.toString().toLowerCase().includes("journal/conference")
+			h => h && h.toString().toLowerCase().includes("journal/conference"),
 		)
 		const abbrevIndex = headers.findIndex(
-			h => h && h.toString().toLowerCase().includes("abbreviated")
+			h => h && h.toString().toLowerCase().includes("abbreviated"),
 		)
 		const publisherIndex = headers.findIndex(
-			h => h && h.toString().toLowerCase().includes("publisher")
+			h => h && h.toString().toLowerCase().includes("publisher"),
 		)
 		const issnIndex = headers.findIndex(
-			h => h && h.toString().toLowerCase() === "issn"
+			h => h && h.toString().toLowerCase() === "issn",
 		)
 		const eissnIndex = headers.findIndex(
-			h => h && h.toString().toLowerCase() === "eissn"
+			h => h && h.toString().toLowerCase() === "eissn",
 		)
 		const categoryIndex = headers.findIndex(
-			h => h && h.toString().toLowerCase().includes("category")
+			h => h && h.toString().toLowerCase().includes("category"),
 		)
 		const ppiIndex = headers.findIndex(
-			h => h && h.toString().toLowerCase() === "ppi"
+			h => h && h.toString().toLowerCase() === "ppi",
 		)
 
 		// Use first column if journal name not found
@@ -180,7 +180,7 @@ export async function GET() {
 				error: "Failed to load Pakistani journals",
 				details: error.message,
 			},
-			{ status: 500 }
+			{ status: 500 },
 		)
 	}
 }
