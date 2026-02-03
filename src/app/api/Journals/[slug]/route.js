@@ -51,6 +51,7 @@ export async function GET(request, { params }) {
 					issn: (row["ISSN"] || "").trim(),
 					eissn: (row["eISSN"] || "").trim(),
 					category: (row["PPI Category"] || "").trim(),
+					link: (row["Official Page Link"] || "").trim(),
 					ppi: parseFloat(row["PPI"]) || 0,
 					totalPapers:
 						parseInt(row["Total Papers Published (2008 onwards)"]) || 0,
