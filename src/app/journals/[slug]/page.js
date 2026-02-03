@@ -153,7 +153,7 @@ export default async function JournalDetailPage({ params }) {
 
 								<Button variant="outline" className="w-full mt-4" asChild>
 									<Link
-										href={journal.link || "#"}
+										href={journal.link}
 										rel="noopener noreferrer"
 										target="_blank"
 									>

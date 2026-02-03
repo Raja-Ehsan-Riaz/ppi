@@ -11,7 +11,7 @@ export function processJournals(journals, filters = {}) {
 				j.abbreviation.toLowerCase().includes(searchLower) ||
 				j.publisher.toLowerCase().includes(searchLower) ||
 				j.issn.toLowerCase().includes(searchLower) ||
-				j.eissn.toLowerCase().includes(searchLower)
+				j.eissn.toLowerCase().includes(searchLower),
 		)
 	}
 
@@ -34,9 +34,12 @@ export function processJournals(journals, filters = {}) {
 // Find a journal by slug
 export async function fetchJournalBySlug(slug) {
 	try {
-		const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/Journals/${slug}`, {
-			cache: "force-cache",
-		})
+		const response = await fetch(
+			`${process.env.NEXT_PUBLIC_URL}/api/Journals/${slug}`,
+			{
+				// cache: "force-cache",
+			},
+		)
 
 		if (!response.ok) {
 			return null
@@ -54,7 +57,7 @@ export async function fetchJournalBySlug(slug) {
 // Get unique categories (filter out empty strings)
 export function getCategories(journals) {
 	const categories = new Set(
-		journals.map(j => j.category).filter(cat => cat && cat.trim() !== "")
+		journals.map(j => j.category).filter(cat => cat && cat.trim() !== ""),
 	)
 	return Array.from(categories).sort()
 }
@@ -82,7 +85,7 @@ export async function fetchPakistaniJournalBySlug(slug) {
 			`${process.env.NEXT_PUBLIC_URL}/api/saheb-i-ejaad/${slug}`,
 			{
 				cache: "force-cache",
-			}
+			},
 		)
 
 		if (!pakistaniResponse.ok) {
@@ -98,7 +101,7 @@ export async function fetchPakistaniJournalBySlug(slug) {
 				`${process.env.NEXT_PUBLIC_URL}/api/Journals/${slug}`,
 				{
 					cache: "force-cache",
-				}
+				},
 			)
 
 			if (mainJournalResponse.ok) {
