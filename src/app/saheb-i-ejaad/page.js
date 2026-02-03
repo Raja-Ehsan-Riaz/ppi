@@ -30,7 +30,7 @@ function processJournals(journals, filters = {}) {
 				j.publisher.toLowerCase().includes(searchLower) ||
 				j.issn.toLowerCase().includes(searchLower) ||
 				j.eissn.toLowerCase().includes(searchLower) ||
-				j.category.toLowerCase().includes(searchLower)
+				j.category.toLowerCase().includes(searchLower),
 		)
 	}
 
@@ -61,7 +61,7 @@ function processJournals(journals, filters = {}) {
 
 function getCategories(journals) {
 	const categories = new Set(
-		journals.map(j => j.category).filter(cat => cat && cat.trim() !== "")
+		journals.map(j => j.category).filter(cat => cat && cat.trim() !== ""),
 	)
 	return Array.from(categories).sort()
 }
@@ -168,7 +168,7 @@ function SahebIEjadContent() {
 						const { journals: paginated, totalPages: pages } = paginateJournals(
 							sorted,
 							1,
-							perPage
+							perPage,
 						)
 						setPaginatedJournals(paginated)
 						setTotalPages(pages)
@@ -190,7 +190,7 @@ function SahebIEjadContent() {
 						const { journals: paginated, totalPages: pages } = paginateJournals(
 							sorted,
 							1,
-							perPage
+							perPage,
 						)
 						setPaginatedJournals(paginated)
 						setTotalPages(pages)
@@ -225,7 +225,7 @@ function SahebIEjadContent() {
 		const { journals: paginated, totalPages: pages } = paginateJournals(
 			filtered,
 			1,
-			perPage
+			perPage,
 		)
 		setPaginatedJournals(paginated)
 		setTotalPages(pages)
@@ -255,7 +255,7 @@ function SahebIEjadContent() {
 		const { journals: paginated, totalPages: pages } = paginateJournals(
 			filtered,
 			1,
-			perPage
+			perPage,
 		)
 		setPaginatedJournals(paginated)
 		setTotalPages(pages)
@@ -287,7 +287,7 @@ function SahebIEjadContent() {
 		const { journals: paginated, totalPages: pages } = paginateJournals(
 			sorted,
 			1,
-			perPage
+			perPage,
 		)
 		setPaginatedJournals(paginated)
 		setTotalPages(pages)
@@ -302,7 +302,7 @@ function SahebIEjadContent() {
 		const { journals: paginated } = paginateJournals(
 			displayedJournals,
 			page,
-			perPage
+			perPage,
 		)
 		setPaginatedJournals(paginated)
 		window.scrollTo({ top: 0, behavior: "smooth" })
@@ -312,7 +312,7 @@ function SahebIEjadContent() {
 		const { journals: paginated, totalPages: pages } = paginateJournals(
 			displayedJournals,
 			1,
-			perPage
+			perPage,
 		)
 		setPaginatedJournals(paginated)
 		setTotalPages(pages)
@@ -327,15 +327,16 @@ function SahebIEjadContent() {
 
 	return (
 		<div>
-			<div className="bg-gray-200 max-w-5xl aspect-video md:aspect-auto md:h-[60vh] relative overflow-hidden mx-auto  mt-30 rounded-4xl">
+			<div className="bg-gray-200 max-w-3xl aspect-video md:aspect-auto md:h-[35vh] relative overflow-hidden mx-auto  mt-30 rounded-4xl">
 				<Image
 					src="/Saheb-i-Ejaad Hero.jpg"
 					alt=""
 					fill
+					style={{ objectPosition: "0% 40%" }}
 					className="object-cover"
 				/>
 			</div>
-			<div className="px-10 md:px-16 lg:px-24 pt-16">
+			<div className="px-10 md:px-16 lg:px-24 pt-12">
 				<div className="max-w-7xl mx-auto ">
 					{/* Header */}
 					<div className="text-center">
