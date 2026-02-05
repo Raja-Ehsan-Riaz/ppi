@@ -15,7 +15,7 @@ function generateSlug(name) {
 }
 
 export async function GET() {
-	const xlsxPath = path.join(process.cwd(), "public", "journals-data.xlsx") // Changed to .xlsx
+	const xlsxPath = path.join(process.cwd(), "public", "merged_output.xlsx") // Changed to .xlsx
 
 	try {
 		// Read the Excel file
