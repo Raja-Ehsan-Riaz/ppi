@@ -89,7 +89,7 @@ export default async function JournalDetailPage({ params }) {
 										<Badge
 											variant="outline"
 											className={`text-xs py-1 px-4 rounded-sm ${getCategoryBadgeColor(
-												journal.category
+												journal.category,
 											)}`}
 										>
 											<span className="flex text-lg items-center gap-1">
@@ -144,7 +144,7 @@ export default async function JournalDetailPage({ params }) {
 
 								<Button variant="outline" className="w-full mt-4" asChild>
 									<Link
-										href={`https://www.google.com/search?q="${journal.name} journal"`}
+										href={journal.link}
 										rel="noopener noreferrer"
 										target="_blank"
 									>

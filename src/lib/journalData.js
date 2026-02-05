@@ -109,6 +109,7 @@ export async function fetchPakistaniJournalBySlug(slug) {
 
 				// Merge total papers into the Pakistani journal data
 				journal.totalPapers = mainJournalData.journal.totalPapers || 0
+				journal.link = mainJournalData.journal.link || "#"
 			}
 		} catch (error) {
 			console.warn("Could not fetch total papers:", error)
