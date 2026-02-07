@@ -62,7 +62,7 @@ const Hero = () => {
 					data-aos-easing="ease-out-cubic"
 				>
 					{/* Main Heading */}
-					<h1 className="text-[56px] font-bold text-gray-900 mb-4  mx-auto leading-tight max-w-xl ">
+					<h1 className="text-[56px] font-bold text-gray-900 mb-4  mx-auto leading-tight max-w-2xl ">
 						Prestige is where Top Universities Publish. <br />
 					</h1>
 
