@@ -45,6 +45,9 @@ export default function JournalTable({ journals }) {
 								/>
 							</th> */}
 							<th className="px-4 py-3 text-left text-sm font-semibold  uppercase tracking-wider">
+								No.
+							</th>
+							<th className="px-4 py-3 text-left text-sm font-semibold  uppercase tracking-wider">
 								Journal / Conference
 							</th>
 							<th className="px-4 py-3 text-left text-sm font-semibold  uppercase tracking-wider">
@@ -69,7 +72,7 @@ export default function JournalTable({ journals }) {
 						</tr>
 					</thead>
 					<tbody className="divide-y divide-gray-200">
-						{journals.map(journal => (
+						{journals.map((journal, idx) => (
 							<Link
 								key={journal.id}
 								href={`/journals/${journal.slug}`}
@@ -84,6 +87,9 @@ export default function JournalTable({ journals }) {
 									/>
 								</td> */}
 								<td className="px-4 py-4 text-xs font-semibold text-gray-900 group-hover:text-primary">
+									{idx + 1}
+								</td>
+								<td className="px-4 py-4 text-xs font-semibold text-gray-900 group-hover:text-primary">
 									{journal.name}
 								</td>
 								<td className="px-4 py-4 text-xs ">
@@ -92,12 +98,8 @@ export default function JournalTable({ journals }) {
 								<td className="px-4 py-4 text-xs ">
 									{journal.publisher || "-"}
 								</td>
-								<td className="px-4 py-4 text-xs">
-									{journal.issn || "-"}
-								</td>
-								<td className="px-4 py-4 text-xs">
-									{journal.eissn || "-"}
-								</td>
+								<td className="px-4 py-4 text-xs">{journal.issn || "-"}</td>
+								<td className="px-4 py-4 text-xs">{journal.eissn || "-"}</td>
 								<td className="px-4 py-4">
 									<span className="text-xs font-semibold text-blue-600">
 										{journal.ppi.toFixed(1)}
@@ -108,7 +110,7 @@ export default function JournalTable({ journals }) {
 										<Badge
 											variant="outline"
 											className={`text-xs px-3 rounded-sm ${getCategoryBadgeColor(
-												journal.category
+												journal.category,
 											)}`}
 										>
 											<span className="flex items-center gap-1">

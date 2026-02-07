@@ -120,7 +120,7 @@ function SahebIEjadContent() {
 	const [categories, setCategories] = useState([])
 	const [currentPage, setCurrentPage] = useState(1)
 	const [totalPages, setTotalPages] = useState(1)
-	const [perPage, setPerPage] = useState(10)
+	const [perPage, setPerPage] = useState(100)
 
 	// Separate loading states
 	const [isInitialLoading, setIsInitialLoading] = useState(true)

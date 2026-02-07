@@ -63,7 +63,7 @@ const Hero = () => {
 				>
 					{/* Main Heading */}
 					<h1 className="text-[56px] font-bold text-gray-900 mb-4  mx-auto leading-tight max-w-xl ">
-						Know Quality Perception of Peers
+						Prestige is where Top Universities Publish. <br />
 					</h1>
 
 					{/* Subheading */}

@@ -125,8 +125,7 @@ const Footer = () => {
 				{/* Bottom Bar */}
 				<div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
 					<p className="text-sm text-gray-600">
-						© 2025 Peer Perception Index. All rights reserved.
-					</p>
+						© 2026 Peer Perception Index. Copyright 248/2026</p>
 					<div className="flex gap-6">
 						<Link
 							href="#"

@@ -222,7 +222,7 @@ export default function PPIExplanation() {
 			description:
 				"Based on the final PPI, journals and conferences are categorized to reflect their standing among academic peers:",
 			details:
-				"Raw scores are normalized to a 0-100 scale using percentile ranking within disciplinary groups, then classified into five categories:",
+				"",
 			categories: [
 				{
 					icon: "α",
