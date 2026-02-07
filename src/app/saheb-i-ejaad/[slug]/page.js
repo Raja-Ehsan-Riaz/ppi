@@ -158,7 +158,7 @@ export default async function JournalDetailPage({ params }) {
 				</div>
 
 				{/* Main Content */}
-				<div className="max-w-5xl mx-auto  py-8">
+				<div className="max-w-4xl mx-auto  py-8">
 					{/* Stats Grid */}
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
 						<Card
