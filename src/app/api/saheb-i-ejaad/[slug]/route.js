@@ -18,7 +18,7 @@ function generateSlug(name) {
 // GET journal by slug
 export async function GET(request, { params }) {
 	const { slug } = await params
-	const xlsxPath = path.join(process.cwd(), "public", "saheb-i-ejaad v5.xlsx")
+	const xlsxPath = path.join(process.cwd(), "public", "saheb-i-ejaad-final.xlsx")
 
 	try {
 		// Read Excel file

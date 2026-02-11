@@ -15,7 +15,7 @@ function generateSlug(name) {
 }
 
 export async function GET() {
-	const xlsxPath = path.join(process.cwd(), "public", "saheb-i-ejaad v5.xlsx")
+	const xlsxPath = path.join(process.cwd(), "public", "saheb-i-ejaad-final.xlsx")
 
 	try {
 		const fileBuffer = fs.readFileSync(xlsxPath)
