@@ -345,9 +345,8 @@ function SahebIEjadContent() {
 						</h1>
 						<p className="text-lg text-gray-600 max-w-2xl mx-auto">
 							Journals / Conferences featuring research publications from
-							Pakistani first authors. Explore over{" "}
-							<span>{humanizeJournalsCount(allJournals.length)}</span> journals
-							/ conferences with contributions from Pakistan.
+							Pakistani first authors. Explore over a wide range of journals and
+							conferences with contributions from Pakistan.
 						</p>
 					</div>
 
