@@ -94,7 +94,7 @@ export async function GET() {
 			const pakistaniPapers = pakistanCell ? parseInt(pakistanCell.v) || 0 : 0
 
 			// Only process if Pakistani papers > 0
-			if (pakistaniPapers === 0) continue
+			// if (pakistaniPapers === 0) continue
 
 			// Get journal name
 			const nameCellAddress = XLSX.utils.encode_cell({
