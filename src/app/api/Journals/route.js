@@ -37,7 +37,7 @@ export async function GET() {
 			const slug = generateSlug(name)
 
 			return {
-				id: `journal-${index + 1}`,
+				id: `${index + 1}`,
 				name: name,
 				abbreviation: (row["Abbreviated Journal"] || "").trim(),
 				publisher: (row["Publisher"] || "").trim(),

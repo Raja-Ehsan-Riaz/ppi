@@ -87,7 +87,7 @@ export default function JournalTable({ journals }) {
 									/>
 								</td> */}
 								<td className="px-4 py-4 text-xs font-semibold text-gray-900 group-hover:text-primary">
-									{idx + 1}
+									{journal.id}
 								</td>
 								<td className="px-4 py-4 text-xs font-semibold text-gray-900 group-hover:text-primary">
 									{journal.name}

@@ -153,7 +153,7 @@ export async function GET() {
 			}
 
 			journals.push({
-				id: `journal-${row}`,
+				id: `${row}`,
 				name: name,
 				abbreviation: getFieldValue(abbrevIndex),
 				publisher: getFieldValue(publisherIndex),
