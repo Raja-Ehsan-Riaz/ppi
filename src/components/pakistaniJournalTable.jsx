@@ -42,6 +42,9 @@ export default function PakistaniJournalTable({ journals }) {
 					<thead className="bg-gray-50 border-b">
 						<tr>
 							<th className="px-4 py-3 text-left text-sm font-semibold  uppercase tracking-wider">
+								No.
+							</th>
+							<th className="px-4 py-3 text-left text-sm font-semibold  uppercase tracking-wider">
 								Journal / Conference
 							</th>
 							<th className="px-4 py-3 text-left text-sm font-semibold  uppercase tracking-wider">
@@ -78,6 +81,9 @@ export default function PakistaniJournalTable({ journals }) {
 									href={`/saheb-i-ejaad/${journal.slug}`}
 									className="table-row hover:bg-gray-50 align-middle hover:text-[#007856] transition-colors group"
 								>
+									<td className="px-4 py-4 text-xs font-semibold text-gray-900 group-hover:text-primary">
+										{journal.id}
+									</td>
 									<td className="px-4 py-4 text-xs font-semibold text-gray-900 group-hover:text-[#007856]">
 										{journal.name}
 									</td>
@@ -99,7 +105,7 @@ export default function PakistaniJournalTable({ journals }) {
 											<Badge
 												variant="outline"
 												className={`text-xs px-3 rounded-sm ${getCategoryBadgeColor(
-													journal.category
+													journal.category,
 												)}`}
 											>
 												<span className="flex items-center gap-1">

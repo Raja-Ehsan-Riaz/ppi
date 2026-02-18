@@ -213,7 +213,7 @@ export default async function JournalDetailPage({ params }) {
 							</CardContent>
 						</Card>
 					</div>
-					{journal.references ? (
+					{journal.references.length ? (
 						<div
 							className="bg-gray-50 flex-col gap-6 rounded-xl border p-6 shadow-sm  text-sm"
 							data-aos="fade-up"
