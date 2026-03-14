@@ -24,7 +24,7 @@ const Header = () => {
 					>
 						<Image
 							src={`${
-								pathname.includes("/saheb-i-ejaad")
+								pathname.includes("/saheb-i-ejaad") || pathname.includes("/our-researchers")
 									? "/logo - green.png"
 									: "/logo.png"
 							}`}
@@ -67,7 +67,7 @@ const Header = () => {
 							Contact
 						</Link>
 						<div className="flex items-center gap-3">
-							{!pathname.includes("/saheb-i-ejaad") ? (
+							{!pathname.includes("/saheb-i-ejaad") && !pathname.includes("/our-researchers") ? (
 								<Link
 									href="/journals"
 									className="px-4 py-3 bg-primary text-white text-sm rounded-lg hover:bg-primary/80 transition-colors"
@@ -75,13 +75,18 @@ const Header = () => {
 									Explore Journals
 								</Link>
 							) : (
-								<></>
+								<Link
+									href="/our-researchers"
+									className="px-4 py-3 text-white text-sm rounded-lg bg-black hover:bg-black/70transition-colors"
+								>
+									Explore Researchers
+								</Link>
 							)}
 
 							<Link
 								href="/saheb-i-ejaad"
 								className={`px-4 py-3 ${
-									pathname.includes("/saheb-i-ejaad")
+									pathname.includes("/saheb-i-ejaad") || pathname.includes("/our-researchers")
 										? "bg-[#007856] hover:bg-[#007856]/80"
 										: "bg-black hover:bg-black/70"
 								}  text-white text-sm rounded-lg  transition-colors`}
@@ -154,7 +159,7 @@ const Header = () => {
 						>
 							Contact
 						</Link>
-						{pathname !== "/saheb-i-ejaad" ? (
+						{pathname !== "/saheb-i-ejaad" && pathname !== "/our-researchers" ? (
 							<Link
 								href="/journals"
 								className="block px-4 py-2 bg-blue-600 text-white  text-center rounded-lg hover:bg-blue-700 transition-colors"
@@ -168,7 +173,7 @@ const Header = () => {
 						<Link
 							href="/saheb-i-ejaad"
 							className={`block px-4 py-2 text-white  text-center rounded-lg ${
-								pathname.includes("/saheb-i-ejaad")
+								pathname.includes("/saheb-i-ejaad") || pathname.includes("/our-researchers")
 									? "bg-[#007856] hover:bg-[#007856]/80"
 									: "bg-black hover:bg-black/70"
 							} transition-colors`}
