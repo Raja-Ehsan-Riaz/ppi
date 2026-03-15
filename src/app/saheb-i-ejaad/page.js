@@ -86,8 +86,8 @@ function SahebIEjadLoading() {
 		<div className="px-10 md:px-16 lg:px-24 py-16 md:py-24">
 			<div className="max-w-7xl mx-auto mt-12">
 				<div className="text-center">
-					<h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-gray-900 mb-8">
-						Saheb-i-Ejaad
+					<h1 className="text-4xl md:text-5xl lg:text-[65xpx] font-bold text-gray-900 mb-8">
+						صاحبِ ایجاد
 					</h1>
 					<p className="text-lg text-gray-600 max-w-2xl mx-auto">
 						Pakistani Research Publications Directory
@@ -340,8 +340,8 @@ function SahebIEjadContent() {
 				<div className="max-w-7xl mx-auto ">
 					{/* Header */}
 					<div className="text-center">
-						<h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-gray-900 mb-6">
-							Saheb-i-Ejaad
+						<h1 className="text-4xl md:text-5xl lg:text-[65px] font-bold text-gray-900 mb-6">
+							صاحبِ ایجاد
 						</h1>
 						<p className="text-lg text-gray-600 max-w-2xl mx-auto">
 							Journals / Conferences featuring research publications from

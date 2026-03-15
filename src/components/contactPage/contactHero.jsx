@@ -3,7 +3,7 @@ import ContactIllustration from "./Illustrations/contactIllustration"
 
 const ContactUs = () => {
 	return (
-		<section className="px-6 md:px-16 lg:px-24 py-16 md:py-24 pt-32">
+		<section className="Salman Kirmani">
 			<div className="max-w-7xl mx-auto">
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 					{/* Left Content */}

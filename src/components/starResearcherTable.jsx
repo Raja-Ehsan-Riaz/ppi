@@ -19,9 +19,10 @@ export default function StarResearcherTable({ researchers }) {
 	 * Adjust the path to wherever you store researcher images.
 	 * Expected file names: 1.jpg, 2.png, etc.
 	 */
-	const getPhotoUrl = (photoId) => {
-		if (!photoId || photoId === "0" || photoId.toString().trim() === "") return null
-		return `/images/researchers/${photoId}.jpg`
+	const getPhotoUrl = photoId => {
+		if (!photoId || photoId === "0" || photoId.toString().trim() === "")
+			return null
+		return `/Author Images/${photoId}.jpg`
 	}
 
 	return (
@@ -57,8 +58,8 @@ export default function StarResearcherTable({ researchers }) {
 						</tr>
 					</thead>
 					<tbody className="divide-y divide-gray-200">
-						{researchers.map((researcher) => {
-							const photoUrl = getPhotoUrl(researcher.photoId)
+						{researchers.map(researcher => {
+							const photoUrl = getPhotoUrl(researcher.author)
 							const isExpanded = expandedRow === researcher.id
 
 							return (
@@ -77,8 +78,8 @@ export default function StarResearcherTable({ researchers }) {
 														src={photoUrl}
 														alt={researcher.author}
 														className="w-full h-full object-cover"
-                                                        fill
-														onError={(e) => {
+														fill
+														onError={e => {
 															e.currentTarget.style.display = "none"
 															e.currentTarget.nextSibling.style.display = "flex"
 														}}
@@ -120,7 +121,7 @@ export default function StarResearcherTable({ researchers }) {
 										<td className="px-4 py-4 text-center">
 											{researcher.papers && researcher.papers.length > 0 ? (
 												<button
-													onClick={(e) => toggleRow(e, researcher.id)}
+													onClick={e => toggleRow(e, researcher.id)}
 													className="inline-flex items-center gap-1 px-2 py-1 cursor-pointer text-xs font-medium text-[#007856] hover:bg-green-50 rounded transition-colors"
 												>
 													<FileText className="h-3.5 w-3.5" />
@@ -143,7 +144,7 @@ export default function StarResearcherTable({ researchers }) {
 													target="_blank"
 													rel="noopener noreferrer"
 													className="inline-flex items-center justify-center text-gray-400 hover:text-[#007856] transition-colors"
-													onClick={(e) => e.stopPropagation()}
+													onClick={e => e.stopPropagation()}
 												>
 													<ExternalLink className="h-4 w-4" />
 												</a>
@@ -154,31 +155,33 @@ export default function StarResearcherTable({ researchers }) {
 									</tr>
 
 									{/* Expanded Papers Row */}
-									{isExpanded && researcher.papers && researcher.papers.length > 0 && (
-										<tr>
-											<td
-												colSpan="8"
-												className="px-4 py-4 bg-blue-50 border-t border-blue-100"
-											>
-												<div className="space-y-2">
-													<h4 className="font-semibold text-xs text-gray-900 mb-3 flex items-center gap-2">
-														<FileText className="h-4 w-4 text-[#007856]" />
-														Alpha Publications ({researcher.papers.length})
-													</h4>
-													<ol className="space-y-3 list-decimal list-outside ml-5">
-														{researcher.papers.map((paper, idx) => (
-															<li
-																key={idx}
-																className="text-xs text-gray-800 leading-relaxed pl-1"
-															>
-																{paper}
-															</li>
-														))}
-													</ol>
-												</div>
-											</td>
-										</tr>
-									)}
+									{isExpanded &&
+										researcher.papers &&
+										researcher.papers.length > 0 && (
+											<tr>
+												<td
+													colSpan="8"
+													className="px-4 py-4 bg-blue-50 border-t border-blue-100"
+												>
+													<div className="space-y-2">
+														<h4 className="font-semibold text-xs text-gray-900 mb-3 flex items-center gap-2">
+															<FileText className="h-4 w-4 text-[#007856]" />
+															Alpha Publications ({researcher.papers.length})
+														</h4>
+														<ol className="space-y-3 list-decimal list-outside ml-5">
+															{researcher.papers.map((paper, idx) => (
+																<li
+																	key={idx}
+																	className="text-xs text-gray-800 leading-relaxed pl-1"
+																>
+																	{paper}
+																</li>
+															))}
+														</ol>
+													</div>
+												</td>
+											</tr>
+										)}
 								</React.Fragment>
 							)
 						})}

@@ -119,7 +119,7 @@ export default function Pagination({
 								className={`h-8 w-8 p-0 ${
 									currentPage === page
 										? `${
-												pathname === "/saheb-i-ejaad"
+												pathname === "/saheb-i-ejaad" || pathname === "/our-researchers"
 													? "bg-[#007856] text-white hover:bg-[#007856]/80"
 													: "bg-primary text-white hover:bg-primary/90"
 										  }`

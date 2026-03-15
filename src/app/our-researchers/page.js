@@ -105,21 +105,21 @@ export default function OurResearchersPage() {
 	return (
 		<div className="min-h-screen bg-white">
 			{/* Hero / Header */}
-			<div className="bg-[#007856] text-white py-12 px-4 ">
-				<div className="max-w-7xl mx-auto min-h-[60vh] flex flex-col items-start justify-center">
-					<p className="text-sm font-medium text-green-200 mb-2 uppercase tracking-wider">
+			<div className="bg-[#007856] text-white px-6 md:px-16 lg:px-24 py-16 md:py-24 pt-32">
+				<div className="max-w-7xl mx-auto min-h-[40vh] flex flex-col items-start justify-center mt-5">
+					<p className="text-lg font-medium text-green-200 mb-2 uppercase tracking-wider">
 						PPI Star Researchers
 					</p>
-					<h1 className="text-3xl md:text-4xl font-bold mb-3">
+					<h1 className="text-4xl md:text-5xl font-bold ">
 						Find out who has published the most Alpha papers in engineering and
 						computer science with Pakistani affiliation
 					</h1>
 				</div>
 			</div>
 
-			<div className="max-w-7xl mx-auto px-4 py-10">
+			<div className="max-w-7xl mx-auto">
 				{/* Description Card */}
-				<div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-10 text-sm text-gray-700 leading-relaxed space-y-3">
+				<div className="bg-gray-50 border border-gray-200 rounded-lg p-10 my-10 text-gray-700 leading-relaxed space-y-3">
 					<p>
 						Journals and conferences categorized as <strong>Alpha</strong> in the Peer Perception
 						Index (PPI) are truly top-quality publication venues. Publishing in these venues is a
