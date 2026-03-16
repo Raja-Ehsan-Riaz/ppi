@@ -131,7 +131,7 @@ export default function OurResearchersPage() {
 			<div className="max-w-7xl mx-auto ">
 				{/* Description Card */}
 				<div className="rounded-lg px-6 md:px-16 lg:px-24 py-16 md:py-24 text-gray-700 leading-relaxed space-y-8">
-					<p className="text-lg">
+					<p >
 						Journals and conferences categorized as <strong>Alpha</strong> in
 						the Peer Perception Index (PPI) are truly top-quality publication
 						venues. Publishing in these venues is a great accomplishment.{" "}
