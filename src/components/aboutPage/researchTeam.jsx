@@ -6,7 +6,7 @@ import Link from "next/link"
 
 const teamMembers = [
 	{
-		name: "Dr Muhammad Latif Anjum",
+		name: "Dr. Muhammad Latif Anjum",
 		role: "Team Lead",
 		image: "/team/latif.jpg",
 		description:
@@ -18,8 +18,8 @@ const teamMembers = [
 		},
 	},
 	{
-		name: "Dr Wajahat Hussain",
-		role: "Team Lead",
+		name: "Dr. Wajahat Hussain",
+		role: "Co - Team Lead",
 		image: "/team/wajahat.jpg",
 		description:
 			"Associate Professor at NUST, Pakistan. His research interests include data-driven scene understanding, robotics, and computer vision.",

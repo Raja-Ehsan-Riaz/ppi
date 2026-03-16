@@ -7,7 +7,7 @@ import StarResearcherFilters from "@/components/starResearcherFilters"
 import Pagination from "@/components/Pagination"
 import { Loader2 } from "lucide-react"
 
-const PER_PAGE = 50
+const PER_PAGE = 100
 
 export default function OurResearchersPage() {
 	const [allResearchers, setAllResearchers] = useState([])
