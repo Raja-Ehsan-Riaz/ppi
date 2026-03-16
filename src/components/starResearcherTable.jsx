@@ -112,7 +112,7 @@ export default function StarResearcherTable({ researchers }) {
 
 										{/* Alpha Papers Count */}
 										<td className="px-4 py-4 text-center">
-											<span className="inline-flex items-center justify-center w-10 h-10 rounded-full text-sm font-bold bg-blue-100 text-blue-700 border border-blue-300">
+											<span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
 												{researcher.alphaCount}
 											</span>
 										</td>
