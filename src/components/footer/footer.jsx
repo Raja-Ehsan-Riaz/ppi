@@ -14,7 +14,7 @@ const Footer = () => {
 					<div className="flex items-center gap-2 mb-4">
 						<Image
 							src={`${
-								pathname.includes("/saheb-i-ejaad")
+								pathname.includes("/saheb-i-ejaad") || pathname.includes("/our-researchers")
 									? "/logo - green.png"
 									: "/logo.png"
 							}`}
