@@ -81,7 +81,7 @@ const Header = () => {
 									href="/our-researchers"
 									className="px-4 py-3 text-white text-sm rounded-lg bg-black hover:bg-black/70 transition-colors"
 								>
-									Our Star Researchers
+									PPI Star Researchers
 								</Link>
 							)}
 
@@ -176,7 +176,7 @@ const Header = () => {
 								href="/our-researchers"
 								className="px-4 py-3 text-white text-sm rounded-lg bg-black hover:bg-black/70 transition-colors"
 							>
-								Our Star Researchers
+								PPI Star Researchers
 							</Link>
 						)}
 						<Link

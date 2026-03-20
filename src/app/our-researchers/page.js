@@ -131,7 +131,7 @@ export default function OurResearchersPage() {
 			<div className="max-w-7xl mx-auto ">
 				{/* Description Card */}
 				<div className="rounded-lg px-6 md:px-16 lg:px-24 py-16 md:py-24 text-gray-700 leading-relaxed space-y-8">
-					<p >
+					<p>
 						Journals and conferences categorized as <strong>Alpha</strong> in
 						the Peer Perception Index (PPI) are truly top-quality publication
 						venues. Publishing in these venues is a great accomplishment.{" "}
@@ -142,35 +142,57 @@ export default function OurResearchersPage() {
 
 					<div className="grid grid-cols-2 gap-2.5">
 						{[
-							{ label: "Field", value: "Engineering & computer science" },
-							{ label: "Tier", value: "Alpha venues only" },
+							{
+								label: "Field",
+								value: "Engineering & computer science",
+								description:
+									"This data shows publications in ‘engineering & computer science’ related journals/conferences.",
+							},
+							{
+								label: "Tier",
+								value: "Alpha venues only",
+								description:
+									"This data shows publication in Alpha journals/conferences only.",
+							},
 							{
 								label: "Venues indexed",
 								value: "1,425 journals & conferences scored",
+								description:
+									"In engineering & computer science, there are 1425 journals/conferences that we have explored and assigned a PPI score and associated category. While the list is exhaustive, we do not claim to encompass all journals/conferences in engineering & computer science. ",
 							},
 							{
 								label: "Coverage",
 								value:
 									"Exhaustive - unlisted venues excluded; missing a top journal is unlikely",
+								description:
+									"Accordingly, if a journal/conference is not included in our database, its publications are not considered for this analysis. However, the likelihood of a top-quality journal missing our analysis is extremely low.",
 							},
-						].map(({ label, value, sub }) => (
-							<div
-								key={label}
-								className="bg-white border border-gray-200 rounded-lg px-4 py-3 flex flex-col gap-1"
-							>
-								<span className="text-[10px] uppercase tracking-wider text-[#007856] font-semibold">
-									{label}
-								</span>
-								<span
-									className={`font-medium text-gray-800 leading-snug text-sm`}
+						].map(({ label, value, description }) => (
+							<div>
+								<div
+									key={label}
+									className="bg-white border border-gray-200 rounded-lg px-4 py-3 flex flex-col gap-1"
 								>
-									{value}
-								</span>
+									<span className="text-[10px] uppercase tracking-wider text-[#007856] font-semibold">
+										{label}
+									</span>
+									<span
+										className={`font-medium text-gray-800 leading-snug text-sm`}
+									>
+										{value}
+									</span>
+								</div>
+								<div className="px-2">
+									<p className="text-xs text-gray-500 mt-1">{description}</p>
+								</div>
 							</div>
 						))}
 					</div>
-					<p className="text-xs text-gray-500">
-						If your paper has not been considered, kindly contact us at{" "}
+					<p className="text-gray-700 leading-relaxed space-y-8">
+						If you have published in a journal or a conference which has been
+						assigned Alpha category (see Peer Perception Index main page), and
+						yet your paper has not been considered in &apos;PPI Star
+						Researchers&apos; list, kindly contact us at{" "}
 						<a
 							href="mailto:contact@peerperceptionindex.com"
 							className="text-[#007856] underline"
