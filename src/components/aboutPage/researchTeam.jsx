@@ -43,6 +43,31 @@ const teamMembers = [
 	},
 ]
 
+const researchAssociates = [
+	{
+		name: "Qasim Rizwan",
+		role: "Research Associate",
+		image: "/team/qasim.jpg",
+		description:
+			"Data Science graduate from FAST-NUCES. His research interests include Generative AI, AI systems development, data engineering, and large-scale web automation. His work focuses on building robust data-driven systems for research and intelligent automation. He has been instrumental in developing codes for PPI in his capacity as Research Associate with the project.",
+		social: {
+			email: "qasimrizwan02@gmail.com",
+			linkedin: "https://www.linkedin.com/in/qasim-rizwan-75502b230/",
+		},
+	},
+	{
+		name: "Aaleena Kamran",
+		role: "Research Assistant",
+		image: "/team/aaleena.jpg",
+		description:
+			"Currently pursuing MS in Data Science at SEECS, NUST. She completed her BS in Information Technology from Quaid-I-Azam University, Islamabad. She has worked on the PPI project as Research Assistant developing codes for data analysis and providing meaningful insights.",
+		social: {
+			email: "",
+			linkedin: "",
+		},
+	},
+]
+
 export default function ResearchTeam() {
 	return (
 		<section className="px-6 md:px-16 lg:px-24 py-16 md:py-24" id="team">
@@ -154,6 +179,115 @@ export default function ResearchTeam() {
 						</div>
 					))}
 				</div>
+
+				{/* Research Associates Sub-section */}
+				<div className="mt-20 max-w-3xl mx-auto">
+					<h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4 text-center">
+						Research Associates
+					</h3>
+					<p className="text-gray-600 text-base md:text-lg mb-10 text-center">
+						Graduate researchers and associates contributing to the PPI project.
+					</p>
+
+					<div className="grid grid-cols-1 md:grid-cols-2  gap-4">
+						{researchAssociates.map((member, index) => (
+							<div
+								key={index}
+								className="group relative rounded-3xl overflow-hidden aspect-[4/5]"
+							>
+								{/* Image */}
+								<Image
+									src={member.image}
+									alt={member.name}
+									fill
+									className="object-cover transition-transform duration-500 md:group-hover:scale-105"
+								/>
+
+								{/* Overlay Gradient */}
+								<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+								{/* DEFAULT CONTENT (Desktop Only) */}
+								<div
+									className="
+										absolute bottom-0 left-0 right-0 p-6 text-white
+										opacity-0 md:opacity-100
+										md:group-hover:opacity-0
+										transition-opacity duration-300
+									"
+								>
+									<h3 className="text-xl font-semibold mb-1">
+										{member.name}
+									</h3>
+									<p className="text-sm text-gray-200 mb-3">
+										{member.role}
+									</p>
+
+									<div className="flex gap-3">
+										{member.social.email && (
+											<Link
+												href={`mailto:${member.social.email}`}
+												className="hover:text-pink-400"
+											>
+												<Mail size={20} />
+											</Link>
+										)}
+										{member.social.linkedin && (
+											<Link
+												href={member.social.linkedin}
+												className="hover:text-blue-400"
+												target="_blank"
+											>
+												<Linkedin size={20} />
+											</Link>
+										)}
+									</div>
+								</div>
+
+								{/* HOVER CONTENT (Mobile Default) */}
+								<div
+									className="
+										absolute inset-0 p-6 text-white flex flex-col justify-end
+										opacity-100 md:opacity-0
+										md:group-hover:opacity-100
+										transition-opacity duration-300
+									"
+								>
+									<h3 className="text-xl font-semibold mb-1">
+										{member.name}
+									</h3>
+									<p className="text-sm text-gray-200 mb-3">
+										{member.role}
+									</p>
+
+									<div className="flex gap-3">
+										{member.social.email && (
+											<Link
+												href={`mailto:${member.social.email}`}
+												className="hover:text-pink-400"
+											>
+												<Mail size={20} />
+											</Link>
+										)}
+										{member.social.linkedin && (
+											<Link
+												href={member.social.linkedin}
+												className="hover:text-blue-400"
+												target="_blank"
+											>
+												<Linkedin size={20} />
+											</Link>
+										)}
+									</div>
+
+									<p className="text-sm text-gray-100 leading-relaxed mt-4">
+										{member.description}
+									</p>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+
 			</div>
 		</section>
 	)
