@@ -6,7 +6,9 @@ import { Button } from "@/components/ui/button"
 import {
 	Select,
 	SelectContent,
+	SelectGroup,
 	SelectItem,
+	SelectLabel,
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select"
@@ -70,6 +72,15 @@ export default function StarResearcherFilters({
 		if (e.key === "Enter") handleSearch()
 	}
 
+	const sortLabel = {
+		most_papers: "Most Alpha Papers",
+		least_papers: "Least Alpha Papers",
+		current_affiliation_asc: "Current Affiliation (A → Z)",
+		current_affiliation_desc: "Current Affiliation (Z → A)",
+		paper_affiliation_asc: "Paper Affiliation (A → Z)",
+		paper_affiliation_desc: "Paper Affiliation (Z → A)",
+	}
+
 	return (
 		<div>
 			{/* Search Bar */}
@@ -115,12 +126,33 @@ export default function StarResearcherFilters({
 						onValueChange={setAlphaSort}
 						disabled={isFiltering}
 					>
-						<SelectTrigger className="w-[240px] h-9">
-							<SelectValue placeholder="Most Alpha Papers" />
+						<SelectTrigger className="w-[260px] h-9">
+							<SelectValue>{sortLabel[alphaSort]}</SelectValue>
 						</SelectTrigger>
 						<SelectContent>
-							<SelectItem value="most_papers">Most Alpha Papers</SelectItem>
-							<SelectItem value="least_papers">Least Alpha Papers</SelectItem>
+							<SelectGroup>
+								<SelectLabel className="text-xs text-gray-400 uppercase tracking-wide px-2 py-1">
+									Alpha Papers
+								</SelectLabel>
+								<SelectItem value="most_papers">Most Alpha Papers</SelectItem>
+								<SelectItem value="least_papers">Least Alpha Papers</SelectItem>
+							</SelectGroup>
+
+							<SelectGroup>
+								<SelectLabel className="text-xs text-gray-400 uppercase tracking-wide px-2 py-1 mt-1">
+									Current Affiliation
+								</SelectLabel>
+								<SelectItem value="current_affiliation_asc">A → Z</SelectItem>
+								<SelectItem value="current_affiliation_desc">Z → A</SelectItem>
+							</SelectGroup>
+
+							<SelectGroup>
+								<SelectLabel className="text-xs text-gray-400 uppercase tracking-wide px-2 py-1 mt-1">
+									Paper Affiliation
+								</SelectLabel>
+								<SelectItem value="paper_affiliation_asc">A → Z</SelectItem>
+								<SelectItem value="paper_affiliation_desc">Z → A</SelectItem>
+							</SelectGroup>
 						</SelectContent>
 					</Select>
 

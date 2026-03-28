@@ -45,7 +45,7 @@ export default function OurResearchersPage() {
 	}
 
 	const applyFiltersAndSearch = useCallback((researchers, keyword, filters) => {
-		let result = [...researchers]
+	let result = [...researchers]
 
 		// Keyword filter
 		if (keyword && keyword.trim() !== "") {
@@ -55,19 +55,46 @@ export default function OurResearchersPage() {
 					r.author.toLowerCase().includes(kw) ||
 					(r.currentAffiliation &&
 						r.currentAffiliation.toLowerCase().includes(kw)) ||
-					(r.paperAffiliation && r.paperAffiliation.toLowerCase().includes(kw)),
+					(r.paperAffiliation &&
+						r.paperAffiliation.toLowerCase().includes(kw)),
 			)
 		}
 
 		// Sort
-		if (filters.alphaSort === "most_papers") {
-			result.sort((a, b) => b.alphaCount - a.alphaCount)
-		} else if (filters.alphaSort === "least_papers") {
-			result.sort((a, b) => a.alphaCount - b.alphaCount)
+		switch (filters.alphaSort) {
+			case "most_papers":
+				result.sort((a, b) => b.alphaCount - a.alphaCount)
+				break
+			case "least_papers":
+				result.sort((a, b) => a.alphaCount - b.alphaCount)
+				break
+			case "current_affiliation_asc":
+				result.sort((a, b) =>
+					(a.currentAffiliation ?? "").localeCompare(b.currentAffiliation ?? ""),
+				)
+				break
+			case "current_affiliation_desc":
+				result.sort((a, b) =>
+					(b.currentAffiliation ?? "").localeCompare(a.currentAffiliation ?? ""),
+				)
+				break
+			case "paper_affiliation_asc":
+				result.sort((a, b) =>
+					(a.paperAffiliation ?? "").localeCompare(b.paperAffiliation ?? ""),
+				)
+				break
+			case "paper_affiliation_desc":
+				result.sort((a, b) =>
+					(b.paperAffiliation ?? "").localeCompare(a.paperAffiliation ?? ""),
+				)
+				break
+			default:
+				result.sort((a, b) => b.alphaCount - a.alphaCount)
 		}
 
 		return result
 	}, [])
+
 
 	const handleSearch = useCallback(
 		keyword => {
